@@ -1,9 +1,10 @@
 <?php
 
+use Auth;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePromosTable extends Migration
+class CreateAnnouncementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +13,10 @@ class CreatePromosTable extends Migration
      */
     public function up()
     {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('announcements', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('campaign');
-            $table->integer('active')->default(1);
-            $table->string('name', 60);
+            $table->integer('user')->default(Auth::user()->id);
             $table->text('body');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreatePromosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('promos');
+        Schema::drop('announcements');
     }
 }

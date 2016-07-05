@@ -14,6 +14,10 @@ class CreateRebuttalsTable extends Migration
     {
         Schema::create('rebuttals', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('campaign');
+            $table->integer('active')->default(1);
+            $table->string('name', 60);
+            $table->text('body');
             $table->timestamps();
         });
     }
