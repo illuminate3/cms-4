@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [
+    'as' => 'auth.login',
+    'uses' => 'AuthController@login'
+]);
 
 Route::resource('campaign', 'CampaignController');
 Route::resource('rebuttal', 'RebuttalController');
