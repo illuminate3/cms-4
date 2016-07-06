@@ -32,7 +32,7 @@ class AuthController extends Controller
         $check = Auth::attempt([
             'username' => $request->get('username'),
             'password' => $request->get('password')
-        ], false);
+        ]);
 
         return response()
             ->json($check);

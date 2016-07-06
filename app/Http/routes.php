@@ -24,6 +24,11 @@ Route::group(['middleware' => 'guest'], function() {
 });
 
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('/dashboard', [
+        'as' => 'dashboard',
+        'uses' => 'PagesController@dashboard'
+    ]);
+
     Route::resource('campaign', 'CampaignController');
     Route::resource('rebuttal', 'RebuttalController');
     Route::resource('promo', 'PromoController');
