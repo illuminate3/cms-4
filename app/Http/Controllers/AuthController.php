@@ -12,7 +12,7 @@ class AuthController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function login()
+    public function login(): \Illuminate\View\View
     {
         return view('auth.login');
     }

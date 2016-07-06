@@ -1,10 +1,10 @@
-const auth = {}
-
 import Vue from '../main.js'
 
-auth.login = () => {
+const auth = {}
+
+auth.login = (data) => {
     return new Promise((resolve, reject) => {
-        Vue.http.post('/', response => {
+        Vue.http({ url: '/', method: 'POST', data: data }).then(response => {
             resolve(response)
         })
     })

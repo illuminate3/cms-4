@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>VZW CMS</title>
+        <meta name="csrf_token" id="csrf_token" content="{{ csrf_token() }}">
+        
+        <title>Verizon Wireless Content Management System</title>
 
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     </head>

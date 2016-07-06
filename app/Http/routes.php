@@ -11,11 +11,20 @@
 |
 */
 
-Route::get('/', [
-    'as' => 'auth.login',
-    'uses' => 'AuthController@login'
-]);
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('/', [
+        'as' => 'login',
+        'uses' => 'AuthController@login'
+    ]);
 
-Route::resource('campaign', 'CampaignController');
-Route::resource('rebuttal', 'RebuttalController');
-Route::resource('promo', 'PromoController');
+    Route::post('/', [
+        'as' => 'login.post',
+        'uses' => 'AuthController@check'
+    ]);
+});
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('campaign', 'CampaignController');
+    Route::resource('rebuttal', 'RebuttalController');
+    Route::resource('promo', 'PromoController');
+});

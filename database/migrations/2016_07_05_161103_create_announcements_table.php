@@ -1,6 +1,5 @@
 <?php
 
-use Auth;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -16,7 +15,7 @@ class CreateAnnouncementsTable extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('campaign');
-            $table->integer('user')->default(Auth::user()->id);
+            $table->integer('user');
             $table->text('body');
             $table->timestamps();
         });

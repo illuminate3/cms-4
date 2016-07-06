@@ -13,7 +13,6 @@ class CampaignController extends Controller
      */
     public function all()
     {
-
     }
 
     /**
@@ -23,7 +22,6 @@ class CampaignController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -34,7 +32,6 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-
     }
 
     /**
@@ -45,7 +42,6 @@ class CampaignController extends Controller
      */
     public function find($id)
     {
-
     }
 
     /**
@@ -56,6 +52,5 @@ class CampaignController extends Controller
      */
     public function destroy(Request $request)
     {
-
     }
 }
