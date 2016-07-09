@@ -20,11 +20,6 @@ class PagesController extends Controller
      */
     public function dashboard(): \Illuminate\View\View
     {
-        return view('pages.dashboard')
-            ->with('users', User::all())
-            ->with('campaigns', Campaign::all())
-            ->with('rebuttals', Rebuttal::all())
-            ->with('promos', Promo::all())
-            ->with('announcements', Announcement::all());
+        return view('pages.dashboard');
     }
 }

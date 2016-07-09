@@ -31,7 +31,7 @@
                         </ul>
                     </div>
                 </div>
-                <!-- <div class="profile">
+                <div class="profile">
                     <div class="user">
                         <img src="http://indonesian-experience.nl/wp-content/uploads/2015/02/puzzle-head.jpg">
                         <div class="name">
@@ -48,7 +48,7 @@
                             <li><a href="">Features</a></li>
                         </ul>
                     </div>
-                </div> -->
+                </div>
                 <div class="statistics padded flex-container">
                     <div class="statistic flex-item">
                         <span class="number">51</span>
@@ -73,26 +73,28 @@
                         <div class="card">
                             <div class="card-header default">Campaigns</div>
                             <div class="card-block">
-                                <table class="table" v-show="campaigns.length > 0">
-                                    <thead>
-                                        <tr>
-                                            <th>Script</th>
-                                            <th>Campaign</th>
-                                            <th>Rebuttals</th>
-                                            <th>Promos</th>
-                                            <th>Timestamp</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="campaign in campaigns">
-                                            <td>{{ campaign.script }}</td>
-                                            <td>{{ campaign.name }}</td>
-                                            <td>{{ campaign.rebuttals }}</td>
-                                            <td>{{ campaign.promos }}</td>
-                                            <td>{{ campaign.timestamp }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive" v-show="campaigns.length > 0">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Script</th>
+                                                <th>Campaign</th>
+                                                <th>Rebuttals</th>
+                                                <th>Promos</th>
+                                                <th>Timestamp</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="campaign in campaigns">
+                                                <td>{{ campaign.script }}</td>
+                                                <td>{{ campaign.name }}</td>
+                                                <td>{{ campaign.rebuttals }}</td>
+                                                <td>{{ campaign.promos }}</td>
+                                                <td>{{ campaign.timestamp }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div v-else>You currently do not have any campaigns</div>
                             </div>
                         </div>
