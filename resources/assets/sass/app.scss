@@ -1,1 +1,18 @@
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+/**
+ * Globals
+ */
+@import 'core/variables';
+@import 'core/globals';
+
+/**
+ * Framework
+ */
+@import 'framework/auth';
+@import 'framework/dashboard';
+
+/**
+ * Partials
+ */
+@import 'partials/buttons';

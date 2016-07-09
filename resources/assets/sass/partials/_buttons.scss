@@ -1,0 +1,8 @@
+.btn-default {
+    background-color: $scheme;
+    color: white;
+}
+
+.btn-default:hover {
+    background-color: $scheme-lighter;
+}

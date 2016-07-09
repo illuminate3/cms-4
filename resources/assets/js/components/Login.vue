@@ -1,37 +1,25 @@
 <template>
-    <div class="panel panel-default auth">
-        <div class="panel-heading">Sign in to your account</div>
-        <div class="panel-body">
-            <form @submit.prevent="login" class="form-horizontal">
-                <div class="form-group" v-bind:class="{ 'has-error': error }">
-                    <label class="col-sm-3 text-right">username</label>
-                    <div class="col-sm-7">
-                        <input type="text" v-model="user.username" class="form-control" placeholder="Enter your username">
-                    </div>
-                </div>
-                <div class="form-group" v-bind:class="{ 'has-error': error }">
-                    <label class="col-sm-3 text-right">password</label>
-                    <div class="col-sm-7">
-                        <input type="password" v-model="user.password" class="form-control" placeholder="Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-7 col-sm-push-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember"> Keep me signed in
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-7 col-sm-offset-3">
-                        <button class="btn btn-info">Log in</button>
-                        <a href="" class="btn btn-link">Reset password</a>
-                    </div>
-                </div>
-            </form>
+    <div class="auth">
+        <div class="header">
+            <h4>Total Marketing Concepts</h4>
+            <p>Verizon Wireless CMS</p>
         </div>
+        <form @submit.prevent="login">
+            <fieldset class="form-group" :class="{ 'has-danger': error }">
+                <label :class="{ 'text-danger': error }">Username</label>
+                <input type="text" v-model="user.username" class="form-control">
+            </fieldset>
+            <fieldset class="form-group" :class="{ 'has-danger': error }">
+                <label :class="{ 'text-danger': error }">Password</label>
+                <input type="password" v-model="user.password" class="form-control">
+            </fieldset>
+            <fieldset class="form-group">
+                <button class="btn btn-block btn-default">Login</button>
+            </fieldset>
+        </form>
+        <p class="text-xs-center">
+            <a href="" class="text-muted">Forgot Your Password?</a>
+        </p>
     </div>
 </template>
 
