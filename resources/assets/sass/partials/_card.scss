@@ -1,0 +1,9 @@
+.card {
+    border: none;
+    border-bottom: 3px solid lightgray;
+
+    .card-header.default {
+        background-color: $scheme-lighter;
+        color: white;
+    }
+}

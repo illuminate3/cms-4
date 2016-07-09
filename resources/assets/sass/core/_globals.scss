@@ -1,9 +1,14 @@
 body {
     background-color: #f4f4f4;
+    overflow-x: none;
 }
 
 .no-padding {
     padding: 0;
+}
+
+.padded {
+    padding: 20px;
 }
 
 .clear {

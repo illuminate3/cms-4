@@ -1,0 +1,7 @@
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}

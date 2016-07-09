@@ -1,5 +1,15 @@
+@media screen and (min-width: $breakpoint) {
+    .dashboard {
+        padding-top: 65px;
+    }
+}
+
 .dashboard {
-    padding-top: 65px;
+    @media screen and (max-width: $breakpoint) {
+        .sidebar {
+            display: none;
+        }
+    }
 
     .sidebar {
         background: $scheme-lighter;
@@ -104,15 +114,34 @@
 
         .user {
             margin-bottom: 25px;
-            
-            img, .name {
-                display: inline-block;
+
+            @media screen and (max-width: $breakpoint) {
+                img {
+                    display: block;
+                    margin: auto;
+                }
+
+                .name {
+                    text-align: center;
+                }
+            }
+
+            @media screen and (min-width: $breakpoint) {
+                img, .name {
+                    display: inline-block;
+                }
             }
 
             img {
                 height: 150px;
                 width: 150px;
                 border-radius: 100%;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint) {
+            .links {
+                display: none;
             }
         }
 
@@ -146,6 +175,39 @@
                     }
                 }
             }
+        }
+    }
+
+    .statistics {
+        .statistic {
+            border-radius: 100%;
+            padding: 25px;
+            margin: 10px;
+
+            .number, .description {
+                display: block;
+                text-align: center;
+            }
+
+            .number {
+                font-size: 2em;
+            }
+        }
+
+        .statistic:nth-child(1) {
+            border: 6px solid #3498db;
+        }
+
+        .statistic:nth-child(2) {
+            border: 6px solid #e74c3c;
+        }
+
+        .statistic:nth-child(3) {
+            border: 6px solid #34495e;
+        }
+
+        .statistic:nth-child(4) {
+            border: 6px solid #9b59b6;
         }
     }
 }

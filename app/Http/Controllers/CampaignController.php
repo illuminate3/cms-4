@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
+use League\Fractal\Manager;
 use Illuminate\Http\Request;
+use League\Fractal\Resource\Collection;
+use App\Data\Transformers\Campaign as CampaignTransformer;
 
 class CampaignController extends Controller
 {
@@ -11,8 +15,13 @@ class CampaignController extends Controller
      *
      * @return mixed
      */
-    public function all()
+    public function index()
     {
+        $campaigns = Campaign::all();
+
+        return (new Manager)->createData(
+            new Collection($campaigns, new CampaignTransformer)
+        )->toJson();
     }
 
     /**

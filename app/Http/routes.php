@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function() {
         'uses' => 'PagesController@dashboard'
     ]);
 
-    Route::resource('campaign', 'CampaignController');
-    Route::resource('rebuttal', 'RebuttalController');
-    Route::resource('promo', 'PromoController');
+    Route::resource('campaigns', 'CampaignController');
+    Route::resource('rebuttals', 'RebuttalController');
+    Route::resource('promos', 'PromoController');
 });
