@@ -24,3 +24,10 @@ $factory->define(App\Models\Rebuttal::class, function(Faker\Generator $faker) {
         'body' => $faker->text
     ];
 });
+
+$factory->define(App\Models\Promo::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'body' => $faker->text
+    ];
+});

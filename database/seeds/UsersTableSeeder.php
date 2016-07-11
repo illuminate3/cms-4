@@ -12,6 +12,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        User::where('username', 'testy123')
+            ->delete();
+
         User::create([
             'name' => 'testy mctesterson',
             'email' => 'testy@test.com',
