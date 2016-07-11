@@ -63,7 +63,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div v-else>You currently do not have any campaigns</div>
+                    <div v-else>You currently do not have any campaigns.</div>
                 </div>
             </div>
             <div class="card" v-show="section == 'rebuttals'">
@@ -75,22 +75,47 @@
                                 <tr>
                                     <th>Campaign</th>
                                     <th>Active</th>
-                                    <th>Name</th>
+                                    <th>Rebuttal</th>
                                     <th>Updated</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="rebuttal in rebuttals">
                                     <td>{{ rebuttal.campaignName }}</td>
                                     <td>{{ rebuttal.active }}</td>
-                                    <td>{{ rebuttal.name }}</td>
+                                    <td><a href="/rebuttals/{{ rebuttal.id }}/edit">{{ rebuttal.name }}</a></td>
                                     <td>{{ rebuttal.updated }}</td>
-                                    <td><a href=""><i class="fa fa-pencil"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <div v-else>You currenly do not have any rebuttals.</div>
+                </div>
+            </div>
+            <div class="card" v-show="section == 'promos'">
+                <div class="card-header default">Promos</div>
+                <div class="card-block">
+                    <div class="table-responsive" v-show="promos.length > 0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Campaign</th>
+                                    <th>Active</th>
+                                    <th>Promo</th>
+                                    <th>Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="promo in promos">
+                                    <td>{{ promo.campaignName }}</td>
+                                    <td>{{ promo.active }}</td>
+                                    <td><a href="/promos/{{ promo.id }}/edit">{{ promo.name }}</a></td>
+                                    <td>{{ promo.updated }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div v-else>You currently do not have any promotions.</div>
                 </div>
             </div>
         </div>
@@ -107,6 +132,7 @@
 
 import campaigns from '../core/campaign.js'
 import rebuttals from '../core/rebuttal.js'
+import promos from '../core/promo.js'
     
 export default {
     props: ['name'],
@@ -124,8 +150,9 @@ export default {
     created() {
         this.getAllCampaigns()
         this.getAllRebuttals()
+        this.getAllPromos()
 
-        let hash = window.location.hash
+        let hash = window.location.hash.length > 0 ? window.location.hash : 'campaigns'
         this.section = hash.replace('#', '')
     },
     
@@ -138,6 +165,11 @@ export default {
         getAllRebuttals() {
             rebuttals.all().then(rebuttals => {
                 this.rebuttals = JSON.parse(rebuttals.data).data
+            })
+        },
+        getAllPromos() {
+            promos.all().then(promos => {
+                this.promos = JSON.parse(promos.data).data
             })
         },
         navigate(section) {

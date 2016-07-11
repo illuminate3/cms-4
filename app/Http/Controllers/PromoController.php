@@ -19,8 +19,9 @@ class PromoController extends Controller
     {
         $promos = Promo::all();
 
-        return response()
-            ->json($promos);
+        return (new Manager)->createData(
+            new Collection($promos, new PromoTransformer)
+        )->toJson();
     }
 
     /**

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rebuttal;
+use App\Models\{
+    Campaign,
+    Rebuttal
+};
+
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
@@ -39,5 +43,21 @@ class RebuttalController extends Controller
         return (new Manager)->createData(
             new Collection($rebuttals, new RebuttalTransformer)
         )->toJson();
+    }
+
+    /**
+     * Display a resource to edit a rebuttal
+     *
+     * @param integer $rebuttal
+     * @return Illuminate\Views\View
+     */
+    public function edit($rebuttal): \Illuminate\View\View
+    {
+        $rebuttal = Rebuttal::findOrFail($rebuttal);
+        $campaigns = Campaign::all();
+
+        return view('rebuttals.edit')
+            ->with('rebuttal', $rebuttal)
+            ->with('campaigns', $campaigns);
     }
 }

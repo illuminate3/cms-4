@@ -57,6 +57,11 @@ Route::group(['prefix' => 'rebuttals'], function() {
         'as' => 'rebuttals.campaign',
         'uses' => 'RebuttalController@campaign'
     ]);
+
+    Route::get('/{rebuttal}/edit', [
+        'as' => 'rebuttals.edit',
+        'uses' => 'RebuttalController@edit'
+    ]);
 });
 
 Route::group(['prefix' => 'promos'], function() {

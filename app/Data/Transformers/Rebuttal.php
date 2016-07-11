@@ -7,6 +7,12 @@ use League\Fractal\TransformerAbstract;
 
 class Rebuttal extends TransformerAbstract
 {
+    /**
+     * Rebuttal transformer
+     *
+     * @param App\Models\Rebuttal $rebuttal
+     * @return array
+     */
     public function transform(Rebuttal $rebuttal)
     {
         return [
