@@ -3,8 +3,8 @@
         <div class="user">
             <img src="http://indonesian-experience.nl/wp-content/uploads/2015/02/puzzle-head.jpg">
             <div class="name">
-                <h2>{{ name }}</h2>
-                <p>Software Developer</p>
+                <h2>{{ user.name }}</h2>
+                <p>{{ user.biography }}</p>
             </div>
         </div>
         <div class="links">
@@ -135,7 +135,7 @@ import rebuttals from '../core/rebuttal.js'
 import promos from '../core/promo.js'
     
 export default {
-    props: ['name'],
+    props: ['user'],
 
     data() {
         return {
@@ -154,6 +154,8 @@ export default {
 
         let hash = window.location.hash.length > 0 ? window.location.hash : 'campaigns'
         this.section = hash.replace('#', '')
+
+        this.user = JSON.parse(this.user)
     },
     
     methods: {

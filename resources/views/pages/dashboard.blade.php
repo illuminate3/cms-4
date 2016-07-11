@@ -2,6 +2,6 @@
 
 @section('main')
     <dashboard-component
-        name="{{ Auth::user()->name }}"
+        user="{{ Auth::user() }}"
     ></dashboard-component>
 @endsection
