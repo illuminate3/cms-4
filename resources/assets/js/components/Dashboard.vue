@@ -12,8 +12,8 @@
                 <li><a @click="navigate('campaigns')" :class="{ 'active': section == 'campaigns' }">Campaigns</a></li>
                 <li><a @click="navigate('rebuttals')" :class="{ 'active': section == 'rebuttals' }">Rebuttals</a></li>
                 <li><a @click="navigate('promos')" :class="{ 'active': section == 'promos' }">Promos</a></li>
-                <li><a @click="navigate('scripts')" :class="{ 'active': section == 'scripts' }">Scripts</a></li>
-                <li><a @click="navigate('features')" :class="{ 'active': section == 'features' }">Features</a></li>
+                <li><a :class="{ 'active': section == 'scripts' }">Scripts</a></li>
+                <li><a :class="{ 'active': section == 'features' }">Features</a></li>
             </ul>
         </div>
     </div>
@@ -120,10 +120,10 @@
             </div>
         </div>
         <div class="col-sm-3">
-            <button class="btn btn-block btn-default">View Script</button>
-            <button class="btn btn-block btn-info">New Campaign</button>
-            <button class="btn btn-block btn-primary">New Rebuttal</button>
-            <button class="btn btn-block btn-warning">New Promo</button>
+            <a class="btn btn-block btn-default">View Script</a>
+            <a class="btn btn-block btn-info">New Campaign</a>
+            <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
+            <a class="btn btn-block btn-warning">New Promo</a>
         </div>
     </div>
 </template>

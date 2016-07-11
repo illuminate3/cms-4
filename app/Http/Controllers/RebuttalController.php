@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+
 use App\Models\{
     Campaign,
     Rebuttal
@@ -59,5 +61,60 @@ class RebuttalController extends Controller
         return view('rebuttals.edit')
             ->with('rebuttal', $rebuttal)
             ->with('campaigns', $campaigns);
+    }
+
+    /**
+     * Display a resource to create a new rebuttal
+     *
+     * @return Illuminate\View\View
+     */
+    public function create(): \Illuminate\View\View
+    {
+        $campaigns = Campaign::all();
+
+        return view('rebuttals.new')
+            ->with('campaigns', $campaigns);
+    }
+
+    /**
+     * Store the newly created rebuttal
+     *
+     * @param Illuminate\Http\Request $request
+     * @return mixed
+     */
+    public function store(Request $request)
+    {
+        $validator = $this->isValidRebuttal($request->all());
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('errors', $validator->errors()->all());
+        }
+
+        Rebuttal::create([
+            'name' => strtolower($request->get('name')),
+            'body' => strtolower($request->get('body')),
+            'active' => $request->get('active'),
+            'campaign' => $request->get('campaign')
+        ]);
+
+        $request->session()->flash('success', 'Rebuttal successfully added');
+
+        return redirect()
+            ->route('dashboard');
+    }
+
+    /**
+     * Check to see if a rebuttal is valid
+     *
+     * @param array $data
+     * @return Illuminate\Validation\Factory
+     */
+    private function isValidRebuttal(array $data): \Illuminate\Validation\Validator
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:60',
+            'body' => 'required',
+            'campaign' => 'required|exists:campaigns,id'
+        ]);
     }
 }

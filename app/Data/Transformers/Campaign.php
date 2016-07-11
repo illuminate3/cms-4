@@ -7,6 +7,12 @@ use League\Fractal\TransformerAbstract;
 
 class Campaign extends TransformerAbstract
 {
+    /**
+     * Campaign transformer
+     *
+     * @param App\Models\Campaign $campaign
+     * @return array
+     */
     public function transform(Campaign $campaign)
     {
         return [

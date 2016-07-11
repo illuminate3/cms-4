@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Rebuttal extends Model
 {
     /**
+     * Define the fillable fields
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'body', 'active', 'campaign'
+    ];
+
+    /**
      * BelongsTo relationship
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -33,45 +33,55 @@ Route::group(['middleware' => 'auth'], function() {
         'as' => 'logout',
         'uses' => 'AuthController@destroy'
     ]);
-});
 
-Route::group(['prefix' => 'campaigns'], function() {
-    Route::get('/all', [
-        'as' => 'campaigns.all',
-        'uses' => 'CampaignController@all'
-    ]);
+    Route::group(['prefix' => 'campaigns'], function() {
+        Route::get('/all', [
+            'as' => 'campaigns.all',
+            'uses' => 'CampaignController@all'
+        ]);
 
-    Route::get('/{campaign}', [
-        'as' => 'campaign.view',
-        'uses' => 'CampaignController@show'
-    ]);
-});
+        Route::get('/{campaign}', [
+            'as' => 'campaign.view',
+            'uses' => 'CampaignController@show'
+        ]);
+    });
 
-Route::group(['prefix' => 'rebuttals'], function() {
-    Route::get('/all', [
-        'as' => 'rebuttals.all',
-        'uses' => 'RebuttalController@all'
-    ]);
+    Route::group(['prefix' => 'rebuttals'], function() {
+        Route::get('/all', [
+            'as' => 'rebuttals.all',
+            'uses' => 'RebuttalController@all'
+        ]);
 
-    Route::get('/{campaign}', [
-        'as' => 'rebuttals.campaign',
-        'uses' => 'RebuttalController@campaign'
-    ]);
+        Route::get('/create', [
+            'as' => 'rebuttals.create',
+            'uses' => 'RebuttalController@create'
+        ]);
 
-    Route::get('/{rebuttal}/edit', [
-        'as' => 'rebuttals.edit',
-        'uses' => 'RebuttalController@edit'
-    ]);
-});
+        Route::post('/create', [
+            'as' => 'rebuttals.create.post',
+            'uses' => 'RebuttalController@store'
+        ]);
 
-Route::group(['prefix' => 'promos'], function() {
-    Route::get('/all', [
-        'as' => 'promos.all',
-        'uses' => 'PromoController@all'
-    ]);
+        Route::get('/{campaign}', [
+            'as' => 'rebuttals.campaign',
+            'uses' => 'RebuttalController@campaign'
+        ]);
 
-    Route::get('/{campaign}', [
-        'as' => 'promos.campaign',
-        'uses' => 'PromoController@campaign'
-    ]);
+        Route::get('/{rebuttal}/edit', [
+            'as' => 'rebuttals.edit',
+            'uses' => 'RebuttalController@edit'
+        ]);
+    });
+
+    Route::group(['prefix' => 'promos'], function() {
+        Route::get('/all', [
+            'as' => 'promos.all',
+            'uses' => 'PromoController@all'
+        ]);
+
+        Route::get('/{campaign}', [
+            'as' => 'promos.campaign',
+            'uses' => 'PromoController@campaign'
+        ]);
+    });
 });
