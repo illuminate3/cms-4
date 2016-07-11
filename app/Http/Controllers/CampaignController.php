@@ -15,7 +15,7 @@ class CampaignController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function all()
     {
         $campaigns = Campaign::all();
 
@@ -36,35 +36,5 @@ class CampaignController extends Controller
 
         return view('campaign.view')
             ->with('campaign', $campaign);
-    }
-
-    /**
-     * Accept an http request to create a campaign
-     *
-     * @param Illuminate\Http\Request $request
-     * @return mixed
-     */
-    public function store(Request $request)
-    {
-    }
-
-    /**
-     * Return a listing of a specific campaign
-     *
-     * @param integer $id
-     * @return Illuminate\View\View
-     */
-    public function find($id)
-    {
-    }
-
-    /**
-     * Accept an http request to delete a campaign
-     *
-     * @param Illuminate\Http\Request $request
-     * @return mixed
-     */
-    public function destroy(Request $request)
-    {
     }
 }

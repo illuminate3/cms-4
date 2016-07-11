@@ -12,6 +12,8 @@ class Rebuttal extends TransformerAbstract
         return [
             'id' => $rebuttal->id,
             'active' => $rebuttal->active,
+            'campaign' => $rebuttal->campaign,
+            'campaignName' => $rebuttal->campaign()->first()->name,
             'name' => $rebuttal->name,
             'body' => $rebuttal->body,
             'created' => $rebuttal->created_at->diffForHumans(),

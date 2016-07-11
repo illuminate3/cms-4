@@ -9,36 +9,36 @@
         </div>
         <div class="links">
             <ul>
-                <li><a href="" class="active">Campaigns</a></li>
-                <li><a href="">Rebuttals</a></li>
-                <li><a href="">Promos</a></li>
-                <li><a href="">Scripts</a></li>
-                <li><a href="">Features</a></li>
+                <li><a @click="navigate('campaigns')" :class="{ 'active': section == 'campaigns' }">Campaigns</a></li>
+                <li><a @click="navigate('rebuttals')" :class="{ 'active': section == 'rebuttals' }">Rebuttals</a></li>
+                <li><a @click="navigate('promos')" :class="{ 'active': section == 'promos' }">Promos</a></li>
+                <li><a @click="navigate('scripts')" :class="{ 'active': section == 'scripts' }">Scripts</a></li>
+                <li><a @click="navigate('features')" :class="{ 'active': section == 'features' }">Features</a></li>
             </ul>
         </div>
     </div>
     <div class="statistics padded flex-container">
         <div class="statistic flex-item">
-            <span class="number">51</span>
+            <span class="number">{{ rebuttals.length }}</span>
             <span class="description">Rebuttals</span>
         </div>
         <div class="statistic flex-item">
-            <span class="number">55</span>
-            <span class="description">Rebuttals</span>
+            <span class="number">{{ campaigns.length }}</span>
+            <span class="description">Campaigns</span>
         </div>
         <div class="statistic flex-item">
-            <span class="number">55</span>
-            <span class="description">Rebuttals</span>
+            <span class="number">{{ promos.length }}</span>
+            <span class="description">Promotions</span>
         </div>
         <div class="statistic flex-item">
-            <span class="number">55</span>
-            <span class="description">Rebuttals</span>
+            <span class="number">{{ features.length }}</span>
+            <span class="description">Features</span>
         </div>
     </div>
 
     <div class="row padded">
         <div class="col-sm-9">
-            <div class="card">
+            <div class="card" v-show="section == 'campaigns'">
                 <div class="card-header default">Campaigns</div>
                 <div class="card-block">
                     <div class="table-responsive" v-show="campaigns.length > 0">
@@ -66,6 +66,33 @@
                     <div v-else>You currently do not have any campaigns</div>
                 </div>
             </div>
+            <div class="card" v-show="section == 'rebuttals'">
+                <div class="card-header default">Rebuttals</div>
+                <div class="card-block">
+                    <div class="table-responsive" v-show="rebuttals.length > 0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Campaign</th>
+                                    <th>Active</th>
+                                    <th>Name</th>
+                                    <th>Updated</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="rebuttal in rebuttals">
+                                    <td>{{ rebuttal.campaignName }}</td>
+                                    <td>{{ rebuttal.active }}</td>
+                                    <td>{{ rebuttal.name }}</td>
+                                    <td>{{ rebuttal.updated }}</td>
+                                    <td><a href=""><i class="fa fa-pencil"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-3">
             <button class="btn btn-block btn-default">View Script</button>
@@ -78,26 +105,44 @@
 
 <script>
 
-import main from '../core/main.js'
+import campaigns from '../core/campaign.js'
+import rebuttals from '../core/rebuttal.js'
     
 export default {
     props: ['name'],
 
     data() {
         return {
-            campaigns: []
+            campaigns: [],
+            rebuttals: [],
+            promos: [],
+            features: [],
+            section: 'campaigns'
         }
     },
     
     created() {
         this.getAllCampaigns()
+        this.getAllRebuttals()
+
+        let hash = window.location.hash
+        this.section = hash.replace('#', '')
     },
     
     methods: {
         getAllCampaigns() {
-            main.campaigns().then(campaigns => {
+            campaigns.all().then(campaigns => {
                 this.campaigns = JSON.parse(campaigns.data).data
             })
+        },
+        getAllRebuttals() {
+            rebuttals.all().then(rebuttals => {
+                this.rebuttals = JSON.parse(rebuttals.data).data
+            })
+        },
+        navigate(section) {
+            this.section = section
+            window.location.hash = section
         }
     }
 }

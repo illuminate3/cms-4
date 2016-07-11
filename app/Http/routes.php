@@ -35,7 +35,17 @@ Route::group(['middleware' => 'auth'], function() {
     ]);
 });
 
-Route::resource('campaigns', 'CampaignController');
+Route::group(['prefix' => 'campaigns'], function() {
+    Route::get('/all', [
+        'as' => 'campaigns.all',
+        'uses' => 'CampaignController@all'
+    ]);
+
+    Route::get('/{campaign}', [
+        'as' => 'campaign.view',
+        'uses' => 'CampaignController@show'
+    ]);
+});
 
 Route::group(['prefix' => 'rebuttals'], function() {
     Route::get('/all', [

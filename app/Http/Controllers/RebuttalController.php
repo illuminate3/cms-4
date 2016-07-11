@@ -19,8 +19,9 @@ class RebuttalController extends Controller
     {
         $rebuttals = Rebuttal::all();
 
-        return response()
-            ->json($rebuttals);
+        return (new Manager)->createData(
+            new Collection($rebuttals, new RebuttalTransformer)
+        )->toJson();
     }
 
     /**

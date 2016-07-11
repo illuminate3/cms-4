@@ -6,4 +6,9 @@
         background-color: $scheme-lighter;
         color: white;
     }
+
+    .card-header.danger {
+        background-color: #e74c3c;
+        color: white;
+    }
 }
