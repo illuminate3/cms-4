@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.authenticated')
 
-@section('content')
+@section('main')
     <dashboard-component
         name="{{ Auth::user()->name }}"
     ></dashboard-component>
