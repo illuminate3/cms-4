@@ -29,6 +29,7 @@ import auth from '../core/auth'
 
 export default {
     props: ['token'],
+    
     data() {
         return {
             user: {
@@ -38,6 +39,7 @@ export default {
             error: false
         }
     },
+
     methods: {
         login() {
             auth.login(this.user).then(result => {
