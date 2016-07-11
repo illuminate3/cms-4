@@ -9,9 +9,9 @@
                     </div>
                     <div class="links">
                         <ul>
-                            <li><a href="" class="active"><i class="fa fa-home"></i>dashboard</a></li>
+                            <li><a href="/dashboard" class="active"><i class="fa fa-home"></i>dashboard</a></li>
                             <li><a href=""><i class="fa fa-user"></i>account</a></li>
-                            <li><a href=""><i class="fa fa-sign-out"></i>leave</a></li>
+                            <li><a href="/logout"><i class="fa fa-sign-out"></i>leave</a></li>
                         </ul>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                                         <tbody>
                                             <tr v-for="campaign in campaigns">
                                                 <td>{{ campaign.script }}</td>
-                                                <td>{{ campaign.name }}</td>
+                                                <td><a href="/campaigns/{{ campaign.id }}">{{ campaign.name }}</a></td>
                                                 <td>{{ campaign.rebuttals }}</td>
                                                 <td>{{ campaign.promos }}</td>
                                                 <td>{{ campaign.timestamp }}</td>

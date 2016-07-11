@@ -10,6 +10,7 @@ class Campaign extends TransformerAbstract
     public function transform(Campaign $campaign)
     {
         return [
+            'id' => $campaign->id,
             'script' => $campaign->script,
             'name' => $campaign->name,
             'rebuttals' => $campaign->rebuttals()->count(),

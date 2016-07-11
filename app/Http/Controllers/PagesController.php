@@ -3,13 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{
-    User,
-    Rebuttal,
-    Promo,
-    Campaign,
-    Announcement
-};
 
 class PagesController extends Controller
 {

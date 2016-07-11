@@ -29,7 +29,13 @@ Route::group(['middleware' => 'auth'], function() {
         'uses' => 'PagesController@dashboard'
     ]);
 
-    Route::resource('campaigns', 'CampaignController');
-    Route::resource('rebuttals', 'RebuttalController');
-    Route::resource('promos', 'PromoController');
+    Route::get('/logout', [
+        'as' => 'logout',
+        'uses' => 'AuthController@destroy'
+    ]);
 });
+
+
+Route::resource('campaigns', 'CampaignController');
+Route::resource('rebuttals', 'RebuttalController');
+Route::resource('promos', 'PromoController');

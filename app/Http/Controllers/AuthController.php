@@ -37,4 +37,17 @@ class AuthController extends Controller
         return response()
             ->json($check);
     }
+
+    /**
+     * Log a user out of the application
+     *
+     * @return mixed
+     */
+    public function destroy()
+    {
+        Auth::logout();
+
+        return redirect()
+            ->route('login');
+    }
 }

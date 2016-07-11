@@ -27,10 +27,15 @@ class CampaignController extends Controller
     /**
      * Display a resource to create a campaign
      *
+     * @param integer $id
      * @return Illuminate\View\View
      */
-    public function create()
+    public function show($id)
     {
+        $campaign = Campaign::findOrFail($id);
+
+        return view('campaign.view')
+            ->with('campaign', $campaign);
     }
 
     /**
