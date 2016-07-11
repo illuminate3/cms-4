@@ -2,60 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Promo;
 use Illuminate\Http\Request;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Collection;
+use App\Data\Transformers\Promo as PromoTransformer;
 
 class PromoController extends Controller
 {
     /**
-     * Return a listing of all promos
+     * Return a full response of promos
      *
      * @return mixed
      */
     public function all()
     {
+        $promos = Promo::all();
 
+        return response()
+            ->json($promos);
     }
 
     /**
-     * Display a resource to create a promo
+     * Find promos for a given campaign
      *
-     * @return Illuminate\View\View
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Accept an http request to create a promo
-     *
-     * @param Illuminate\Http\Request $request
+     * @param integer $campaign
      * @return mixed
      */
-    public function store(Request $request)
+    public function campaign($campaign)
     {
+        $promos = Promo::where('campaign', $campaign)
+            ->orderBy('updated_at', 'desc')
+            ->get();
 
-    }
-
-    /**
-     * Return a listing of a specific promo
-     *
-     * @param integer $id
-     * @return Illuminate\View\View
-     */
-    public function find($id)
-    {
-
-    }
-
-    /**
-     * Accept an http request to delete a promo
-     *
-     * @param Illuminate\Http\Request $request
-     * @return mixed
-     */
-    public function destroy(Request $request)
-    {
-
+        return (new Manager)->createData(
+            new Collection($promos, new PromoTransformer)
+        )->toJson();
     }
 }

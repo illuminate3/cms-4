@@ -11,12 +11,25 @@ use App\Data\Transformers\Rebuttal as RebuttalTransformer;
 class RebuttalController extends Controller
 {
     /**
-     * Return all rebuttals for a given campaign
+     * Return a full response of rebuttals
+     *
+     * @return mixed
+     */
+    public function all()
+    {
+        $rebuttals = Rebuttal::all();
+
+        return response()
+            ->json($rebuttals);
+    }
+
+    /**
+     * Find rebuttals for a given campaign
      *
      * @param integer $campaign
      * @return mixed
      */
-    public function show($campaign)
+    public function campaign($campaign)
     {
         $rebuttals = Rebuttal::where('campaign', $campaign)
             ->orderBy('updated_at', 'desc')

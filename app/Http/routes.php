@@ -35,7 +35,28 @@ Route::group(['middleware' => 'auth'], function() {
     ]);
 });
 
-
 Route::resource('campaigns', 'CampaignController');
-Route::resource('rebuttals', 'RebuttalController');
-Route::resource('promos', 'PromoController');
+
+Route::group(['prefix' => 'rebuttals'], function() {
+    Route::get('/all', [
+        'as' => 'rebuttals.all',
+        'uses' => 'RebuttalController@all'
+    ]);
+
+    Route::get('/{campaign}', [
+        'as' => 'rebuttals.campaign',
+        'uses' => 'RebuttalController@campaign'
+    ]);
+});
+
+Route::group(['prefix' => 'promos'], function() {
+    Route::get('/all', [
+        'as' => 'promos.all',
+        'uses' => 'PromoController@all'
+    ]);
+
+    Route::get('/{campaign}', [
+        'as' => 'promos.campaign',
+        'uses' => 'PromoController@campaign'
+    ]);
+});
