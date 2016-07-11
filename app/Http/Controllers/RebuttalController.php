@@ -9,8 +9,8 @@ use App\Models\{
     Rebuttal
 };
 
-use Illuminate\Http\Request;
 use League\Fractal\Manager;
+use Illuminate\Http\Request;
 use League\Fractal\Resource\Collection;
 use App\Data\Transformers\Rebuttal as RebuttalTransformer;
 
@@ -64,6 +64,39 @@ class RebuttalController extends Controller
     }
 
     /**
+     * Update the edited rebuttal
+     *
+     * @param Illuminate\Http\Request $request
+     * @return mixed
+     */
+    public function update($id, Request $request)
+    {
+        $validator = $this->isValidRebuttal($request->all());
+
+        if ($validator->fails())
+        {
+            return redirect()
+                ->back()
+                ->with('errors', $validator->errors()->all());
+        }
+
+        $rebuttal = Rebuttal::findOrFail($id);
+
+        $rebuttal->name = strtolower($request->get('name'));
+        $rebuttal->body = strtolower($request->get('body'));
+        $rebuttal->active = intval($request->get('active'));
+        $rebuttal->campaign = intval($request->get('campaign'));
+
+        $rebuttal->save();
+
+        $request->session()
+            ->flash('success', 'Your rebuttal has been successfully updated.');
+
+        return redirect()
+            ->route('dashboard');
+    }
+
+    /**
      * Display a resource to create a new rebuttal
      *
      * @return Illuminate\View\View
@@ -86,15 +119,18 @@ class RebuttalController extends Controller
     {
         $validator = $this->isValidRebuttal($request->all());
 
-        if ($validator->fails()) {
-            return redirect()->back()->with('errors', $validator->errors()->all());
+        if ($validator->fails())
+        {
+            return redirect()
+                ->back()
+                ->with('errors', $validator->errors()->all());
         }
 
         Rebuttal::create([
             'name' => strtolower($request->get('name')),
             'body' => strtolower($request->get('body')),
-            'active' => $request->get('active'),
-            'campaign' => $request->get('campaign')
+            'active' => intval($request->get('active')),
+            'campaign' => intval($request->get('campaign'))
         ]);
 
         $request->session()->flash('success', 'Rebuttal successfully added');
@@ -114,7 +150,8 @@ class RebuttalController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:60',
             'body' => 'required',
-            'campaign' => 'required|exists:campaigns,id'
+            'campaign' => 'required|integer|exists:campaigns,id',
+            'active' => 'required|integer'
         ]);
     }
 }

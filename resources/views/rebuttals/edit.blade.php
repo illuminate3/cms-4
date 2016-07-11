@@ -6,6 +6,8 @@
             <div class="card-header default">Edit Rebuttal</div>
             <div class="card-block">
                 <form action="" method="POST">
+                    {{ csrf_field() }}
+
                     <div class="form-group row">
                         <label class="col-sm-3 text-xs-right">Name</label>
                         <div class="col-sm-7">

@@ -71,6 +71,11 @@ Route::group(['middleware' => 'auth'], function() {
             'as' => 'rebuttals.edit',
             'uses' => 'RebuttalController@edit'
         ]);
+
+        Route::post('/{rebuttal}/edit', [
+            'as' => 'rebuttals.edit.post',
+            'uses' => 'RebuttalController@update'
+        ]);
     });
 
     Route::group(['prefix' => 'promos'], function() {
