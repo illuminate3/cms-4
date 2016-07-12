@@ -18,4 +18,20 @@ rebuttal.campaign = (campaign) => {
     })
 }
 
+rebuttal.find = (id) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.get('/rebuttals/' + id).then(response => {
+            resolve(response)
+        })
+    })
+}
+
+rebuttal.update = (id, data) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.post('/rebuttals/' + id + '/edit', data).then(response => {
+            resolve(response)
+        })
+    })
+}
+
 export default rebuttal

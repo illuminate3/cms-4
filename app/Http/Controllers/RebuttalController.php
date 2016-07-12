@@ -9,9 +9,13 @@ use App\Models\{
     Rebuttal
 };
 
+use League\Fractal\Resource\{
+    Collection,
+    Item
+};
+
 use League\Fractal\Manager;
 use Illuminate\Http\Request;
-use League\Fractal\Resource\Collection;
 use App\Data\Transformers\Rebuttal as RebuttalTransformer;
 
 class RebuttalController extends Controller
@@ -31,36 +35,32 @@ class RebuttalController extends Controller
     }
 
     /**
-     * Find rebuttals for a given campaign
+     * Find a specific rebuttal
      *
-     * @param integer $campaign
+     * @param integer $id
      * @return mixed
      */
-    public function campaign($campaign)
+    public function find($id)
     {
-        $rebuttals = Rebuttal::where('campaign', $campaign)
-            ->orderBy('updated_at', 'desc')
-            ->get();
+        $rebuttal = Rebuttal::findOrFail($id);
 
         return (new Manager)->createData(
-            new Collection($rebuttals, new RebuttalTransformer)
+            new Item($rebuttal, new RebuttalTransformer)
         )->toJson();
     }
 
     /**
      * Display a resource to edit a rebuttal
      *
-     * @param integer $rebuttal
+     * @param integer $id
      * @return Illuminate\Views\View
      */
-    public function edit($rebuttal): \Illuminate\View\View
+    public function edit($id): \Illuminate\View\View
     {
-        $rebuttal = Rebuttal::findOrFail($rebuttal);
-        $campaigns = Campaign::all();
+        $rebuttal = Rebuttal::findOrFail($id);
 
         return view('rebuttals.edit')
-            ->with('rebuttal', $rebuttal)
-            ->with('campaigns', $campaigns);
+            ->with('id', $id);
     }
 
     /**
@@ -75,9 +75,8 @@ class RebuttalController extends Controller
 
         if ($validator->fails())
         {
-            return redirect()
-                ->back()
-                ->with('errors', $validator->errors()->all());
+            return response()
+                ->json($validator->errors());
         }
 
         $rebuttal = Rebuttal::findOrFail($id)->update([
@@ -90,8 +89,8 @@ class RebuttalController extends Controller
         $request->session()
             ->flash('success', 'Your rebuttal has been successfully updated.');
 
-        return redirect()
-            ->route('dashboard');
+        return response()
+            ->json(true);
     }
 
     /**
@@ -145,12 +144,15 @@ class RebuttalController extends Controller
      */
     public function destroy($id)
     {
-        if (! $request->ajax()) {
-            abort(404);
-        }
-
         $rebuttal = Rebuttal::findOrFail($id)
             ->destroy();
+
+        request()
+            ->session()
+            ->flash('success', 'Rebuttal successfully removed');
+
+        return redirect()
+            ->route('dashboard');
     }
 
     /**

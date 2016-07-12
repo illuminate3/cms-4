@@ -62,9 +62,14 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'RebuttalController@store'
         ]);
 
-        Route::get('/{campaign}', [
-            'as' => 'rebuttals.campaign',
-            'uses' => 'RebuttalController@campaign'
+        Route::get('/{id}', [
+            'as' => 'rebuttals.find',
+            'uses' => 'RebuttalController@find'
+        ]);
+
+        Route::delete('/{id}', [
+            'as' => 'rebuttals.delete',
+            'uses' => 'RebuttalController@destroy'
         ]);
 
         Route::get('/{rebuttal}/edit', [

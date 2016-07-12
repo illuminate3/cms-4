@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header default">Rebuttals</div>
                     <div class="card-block">
-                        <div class="table-responsive" v-show="rebuttals.length > 0">
+                        <div class="table-responsive" v-show="campaign.rebuttals.length > 0">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -16,7 +16,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="rebuttal in rebuttals">
+                                    <tr v-for="rebuttal in campaign.rebuttals">
                                         <td>{{ rebuttal.name }}</td>
                                         <td>
                                             <i v-show="rebuttal.active == 1" class="fa fa-check"></i>
@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-header default">Promotions</div>
                     <div class="card-block">
-                        <div class="table-responsive" v-show="promos.length > 0">
+                        <div class="table-responsive" v-show="campaign.promos.length > 0">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -48,7 +48,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="promo in promos">
+                                    <tr v-for="promo in campaign.promos">
                                         <td>{{ promo.name }}</td>
                                         <td>
                                             <i v-show="promo.active == 1" class="fa fa-check"></i>
@@ -91,31 +91,8 @@ export default {
 
     props: ['campaign'],
 
-    data() {
-        return {
-            rebuttals: [],
-            promos: []
-        }
-    },
-
     created() {
         this.campaign = JSON.parse(this.campaign)
-
-        this.getAllRebuttals()
-        this.getAllPromos()
-    },
-
-    methods: {
-        getAllRebuttals() {
-            rebuttals.campaign(this.campaign.id).then(rebuttals => {
-                this.rebuttals = JSON.parse(rebuttals.data).data
-            })
-        },
-        getAllPromos() {
-            promos.campaign(this.campaign.id).then(promos => {
-                this.promos = JSON.parse(promos.data).data
-            })
-        }
     }
 }
 

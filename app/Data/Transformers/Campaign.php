@@ -19,8 +19,8 @@ class Campaign extends TransformerAbstract
             'id' => $campaign->id,
             'script' => $campaign->script,
             'name' => $campaign->name,
-            'rebuttals' => $campaign->rebuttals()->count(),
-            'promos' => $campaign->promos()->count(),
+            'rebuttals' => $campaign->rebuttals()->get(),
+            'promos' => $campaign->promos()->get(),
             'timestamp' => $campaign->created_at->diffForHumans()
         ];
     }

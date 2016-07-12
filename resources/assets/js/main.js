@@ -4,6 +4,7 @@ let VueResource = require('vue-resource')
 import LoginComponent from './components/Login.vue'
 import DashboardComponent from './components/Dashboard.vue'
 import CampaignComponent from './components/Campaign.vue'
+import EditRebuttalComponent from './components/Rebuttal/Edit.vue'
 
 Vue.use(VueResource)
 
@@ -18,6 +19,7 @@ new Vue({
     components: {
         LoginComponent,
         DashboardComponent,
-        CampaignComponent
+        CampaignComponent,
+        EditRebuttalComponent
     }
 })
