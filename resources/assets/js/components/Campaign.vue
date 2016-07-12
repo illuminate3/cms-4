@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header default">Rebuttals</div>
                     <div class="card-block">
-                        <div class="table-responsive" v-show="campaign.rebuttals.length > 0">
+                        <div class="table-responsive" v-show="rebuttals.length > 0">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -16,7 +16,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="rebuttal in campaign.rebuttals">
+                                    <tr v-for="rebuttal in rebuttals">
                                         <td>{{ rebuttal.name }}</td>
                                         <td>
                                             <i v-show="rebuttal.active == 1" class="fa fa-check"></i>
@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-header default">Promotions</div>
                     <div class="card-block">
-                        <div class="table-responsive" v-show="campaign.promos.length > 0">
+                        <div class="table-responsive" v-show="promos.length > 0">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -48,7 +48,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="promo in campaign.promos">
+                                    <tr v-for="promo in promos">
                                         <td>{{ promo.name }}</td>
                                         <td>
                                             <i v-show="promo.active == 1" class="fa fa-check"></i>
@@ -84,15 +84,32 @@
 
 <script>
 
-import rebuttals from '../core/rebuttal'
-import promos from '../core/promo'
+import campaigns from '../core/campaign.js'
 
 export default {
 
-    props: ['campaign'],
+    props: ['id'],
+
+    data() {
+        return {
+            campaign: [],
+            promos: [],
+            rebuttals: []
+        }
+    },
 
     created() {
-        this.campaign = JSON.parse(this.campaign)
+        this.getCampaign()
+    },
+
+    methods: {
+        getCampaign() {
+            campaigns.find(this.id).then(campaign => {
+                this.campaign = JSON.parse(campaign.data).data
+                this.rebuttals = this.campaign.rebuttals.data
+                this.promos = this.campaign.promos.data
+            })
+        }
     }
 }
 

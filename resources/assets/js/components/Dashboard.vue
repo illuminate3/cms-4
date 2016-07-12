@@ -55,7 +55,7 @@
                             <tbody>
                                 <tr v-for="campaign in campaigns">
                                     <td>{{ campaign.script }}</td>
-                                    <td><a href="/campaigns/{{ campaign.id }}">{{ campaign.name }}</a></td>
+                                    <td><a href="/campaigns/dashboard/{{ campaign.id }}">{{ campaign.name }}</a></td>
                                     <td>{{ campaign.rebuttals.length }}</td>
                                     <td>{{ campaign.promos.length }}</td>
                                     <td>{{ campaign.timestamp }}</td>

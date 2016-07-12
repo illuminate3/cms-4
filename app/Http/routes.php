@@ -40,8 +40,13 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'CampaignController@all'
         ]);
 
-        Route::get('/{campaign}', [
-            'as' => 'campaign.view',
+        Route::get('/{id}', [
+            'as' => 'campaigns.find',
+            'uses' => 'CampaignController@find'
+        ]);
+
+        Route::get('/dashboard/{id}', [
+            'as' => 'campaigns.view',
             'uses' => 'CampaignController@show'
         ]);
     });
