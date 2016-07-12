@@ -80,14 +80,12 @@ class RebuttalController extends Controller
                 ->with('errors', $validator->errors()->all());
         }
 
-        $rebuttal = Rebuttal::findOrFail($id);
-
-        $rebuttal->name = strtolower($request->get('name'));
-        $rebuttal->body = strtolower($request->get('body'));
-        $rebuttal->active = $request->get('active');
-        $rebuttal->campaign = $request->get('campaign');
-
-        $rebuttal->save();
+        $rebuttal = Rebuttal::findOrFail($id)->update([
+            'name' => strtolower($request->get('name')),
+            'body' => $request->get('body'),
+            'active' => $request->get('active'),
+            'campaign' => $request->get('campaign')
+        ]);
 
         $request->session()
             ->flash('success', 'Your rebuttal has been successfully updated.');

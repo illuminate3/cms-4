@@ -123,22 +123,15 @@ class PromoController extends Controller
                 ->with('errors', $validator->errors()->all());
         }
 
-        $promo = Promo::findOrFail($id);
+        $promo = Promo::findOrFail($id)->update([
+            'name' => strtolower($request->get('name')),
+            'body' => $request->get('body'),
+            'campaign' => $request->get('campaign'),
+            'active' => $request->get('active')
+        ]);
 
-        $promo->name = strtolower($request->get('name'));
-        $promo->body = strtolower($request->get('body'));
-        $promo->campaign = $request->get('campaign');
-        $promo->active = $request->get('active');
-
-        if (!$promo->save())
-        {
-            $request->session()->flash('error', 'There was an issue updating your promotion.');
-
-            return redirect()
-                ->back();
-        }
-
-        $request->session()->flash('success', 'Your promo has been updated.');
+        $request->session()
+            ->flash('success', 'Your promo has been updated.');
 
         return redirect()
             ->route('dashboard');
