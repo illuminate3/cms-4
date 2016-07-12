@@ -84,9 +84,29 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'PromoController@all'
         ]);
 
+        Route::get('/create', [
+            'as' => 'promos.create',
+            'uses' => 'PromoController@create'
+        ]);
+
+        Route::post('/create', [
+            'as' => 'promos.create.post',
+            'uses' => 'PromoController@store'
+        ]);
+
         Route::get('/{campaign}', [
             'as' => 'promos.campaign',
             'uses' => 'PromoController@campaign'
+        ]);
+
+        Route::get('/{promo}/edit', [
+            'as' => 'promos.edit',
+            'uses' => 'PromoController@edit'
+        ]);
+
+        Route::post('/{promo}/edit', [
+            'as' => 'promos.edit.post',
+            'uses' => 'PromoController@update'
         ]);
     });
 });

@@ -14,7 +14,10 @@ export default Vue
 
 new Vue({
     el: 'body',
+
     components: {
-        LoginComponent, DashboardComponent, CampaignComponent
+        LoginComponent,
+        DashboardComponent,
+        CampaignComponent
     }
 })

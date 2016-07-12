@@ -1,47 +1,47 @@
 @extends('layouts.authenticated')
 
 @section('main')
-    <div class="rebuttal padded">
+    <div class="promo create padded">
         <div class="card">
-            <div class="card-header default">Edit Rebuttal</div>
+            <div class="card-header default">Edit Promo</div>
             <div class="card-block">
-                <form action="{{ route('rebuttals.edit.post', [
-                    'id' => $rebuttal->id
+                <form action="{{ route('promos.edit.post', [
+                    'id' => $promo->id
                 ]) }}" method="POST">
                     {{ csrf_field() }}
-
+                    
                     <div class="form-group row">
                         <label class="col-sm-3 text-xs-right">Name</label>
                         <div class="col-sm-7">
-                            <input type="text" name="name" class="form-control" value="{{ $rebuttal->name }}">
+                            <input type="text" name="name" class="form-control" value="{{ $promo->name }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 text-xs-right">Body</label>
                         <div class="col-sm-7">
-                            <textarea name="body" class="form-control">{{ $rebuttal->body }}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 text-xs-right">Active</label>
-                        <div class="col-sm-7">
-                            <select name="active" class="c-select form-control">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
+                            <textarea name="body" class="form-control">{{ $promo->body }}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 text-xs-right">Campaign</label>
                         <div class="col-sm-7">
-                            <select name="campaign" class="c-select form-control">
-                                <option value="{{ $rebuttal->campaign()->first()->id }}">{{ $rebuttal->campaign()->first()->name }}</option>
-
+                            <select name="campaign" class="form-control c-select">
+                                <option value="{{ $promo->campaign }}">{{ $promo->campaign()->first()->name }}</option>
+                                
                                 @foreach ($campaigns->all() as $campaign)
-                                    @if ($campaign->id != $rebuttal->campaign()->first()->id)
+                                    @if ($campaign->id != $promo->campaign)
                                         <option value="{{ $campaign->id }}">{{ $campaign->name }}</option>
                                     @endif
                                 @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-xs-right">Active</label>
+                        <div class="col-sm-7">
+                            <select name="active" class="form-control c-select">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
                             </select>
                         </div>
                     </div>

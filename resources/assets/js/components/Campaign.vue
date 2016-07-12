@@ -23,7 +23,7 @@
                                             <i v-else class="fa fa-remove"></i>
                                         </td>
                                         <td>{{ rebuttal.updated }}</td>
-                                        <td><a href=""><i class="fa fa-pencil"></i></a></td>
+                                        <td><a href="/rebuttals/{{ rebuttal.id }}/edit"><i class="fa fa-pencil"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -66,18 +66,18 @@
             </div>
 
             <div class="card">
-                <div class="card-header danger">Danger Area</div>
+                <div class="card-header danger">Danger Zone</div>
                 <div class="card-block">
-                    <button class="btn btn-danger">Delete Campaign</button>
-                    <button class="btn btn-danger">Reset Rebuttals</button>
-                    <button class="btn btn-danger">Reset Promos</button>
+                    <a class="btn btn-danger">Delete Campaign</a>
+                    <a class="btn btn-danger">Reset Rebuttals</a>
+                    <a class="btn btn-danger">Reset Promos</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-3">
-            <button class="btn btn-block btn-default">View Script</button>
-            <button class="btn btn-block btn-primary">New Rebuttal</button>
-            <button class="btn btn-block btn-warning">New Promo</button>
+            <a href="" class="btn btn-block btn-default">View Script</a>
+            <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
+            <a href="/promos/create" class="btn btn-block btn-warning">New Promo</a>
         </div>
     </div>
 </template>
@@ -117,7 +117,6 @@ export default {
             })
         }
     }
-
 }
 
 </script>

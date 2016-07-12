@@ -84,8 +84,8 @@ class RebuttalController extends Controller
 
         $rebuttal->name = strtolower($request->get('name'));
         $rebuttal->body = strtolower($request->get('body'));
-        $rebuttal->active = intval($request->get('active'));
-        $rebuttal->campaign = intval($request->get('campaign'));
+        $rebuttal->active = $request->get('active');
+        $rebuttal->campaign = $request->get('campaign');
 
         $rebuttal->save();
 
@@ -129,14 +129,30 @@ class RebuttalController extends Controller
         Rebuttal::create([
             'name' => strtolower($request->get('name')),
             'body' => strtolower($request->get('body')),
-            'active' => intval($request->get('active')),
-            'campaign' => intval($request->get('campaign'))
+            'active' => $request->get('active'),
+            'campaign' => $request->get('campaign')
         ]);
 
         $request->session()->flash('success', 'Rebuttal successfully added');
 
         return redirect()
             ->route('dashboard');
+    }
+
+    /**
+     * Delete a rebuttal
+     *
+     * @param integer $id
+     * @return mixed
+     */
+    public function destroy($id)
+    {
+        if (! $request->ajax()) {
+            abort(404);
+        }
+
+        $rebuttal = Rebuttal::findOrFail($id)
+            ->destroy();
     }
 
     /**
@@ -151,7 +167,7 @@ class RebuttalController extends Controller
             'name' => 'required|max:60',
             'body' => 'required',
             'campaign' => 'required|integer|exists:campaigns,id',
-            'active' => 'required|integer'
+            'active' => 'required|integer|in:0,1'
         ]);
     }
 }

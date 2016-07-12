@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Promo extends Model
 {
     /**
+     * Holds the fillable fields
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'campaign', 'active', 'body', 'name'
+    ];
+
+    /**
      * BelongsTo relationship promo -> campaign
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo
