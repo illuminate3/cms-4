@@ -1,39 +1,39 @@
 <template>
-    <div class="rebuttal padded">
+    <div class="promo create padded">
         <div class="card">
-            <div class="card-header default">Edit Rebuttal</div>
+            <div class="card-header default">Edit Promo</div>
             <div class="card-block">
                 <form @submit.prevent="update">
                     <div class="form-group row" :class="{ 'has-danger': errors.name != null }">
                         <label class="col-sm-3 text-xs-right">Name</label>
                         <div class="col-sm-7">
-                            <input type="text" v-model="data.name" class="form-control" :value="rebuttal.name">
+                            <input type="text" v-model="data.name" class="form-control" :value="promo.name">
                             <label class="form-control-label" v-show="errors.name != null">{{ errors.name }}</label>
                         </div>
                     </div>
                     <div class="form-group row" :class="{ 'has-danger': errors.body != null }">
                         <label class="col-sm-3 text-xs-right">Body</label>
                         <div class="col-sm-7">
-                            <textarea v-model="data.body" class="form-control">{{ rebuttal.body }}</textarea>
+                            <textarea v-model="data.body" class="form-control">{{ promo.body }}</textarea>
                             <label class="form-control-label" v-show="errors.body != null">{{ errors.body }}</label>
-                        </div>
-                    </div>
-                    <div class="form-group row" :class="{ 'has-danger': errors.active != null }">
-                        <label class="col-sm-3 text-xs-right">Active</label>
-                        <div class="col-sm-7">
-                            <select v-model="data.active" class="c-select form-control">
-                                <option value="{{ rebuttal.active }}">{{ rebuttal.active == 1 ? 'Yes' : 'No' }}</option>
-                            </select>
-                            <label class="form-control-label" v-show="errors.active != null">{{ errors.active }}</label>
                         </div>
                     </div>
                     <div class="form-group row" :class="{ 'has-danger': errors.campaign != null }">
                         <label class="col-sm-3 text-xs-right">Campaign</label>
                         <div class="col-sm-7">
-                            <select v-model="data.campaign" class="c-select form-control">
-                                <option value="{{ rebuttal.campaign }}">{{ rebuttal.campaignName }}</option>
+                            <select v-model="data.campaign" class="form-control c-select">
+                                <option value="{{ promo.campaign }}">{{ promo.campaignName }}</option>
                             </select>
                             <label class="form-control-label" v-show="errors.campaign != null">{{ errors.campaign }}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row" :class="{ 'has-danger': errors.active != null }">
+                        <label class="col-sm-3 text-xs-right">Active</label>
+                        <div class="col-sm-7">
+                            <select v-model="data.active" class="form-control c-select">
+                                <option value="{{ promo.active }}">{{ promo.active == 1 ? 'Yes' : 'No' }}</option>
+                            </select>
+                            <label class="form-control-label" v-show="errors.active != null">{{ errors.active }}</label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -57,8 +57,8 @@
 
 const sweetAlert = require('sweetalert')
 
-import rebuttals from '../../core/rebuttal.js'
 import campaigns from '../../core/campaign.js'
+import promos from '../../core/promo.js'
 
 export default {
 
@@ -67,37 +67,36 @@ export default {
     data() {
         return {
             errors: {
-                body: null,
                 name: null,
+                body: null,
                 campaign: null,
                 active: null
             },
+            promo: [],
             campaigns: [],
-            rebuttal: [],
             data: {
                 name: null,
-                campaign: null,
                 body: null,
-                active: null
+                active: null,
+                campaign: null
             }
         }
     },
 
     created() {
-        this.getRebuttal()
-        this.getCampaigns()
+        this.getPromo()
     },
 
     methods: {
-        getRebuttal() {
-            rebuttals.find(this.id).then(rebuttal => {
-                this.rebuttal = JSON.parse(rebuttal.data).data
+        getPromo() {
+            promos.find(this.id).then(promo => {
+                this.promo = JSON.parse(promo.data).data
 
-                this.data.campaign = this.rebuttal.campaign
-                this.data.active = this.rebuttal.active
+                this.data.campaign = this.promo.campaign
+                this.data.active = this.promo.active
             })
         },
-        
+
         getCampaigns() {
             campaigns.all().then(campaigns => {
                 this.campaigns = JSON.parse(campaigns.data).data
@@ -105,7 +104,7 @@ export default {
         },
 
         update() {
-            rebuttals.update(this.rebuttal.id, this.data).then(result => {
+            promos.update(this.promo.id, this.data).then(result => {
                 const content = JSON.parse(result.body)
 
                 if (Object.keys(content).length > 0) {
@@ -116,7 +115,7 @@ export default {
                     sweetAlert({
                         type: 'success',
                         title: 'Success',
-                        text: 'Congratulations, you have successfully updated this rebuttal! This message will close in 5 seconds.',
+                        text: 'Congratulations, you have successfully updated this promotion! This message will close in 5 seconds.',
                         timer: 5000,
                         confirmButtonColor: '#2c3e50'
                     })
@@ -125,8 +124,8 @@ export default {
         },
 
         destroy() {
-            rebuttals.delete(this.rebuttal.id).then(result => {
-                window.location.href = '/dashboard#rebuttals'
+            promos.delete(this.promo.id).then(result => {
+                window.location.href = '/dashboard#promos'
             })
         }
     }

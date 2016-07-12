@@ -17,6 +17,7 @@ class Promo extends TransformerAbstract
     {
         return [
             'id' => $promo->id,
+            'campaign' => $promo->campaign,
             'campaignName' => $promo->campaign()->first()->name,
             'active' => $promo->active,
             'name' => $promo->name,

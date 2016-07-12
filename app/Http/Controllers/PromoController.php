@@ -9,9 +9,13 @@ use App\Models\{
     Promo
 };
 
+use League\Fractal\Resource\{
+    Item,
+    Collection
+};
+
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
-use League\Fractal\Resource\Collection;
 use App\Data\Transformers\Promo as PromoTransformer;
 
 class PromoController extends Controller
@@ -31,19 +35,17 @@ class PromoController extends Controller
     }
 
     /**
-     * Find promos for a given campaign
+     * Find a specific promo
      *
-     * @param integer $campaign
+     * @param integer $id
      * @return mixed
      */
-    public function campaign($campaign)
+    public function find($id)
     {
-        $promos = Promo::where('campaign', $campaign)
-            ->orderBy('updated_at', 'desc')
-            ->get();
+        $promo = Promo::findOrFail($id);
 
         return (new Manager)->createData(
-            new Collection($promos, new PromoTransformer)
+            new Item($promo, new PromoTransformer)
         )->toJson();
     }
 
@@ -99,11 +101,9 @@ class PromoController extends Controller
     public function edit($id): \Illuminate\View\View
     {
         $promo = Promo::findOrFail($id);
-        $campaigns = Campaign::all();
 
         return view('promos.edit')
-            ->with('promo', $promo)
-            ->with('campaigns', $campaigns);
+            ->with('id', $id);
     }
 
     /**
@@ -118,9 +118,8 @@ class PromoController extends Controller
 
         if ($validator->fails())
         {
-            return redirect()
-                ->back()
-                ->with('errors', $validator->errors()->all());
+            return response()
+                ->json($validator->errors());
         }
 
         $promo = Promo::findOrFail($id)->update([
@@ -130,11 +129,23 @@ class PromoController extends Controller
             'active' => $request->get('active')
         ]);
 
-        $request->session()
-            ->flash('success', 'Your promo has been updated.');
+        return response()
+            ->json(true);
+    }
 
-        return redirect()
-            ->route('dashboard');
+    /**
+     * Delete a given promotion
+     *
+     * @param integer $id
+     * @return mixed
+     */
+    public function destroy($id)
+    {
+        $promo = Promo::findOrFail($id)
+            ->destroy($id);
+
+        return response()
+            ->json(true);
     }
 
     /**

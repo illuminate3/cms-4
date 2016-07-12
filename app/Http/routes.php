@@ -99,9 +99,14 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'PromoController@store'
         ]);
 
-        Route::get('/{campaign}', [
-            'as' => 'promos.campaign',
-            'uses' => 'PromoController@campaign'
+        Route::get('/{id}', [
+            'as' => 'promos.find',
+            'uses' => 'PromoController@find'
+        ]);
+
+        Route::delete('/{id}', [
+            'as' => 'promos.delete',
+            'uses' => 'PromoController@destroy'
         ]);
 
         Route::get('/{promo}/edit', [
