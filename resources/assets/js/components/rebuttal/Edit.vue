@@ -23,8 +23,8 @@
                         <div class="col-sm-7">
                             <select v-model="data.active" class="c-select form-control">
                                 <option value="{{ rebuttal.active }}">{{ rebuttal.active == 1 ? 'Yes' : 'No' }}</option>
-                                <label class="form-control-label" v-show="errors.active != null">{{ errors.active }}</label>
                             </select>
+                            <label class="form-control-label" v-show="errors.active != null">{{ errors.active }}</label>
                         </div>
                     </div>
                     <div class="form-group row" :class="{ 'has-danger': errors.campaign != null }">
@@ -32,8 +32,8 @@
                         <div class="col-sm-7">
                             <select v-model="data.campaign" class="c-select form-control">
                                 <option value="{{ rebuttal.campaign }}">{{ rebuttal.campaignName }}</option>
-                                <label class="form-control-label" v-show="errors.campaign != null">{{ errors.campaign }}</label>
                             </select>
+                            <label class="form-control-label" v-show="errors.campaign != null">{{ errors.campaign }}</label>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -54,6 +54,8 @@
 </template>
 
 <script>
+
+const sweetAlert = require('sweetalert')
 
 import rebuttals from '../../core/rebuttal.js'
 import campaigns from '../../core/campaign.js'
@@ -110,12 +112,22 @@ export default {
                     this.errors = content
                 } else {
                     this.errors = {}
+
+                    sweetAlert({
+                        type: 'success',
+                        title: 'Success',
+                        text: 'Congratulations, you have successfully updated this rebuttal! This message will close in 5 seconds.',
+                        timer: 5000,
+                        showConfirmButton: false
+                    })
                 }
             })
         },
 
         destroy() {
-            console.log(this.rebuttal)
+            rebuttals.delete(this.rebuttal.id).then(result => {
+                window.location.href = '/dashboard#rebuttals'
+            })
         }
     }
 }

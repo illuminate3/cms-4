@@ -145,14 +145,10 @@ class RebuttalController extends Controller
     public function destroy($id)
     {
         $rebuttal = Rebuttal::findOrFail($id)
-            ->destroy();
+            ->destroy($id);
 
-        request()
-            ->session()
-            ->flash('success', 'Rebuttal successfully removed');
-
-        return redirect()
-            ->route('dashboard');
+        return response()
+            ->json(true);
     }
 
     /**

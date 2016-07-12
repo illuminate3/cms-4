@@ -34,4 +34,12 @@ rebuttal.update = (id, data) => {
     })
 }
 
+rebuttal.delete = (id) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.delete('/rebuttals/' + id).then(response => {
+            resolve(response)
+        })
+    })
+}
+
 export default rebuttal
