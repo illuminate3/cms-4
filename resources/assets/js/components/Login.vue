@@ -7,11 +7,11 @@
         <form @submit.prevent="login">
             <fieldset class="form-group" :class="{ 'has-danger': error }">
                 <label :class="{ 'text-danger': error }">Username</label>
-                <input type="text" v-model="user.username" class="form-control">
+                <input type="text" v-model="user.username" class="form-control username">
             </fieldset>
             <fieldset class="form-group" :class="{ 'has-danger': error }">
                 <label :class="{ 'text-danger': error }">Password</label>
-                <input type="password" v-model="user.password" class="form-control">
+                <input type="password" v-model="user.password" class="form-control password">
             </fieldset>
             <fieldset class="form-group">
                 <button class="btn btn-block btn-default">Login</button>

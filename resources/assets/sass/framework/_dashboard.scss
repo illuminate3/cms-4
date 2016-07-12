@@ -5,81 +5,6 @@
 }
 
 .dashboard {
-    @media screen and (max-width: $breakpoint) {
-        .sidebar {
-            display: none;
-        }
-    }
-
-    .sidebar {
-        background: $scheme-lighter;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: inherit;
-
-        .header {
-            background-color: $flat-green;
-            color: white;
-            padding: 25px 20px;
-            margin-bottom: 25px;
-
-            img, h6 {
-                display: inline-block;
-            }
-
-            img {
-                height: 50px;
-                width: 50px;
-                border-radius: 100%;
-                margin-right: 7px;
-            }
-
-            h6 {
-                margin: 0;
-                font-size: 0.95em;
-                vertical-align: middle;
-            }
-        }
-
-        .links {
-            margin-top: 15px;
-            margin-bottom: 15px;
-
-            ul {
-                list-style: none;
-                padding-left: 0;
-
-                li {
-                    margin-bottom: 10px;
-
-                    a {
-                        color: #999;
-                        display: block;
-                        width: 100%;
-                        text-decoration: none;
-                        padding: 10px 20px;
-                        font-size: 0.95em;
-
-                        i {
-                            margin-right: 15px;
-                        }
-                    }
-
-                    a.active, a:hover {
-                        background-color: $scheme;
-                        color: white;
-
-                        i {
-                            color: $flat-green;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     @media screen and (min-width: $breakpoint) {
         .navbar {
             position: fixed;
@@ -98,6 +23,12 @@
             list-style: none;
             padding-left: 0;
             margin-bottom: 0;
+
+            @media screen and (min-width: 768px) {
+                li#toggleSidebar {
+                    display: none;
+                }
+            }
 
             li {
                 display: inline-block;

@@ -55,7 +55,7 @@
                                             <i v-else class="fa fa-remove"></i>
                                         </td>
                                         <td>{{ promo.updated }}</td>
-                                        <td><a href=""><i class="fa fa-pencil"></i></a></td>
+                                        <td><a href="/promos/{{ promo.id }}/edit"><i class="fa fa-pencil"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>

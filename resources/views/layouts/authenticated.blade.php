@@ -22,7 +22,7 @@
                 <div class="navbar">
                     <div class="pull-xs-left">
                         <ul>
-                            <li><a href=""><i class="fa fa-bars"></i></a></li>
+                            <li id="toggleSidebar"><a><i class="fa fa-bars"></i></a></li>
                             <li>Your Dashboard</li>
                         </ul>
                     </div>
