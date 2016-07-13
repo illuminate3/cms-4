@@ -10,6 +10,7 @@ import EditPromoComponent from './components/Promo/Edit.vue'
 
 import CreateCampaignComponent from './components/Campaign/Create.vue'
 import CreateRebuttalComponent from './components/Rebuttal/Create.vue'
+import CreatePromoComponent from './components/Promo/Create.vue'
 
 Vue.use(VueResource)
 
@@ -28,6 +29,7 @@ new Vue({
         EditRebuttalComponent,
         EditPromoComponent,
         CreateCampaignComponent,
-        CreateRebuttalComponent
+        CreateRebuttalComponent,
+        CreatePromoComponent
     }
 })

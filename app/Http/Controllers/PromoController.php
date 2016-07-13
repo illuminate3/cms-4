@@ -74,9 +74,8 @@ class PromoController extends Controller
 
         if ($validator->fails())
         {
-            return redirect()
-                ->back()
-                ->with('errors', $validator->errors()->all());
+            return response()
+                ->json($validator->errors());
         }
 
         Promo::create([
@@ -86,10 +85,8 @@ class PromoController extends Controller
             'body' => strtolower($request->get('body'))
         ]);
 
-        $request->session()->flash('success', 'Promo successfully added');
-
-        return redirect()
-            ->route('dashboard');
+        return response()
+            ->json(true);
     }
 
     /**
