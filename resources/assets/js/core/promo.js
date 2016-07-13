@@ -4,7 +4,7 @@ const promo = {}
 
 promo.all = () => {
     return new Promise((resolve, reject) => {
-        Vue.http.get('/promos/all').then(response => {
+        Vue.http.get('/promos').then(response => {
             resolve(response)
         })
     })
@@ -20,7 +20,7 @@ promo.find = (id) => {
 
 promo.create = (data) => {
     return new Promise((resolve, reject) => {
-        Vue.http.post('/promos/create', data).then(response => {
+        Vue.http.post('/promos', data).then(response => {
             resolve(response)
         })
     })
@@ -28,7 +28,7 @@ promo.create = (data) => {
 
 promo.update = (id, data) => {
     return new Promise((resolve, reject) => {
-        Vue.http.post('/promos/' + id + '/edit', data).then(response => {
+        Vue.http.put('/promos/' + id, data).then(response => {
             resolve(response)
         })
     })

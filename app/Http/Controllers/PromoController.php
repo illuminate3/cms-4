@@ -25,7 +25,7 @@ class PromoController extends Controller
      *
      * @return mixed
      */
-    public function all()
+    public function index()
     {
         $promos = Promo::all();
 
@@ -40,7 +40,7 @@ class PromoController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function find($id)
+    public function show($id)
     {
         $promo = Promo::findOrFail($id);
 

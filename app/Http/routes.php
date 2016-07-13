@@ -17,10 +17,7 @@ Route::group(['middleware' => 'guest'], function() {
         'uses' => 'AuthController@login'
     ]);
 
-    Route::post('/', [
-        'as' => 'login.post',
-        'uses' => 'AuthController@check'
-    ]);
+    Route::post('/', 'AuthController@check');
 });
 
 Route::group(['middleware' => 'auth'], function() {
@@ -69,10 +66,7 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'RebuttalController@create'
         ]);
 
-        Route::post('/create', [
-            'as' => 'rebuttals.create.post',
-            'uses' => 'RebuttalController@store'
-        ]);
+        Route::post('/create', 'RebuttalController@store');
 
         Route::get('/{id}', [
             'as' => 'rebuttals.find',
@@ -89,34 +83,5 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('/{rebuttal}/edit', 'RebuttalController@update');
     });
 
-    Route::group(['prefix' => 'promos'], function() {
-        Route::get('/all', [
-            'as' => 'promos.all',
-            'uses' => 'PromoController@all'
-        ]);
-
-        Route::get('/create', [
-            'as' => 'promos.create',
-            'uses' => 'PromoController@create'
-        ]);
-
-        Route::post('/create', [
-            'as' => 'promos.create.post',
-            'uses' => 'PromoController@store'
-        ]);
-
-        Route::get('/{id}', [
-            'as' => 'promos.find',
-            'uses' => 'PromoController@find'
-        ]);
-
-        Route::delete('/{id}', 'PromoController@destroy');
-
-        Route::get('/{promo}/edit', [
-            'as' => 'promos.edit',
-            'uses' => 'PromoController@edit'
-        ]);
-
-        Route::post('/{promo}/edit', 'PromoController@update');
-    });
+    Route::resource('promos', 'PromoController');
 });
