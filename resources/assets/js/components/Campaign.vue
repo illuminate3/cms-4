@@ -69,8 +69,8 @@
                 <div class="card-header danger">Danger Zone</div>
                 <div class="card-block">
                     <a class="btn btn-danger">Delete Campaign</a>
-                    <a class="btn btn-danger">Reset Rebuttals</a>
-                    <a class="btn btn-danger">Reset Promos</a>
+                    <a class="btn btn-danger" v-show="rebuttals.length > 0">Reset Rebuttals</a>
+                    <a class="btn btn-danger" v-show="promos.length > 0">Reset Promos</a>
                 </div>
             </div>
         </div>

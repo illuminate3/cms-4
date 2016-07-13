@@ -121,7 +121,7 @@
         </div>
         <div class="col-sm-3">
             <a class="btn btn-block btn-default">View Script</a>
-            <a class="btn btn-block btn-info">New Campaign</a>
+            <a href="/campaigns/create" class="btn btn-block btn-info">New Campaign</a>
             <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
             <a href="/promos/create" class="btn btn-block btn-warning">New Promo</a>
         </div>

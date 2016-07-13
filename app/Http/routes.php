@@ -40,6 +40,13 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'CampaignController@all'
         ]);
 
+        Route::get('/create', [
+            'as' => 'campaign.create',
+            'uses' => 'CampaignController@create'
+        ]);
+
+        Route::post('/create', 'CampaignController@store');
+
         Route::get('/{id}', [
             'as' => 'campaigns.find',
             'uses' => 'CampaignController@find'
@@ -72,20 +79,14 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'RebuttalController@find'
         ]);
 
-        Route::delete('/{id}', [
-            'as' => 'rebuttals.delete',
-            'uses' => 'RebuttalController@destroy'
-        ]);
+        Route::delete('/{id}', 'RebuttalController@destroy');
 
         Route::get('/{rebuttal}/edit', [
             'as' => 'rebuttals.edit',
             'uses' => 'RebuttalController@edit'
         ]);
 
-        Route::post('/{rebuttal}/edit', [
-            'as' => 'rebuttals.edit.post',
-            'uses' => 'RebuttalController@update'
-        ]);
+        Route::post('/{rebuttal}/edit', 'RebuttalController@update');
     });
 
     Route::group(['prefix' => 'promos'], function() {
@@ -109,19 +110,13 @@ Route::group(['middleware' => 'auth'], function() {
             'uses' => 'PromoController@find'
         ]);
 
-        Route::delete('/{id}', [
-            'as' => 'promos.delete',
-            'uses' => 'PromoController@destroy'
-        ]);
+        Route::delete('/{id}', 'PromoController@destroy');
 
         Route::get('/{promo}/edit', [
             'as' => 'promos.edit',
             'uses' => 'PromoController@edit'
         ]);
 
-        Route::post('/{promo}/edit', [
-            'as' => 'promos.edit.post',
-            'uses' => 'PromoController@update'
-        ]);
+        Route::post('/{promo}/edit', 'PromoController@update');
     });
 });

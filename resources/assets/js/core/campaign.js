@@ -18,4 +18,12 @@ campaign.find = (id) => {
     })
 }
 
+campaign.create = (data) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.post('/campaigns/create', data).then(response => {
+            resolve(response)
+        })
+    })
+}
+
 export default campaign

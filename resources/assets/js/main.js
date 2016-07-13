@@ -6,6 +6,7 @@ import DashboardComponent from './components/Dashboard.vue'
 import CampaignComponent from './components/Campaign.vue'
 import EditRebuttalComponent from './components/Rebuttal/Edit.vue'
 import EditPromoComponent from './components/Promo/Edit.vue'
+import CreateCampaignComponent from './components/Campaign/Create.vue'
 
 Vue.use(VueResource)
 
@@ -22,6 +23,7 @@ new Vue({
         DashboardComponent,
         CampaignComponent,
         EditRebuttalComponent,
-        EditPromoComponent
+        EditPromoComponent,
+        CreateCampaignComponent
     }
 })

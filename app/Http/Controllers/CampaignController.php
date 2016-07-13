@@ -7,6 +7,7 @@ use League\Fractal\Resource\{
     Collection
 };
 
+use Validator;
 use App\Models\Campaign;
 use League\Fractal\Manager;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class CampaignController extends Controller
     }
 
     /**
-     * Display a resource to create a campaign
+     * Display a campaigns dashboard
      *
      * @param integer $id
      * @return Illuminate\View\View
@@ -55,5 +56,56 @@ class CampaignController extends Controller
         return (new Manager)->createData(
             new Item($campaign, new CampaignTransformer)
         )->toJson();
+    }
+
+    /**
+     * Display a resource to create a campaign
+     *
+     * @return Illuminate\View\View
+     */
+    public function create(): \Illuminate\View\View
+    {
+        return view('campaign.create');
+    }
+
+    /**
+     * Validate and store a newly created campaign
+     *
+     * @param Illuminate\Http\Request $request
+     * @return mixed
+     */
+    public function store(Request $request)
+    {
+        $validator = $this->validateCampaign($request->all());
+
+        if ($validator->fails())
+        {
+            return response()
+                ->json($validator->errors());
+        }
+
+        Campaign::create([
+            'active' => $request->get('active'),
+            'script' => intval($request->get('script')),
+            'name' => strtolower($request->get('name'))
+        ]);
+
+        return response()
+            ->json(true);
+    }
+
+    /**
+     * Validate a newly created campaign
+     *
+     * @param array $data
+     * @return Illuminate\Validation\Validator
+     */
+    private function validateCampaign(array $data): \Illuminate\Validation\Validator
+    {
+        return Validator::make($data, [
+            'active' => 'required|integer|in:0,1',
+            'name' => 'required|max:60',
+            'script' => 'required|integer'
+        ]);
     }
 }

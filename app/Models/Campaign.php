@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Campaign extends Model
 {
     /**
+     * Define the fillable fields
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'script', 'active', 'name'
+    ];
+
+    /**
      * HasMany relationship to return a campaign announcements
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany

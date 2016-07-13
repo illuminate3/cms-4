@@ -130,7 +130,8 @@ class RebuttalController extends Controller
             'campaign' => $request->get('campaign')
         ]);
 
-        $request->session()->flash('success', 'Rebuttal successfully added');
+        $request->session()
+            ->flash('success', 'Rebuttal successfully added');
 
         return redirect()
             ->route('dashboard');
