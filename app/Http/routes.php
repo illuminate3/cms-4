@@ -55,33 +55,6 @@ Route::group(['middleware' => 'auth'], function() {
         ]);
     });
 
-    Route::group(['prefix' => 'rebuttals'], function() {
-        Route::get('/all', [
-            'as' => 'rebuttals.all',
-            'uses' => 'RebuttalController@all'
-        ]);
-
-        Route::get('/create', [
-            'as' => 'rebuttals.create',
-            'uses' => 'RebuttalController@create'
-        ]);
-
-        Route::post('/create', 'RebuttalController@store');
-
-        Route::get('/{id}', [
-            'as' => 'rebuttals.find',
-            'uses' => 'RebuttalController@find'
-        ]);
-
-        Route::delete('/{id}', 'RebuttalController@destroy');
-
-        Route::get('/{rebuttal}/edit', [
-            'as' => 'rebuttals.edit',
-            'uses' => 'RebuttalController@edit'
-        ]);
-
-        Route::post('/{rebuttal}/edit', 'RebuttalController@update');
-    });
-
+    Route::resource('rebuttals', 'RebuttalController');
     Route::resource('promos', 'PromoController');
 });

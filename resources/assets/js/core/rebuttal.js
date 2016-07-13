@@ -4,7 +4,7 @@ const rebuttal = {}
 
 rebuttal.all = () => {
     return new Promise((resolve, reject) => {
-        Vue.http.get('/rebuttals/all').then(response => {
+        Vue.http.get('/rebuttals').then(response => {
             resolve(response)
         })
     })
@@ -28,7 +28,7 @@ rebuttal.find = (id) => {
 
 rebuttal.create = (data) => {
     return new Promise((resolve, reject) => {
-        Vue.http.post('/rebuttals/create', data).then(response => {
+        Vue.http.post('/rebuttals', data).then(response => {
             resolve(response)
         })
     })
@@ -36,7 +36,7 @@ rebuttal.create = (data) => {
 
 rebuttal.update = (id, data) => {
     return new Promise((resolve, reject) => {
-        Vue.http.post('/rebuttals/' + id + '/edit', data).then(response => {
+        Vue.http.put('/rebuttals/' + id, data).then(response => {
             resolve(response)
         })
     })

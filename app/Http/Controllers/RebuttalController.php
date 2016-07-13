@@ -25,7 +25,7 @@ class RebuttalController extends Controller
      *
      * @return mixed
      */
-    public function all()
+    public function index()
     {
         $rebuttals = Rebuttal::all();
 
@@ -40,7 +40,7 @@ class RebuttalController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function find($id)
+    public function show($id)
     {
         $rebuttal = Rebuttal::findOrFail($id);
 
