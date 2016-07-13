@@ -118,9 +118,8 @@ class RebuttalController extends Controller
 
         if ($validator->fails())
         {
-            return redirect()
-                ->back()
-                ->with('errors', $validator->errors()->all());
+            return response()
+                ->json($validator->errors());
         }
 
         Rebuttal::create([
@@ -130,11 +129,8 @@ class RebuttalController extends Controller
             'campaign' => $request->get('campaign')
         ]);
 
-        $request->session()
-            ->flash('success', 'Rebuttal successfully added');
-
-        return redirect()
-            ->route('dashboard');
+        return response()
+            ->json(true);
     }
 
     /**

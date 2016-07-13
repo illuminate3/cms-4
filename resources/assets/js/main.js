@@ -4,9 +4,12 @@ let VueResource = require('vue-resource')
 import LoginComponent from './components/Login.vue'
 import DashboardComponent from './components/Dashboard.vue'
 import CampaignComponent from './components/Campaign.vue'
+
 import EditRebuttalComponent from './components/Rebuttal/Edit.vue'
 import EditPromoComponent from './components/Promo/Edit.vue'
+
 import CreateCampaignComponent from './components/Campaign/Create.vue'
+import CreateRebuttalComponent from './components/Rebuttal/Create.vue'
 
 Vue.use(VueResource)
 
@@ -24,6 +27,7 @@ new Vue({
         CampaignComponent,
         EditRebuttalComponent,
         EditPromoComponent,
-        CreateCampaignComponent
+        CreateCampaignComponent,
+        CreateRebuttalComponent
     }
 })

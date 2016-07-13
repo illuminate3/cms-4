@@ -26,6 +26,14 @@ rebuttal.find = (id) => {
     })
 }
 
+rebuttal.create = (data) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.post('/rebuttals/create', data).then(response => {
+            resolve(response)
+        })
+    })
+}
+
 rebuttal.update = (id, data) => {
     return new Promise((resolve, reject) => {
         Vue.http.post('/rebuttals/' + id + '/edit', data).then(response => {
