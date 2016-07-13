@@ -13,7 +13,7 @@ class Promo extends TransformerAbstract
      * @param App\Models\Promo $promo
      * @return array
      */
-    public function transform(Promo $promo)
+    public function transform(Promo $promo): array
     {
         return [
             'id' => $promo->id,

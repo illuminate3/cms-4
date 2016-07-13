@@ -13,7 +13,7 @@ class Rebuttal extends TransformerAbstract
      * @param App\Models\Rebuttal $rebuttal
      * @return array
      */
-    public function transform(Rebuttal $rebuttal)
+    public function transform(Rebuttal $rebuttal): array
     {
         return [
             'id' => $rebuttal->id,

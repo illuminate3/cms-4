@@ -17,7 +17,7 @@ class Campaign extends TransformerAbstract
      * @param App\Models\Campaign $campaign
      * @return array
      */
-    public function transform(Campaign $campaign)
+    public function transform(Campaign $campaign): array
     {
         $rebuttals = (new Manager)->createData(
             new Collection($campaign->rebuttals()->get(), new RebuttalTransformer)
