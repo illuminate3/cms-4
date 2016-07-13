@@ -11,14 +11,15 @@ class TermController extends Controller
     /**
      * Display a listing of all terms and controllers
      *
-     * @return Illuminate\View\View
+     * @return mixed
      */
-    public function index(): \Illuminate\View\View
+    public function index()
     {
         $terms = Terms::all();
 
-        return view('terms.all')
-            ->with('terms', $terms);
+        return (new Manager)->createData(
+            new Collection($terms, new TermTransformer)
+        )->toJson();
     }
 
     /**

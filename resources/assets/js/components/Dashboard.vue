@@ -12,7 +12,7 @@
                 <li><a @click="navigate('campaigns')" :class="{ 'active': section == 'campaigns' }">Campaigns</a></li>
                 <li><a @click="navigate('rebuttals')" :class="{ 'active': section == 'rebuttals' }">Rebuttals</a></li>
                 <li><a @click="navigate('promos')" :class="{ 'active': section == 'promos' }">Promos</a></li>
-                <li><a :class="{ 'active': section == 'scripts' }">Scripts</a></li>
+                <li><a @click="navigate('terms')" :class="{ 'active': section == 'terms' }">Terms</a></li>
                 <li><a :class="{ 'active': section == 'features' }">Features</a></li>
             </ul>
         </div>
@@ -118,12 +118,21 @@
                     <div v-else>You currently do not have any promotions.</div>
                 </div>
             </div>
+            <div class="card" v-show="section == 'terms'">
+               <div class="card-header default">Terms and Conditions</div> 
+               <div class="card-block">
+                   <div class="table-responsive" v-show="terms.length > 0">
+                   </div>
+                   <div v-else>You currently dont have any terms and conditions.</div>
+               </div>
+            </div>
         </div>
         <div class="col-sm-3">
             <a class="btn btn-block btn-default">View Script</a>
             <a href="/campaigns/create" class="btn btn-block btn-info">New Campaign</a>
             <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
             <a href="/promos/create" class="btn btn-block btn-warning">New Promo</a>
+            <a href="/terms/create" class="btn btn-block btn-danger">New Terms</a>
         </div>
     </div>
 </template>
@@ -133,6 +142,7 @@
 import campaigns from '../core/campaign.js'
 import rebuttals from '../core/rebuttal.js'
 import promos from '../core/promo.js'
+import terms from '../core/term.js'
     
 export default {
     props: ['user'],
@@ -143,6 +153,7 @@ export default {
             rebuttals: [],
             promos: [],
             features: [],
+            terms: [],
             section: 'campaigns'
         }
     },
@@ -164,16 +175,25 @@ export default {
                 this.campaigns = JSON.parse(campaigns.data).data
             })
         },
+        
         getAllRebuttals() {
             rebuttals.all().then(rebuttals => {
                 this.rebuttals = JSON.parse(rebuttals.data).data
             })
         },
+        
         getAllPromos() {
             promos.all().then(promos => {
                 this.promos = JSON.parse(promos.data).data
             })
         },
+
+        getAllTerms() {
+            terms.all().then(terms => {
+                this.terms = JSON.parse(terms.data).data
+            })
+        },
+
         navigate(section) {
             this.section = section
             window.location.hash = section
