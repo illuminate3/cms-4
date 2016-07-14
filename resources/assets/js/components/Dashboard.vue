@@ -124,7 +124,6 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Type</th>
-                                    <th>Active</th>
                                     <th>Sections</th>
                                     <th>Updated</th>
                                 </tr>
@@ -133,7 +132,6 @@
                                 <tr v-for="term in terms">
                                     <td><a href="/terms/{{ term.id }}/edit">{{ term.name }}</a></td>
                                     <td>{{ term.type }}</td>
-                                    <td>{{ term.active }}</td>
                                     <td>{{ term.sections.length }}</td>
                                     <td>{{ term.updated }}</td>
                                 </tr>

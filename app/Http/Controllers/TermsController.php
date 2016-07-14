@@ -35,7 +35,7 @@ class TermsController extends Controller
      */
     public function create()
     {
-        // ... New terms and conditions
+        return view('terms.create');
     }
 
     /**
@@ -88,7 +88,10 @@ class TermsController extends Controller
      */
     public function edit($id)
     {
-        // ... Form for editing
+        $terms = Terms::findOrFail($id);
+        
+        return view('terms.edit')
+            ->with('id', $id);
     }
 
     /**
@@ -100,7 +103,23 @@ class TermsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // ... Save new updates
+        $validator = $this->isValidTerms($request->all());
+
+        if ($validator->fails()) {
+            return response()
+                ->json($validator->errors());
+        }
+
+        Terms::find($id)->update([
+            'active' => $request->get('active'),
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'type' => $request->get('type'),
+            'pattern' => $request->get('pattern')
+        ]);
+
+        return response()
+            ->json(true);
     }
 
     /**
