@@ -2,6 +2,14 @@ import Vue from '../main.js'
 
 const term = {}
 
+term.types = () => {
+    return new Promise((resolve, reject) => {
+        Vue.http.get('/types').then(response => {
+            resolve(response)
+        })
+    })
+}
+
 term.all = () => {
     return new Promise((resolve, reject) => {
         Vue.http.get('/terms').then(response => {

@@ -12,6 +12,16 @@ class Terms extends Model
      * @var array
      */
     protected $fillable = [
-        'active', 'pattern', 'plan_type', 'description'
+        'active', 'pattern', 'type', 'description'
     ];
+
+    /**
+     * HasOne relationship to get a terms type
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function type(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne('App\Models\TermType', 'id', 'type');
+    }
 }

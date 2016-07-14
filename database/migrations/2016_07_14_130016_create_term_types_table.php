@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTermSectionsTable extends Migration
+class CreateTermTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateTermSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('term_sections', function (Blueprint $table) {
+        Schema::create('term_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description', 100);
-            $table->text('content');
+            $table->string('type')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateTermSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('term_sections');
+        Schema::drop('term_types');
     }
 }

@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use League\Fractal\Resource\{
+    Item,
+    Collection
+};
+
 use Validator;
 use App\Models\Terms;
+use League\Fractal\Manager;
 use Illuminate\Http\Request;
+use App\Data\Transformers\Term as TermTransformer;
 
 class TermController extends Controller
 {
@@ -70,7 +77,7 @@ class TermController extends Controller
             'description' => strtolower($request->get('description'))
         ]);
 
-        return resposne()
+        return response()
             ->json(true);
     }
 
@@ -98,7 +105,7 @@ class TermController extends Controller
         $validator = $this->isValidTerms($request->all());
 
         if ($validator->fails()) {
-            return resposne()
+            return response()
                 ->json($validator->errors());
         }
 
@@ -138,8 +145,8 @@ class TermController extends Controller
     {
         return Validator::make($data, [
             'active' => 'required|integer|in:0,1',
-            'type' => 'required|max:100',
-            'pattern' => 'required|max:100',
+            'type' => 'required|integer|exists:term_types,id|unique:terms,type',
+            'pattern' => 'max:100',
             'description' => 'required|max:200'
         ]);
     }

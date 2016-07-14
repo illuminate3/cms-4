@@ -7,7 +7,7 @@ use League\Fractal\Resource\{
     Collection
 };
 
-use App\Models\Term;
+use App\Models\Terms;
 use App\Models\TermSection;
 use League\Fractal\TransformerAbstract;
 
@@ -19,14 +19,14 @@ class Term extends TransformerAbstract
      * @param App\Models\Term $term
      * @return array
      */
-    public function transformer(Term $term): array
+    public function transform(Terms $term): array
     {
         $sections = $this->getTermsSections($term->pattern);
 
         return [
             'id' => $term->id,
             'active' => $term->active,
-            'type' => $term->type,
+            'type' => $term->type()->first()->type,
             'pattern' => $term->pattern,
             'description' => $term->description,
             'sections' => $sections,
@@ -43,6 +43,10 @@ class Term extends TransformerAbstract
      */
     private function getTermsSections($pattern): array
     {
+        if (strpos($pattern, '-') === false) {
+            return [];
+        }
+
         $pieces = explode('-', $pattern);
 
         return collect($pieces)->map(function($piece) {

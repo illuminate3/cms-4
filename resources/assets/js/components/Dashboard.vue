@@ -121,8 +121,26 @@
             <div class="card" v-show="section == 'terms'">
                <div class="card-header default">Terms and Conditions</div> 
                <div class="card-block">
-                   <div class="table-responsive" v-show="terms.length > 0">
-                   </div>
+                    <div class="table-responsive" v-show="terms.length > 0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                    <th>Sections</th>
+                                    <th>Updated</th>
+                                </tr>
+                            </thead>
+                            <body>
+                                <tr v-for="term in terms">
+                                    <td><a href="/terms/{{ term.id }}">{{ term.type }}</a></td>
+                                    <td>{{ term.description }}</td>
+                                    <td>{{ term.sections.length }}</td>
+                                    <td>{{ term.updated }}</td>
+                                </tr>
+                            </body>
+                        </table>
+                    </div>
                    <div v-else>You currently dont have any terms and conditions.</div>
                </div>
             </div>
@@ -162,6 +180,7 @@ export default {
         this.getAllCampaigns()
         this.getAllRebuttals()
         this.getAllPromos()
+        this.getAllTerms()
 
         let hash = window.location.hash.length > 0 ? window.location.hash : 'campaigns'
         this.section = hash.replace('#', '')
