@@ -31,3 +31,29 @@ $factory->define(App\Models\Promo::class, function(Faker\Generator $faker) {
         'body' => $faker->text
     ];
 });
+
+$factory->define(App\Models\Section::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'description' => $faker->text,
+        'content' => $faker->text
+    ];
+});
+
+$factory->define(App\Models\Terms::class, function(Faker\Generator $faker) {
+    $sections = App\Models\Section::take(6)
+        ->inRandomOrder()
+        ->get();
+
+    $pattern = collect($sections)->reduce(function($string, $section) {
+        return $string .= '-' . $section->id;
+    });
+
+    return [
+        'active' => '1',
+        'name' => $faker->name,
+        'description' => $faker->text,
+        'type' => str_replace(' ', '', $faker->name),
+        'pattern' => ltrim($pattern, '-')
+    ];
+});
