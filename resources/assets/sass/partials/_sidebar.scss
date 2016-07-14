@@ -6,34 +6,23 @@
     }
 
     .sidebar {
-        background: $scheme-lighter;
+        background: $sidebar-bg;
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         width: inherit;
+        box-shadow: inset 0 0 10px lightgray;
 
         .header {
-            background-color: $flat-green;
-            color: white;
-            padding: 25px 20px;
-            margin-bottom: 25px;
-
-            img, h6 {
-                display: inline-block;
-            }
+            margin: 25px 0;
 
             img {
                 height: 50px;
                 width: 50px;
+                display: block;
+                margin: auto;
                 border-radius: 100%;
-                margin-right: 7px;
-            }
-
-            h6 {
-                margin: 0;
-                font-size: 0.95em;
-                vertical-align: middle;
             }
         }
 
@@ -49,7 +38,7 @@
                     margin-bottom: 10px;
 
                     a {
-                        color: #999;
+                        color: $sidebar-color;
                         display: block;
                         width: 100%;
                         text-decoration: none;
@@ -62,9 +51,6 @@
                     }
 
                     a.active, a:hover {
-                        background-color: $scheme;
-                        color: white;
-
                         i {
                             color: $flat-green;
                         }

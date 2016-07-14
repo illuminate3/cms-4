@@ -1,43 +1,4 @@
-@media screen and (min-width: $breakpoint) {
-    .dashboard {
-        padding-top: 65px;
-    }
-}
-
 .dashboard {
-    @media screen and (min-width: $breakpoint) {
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: inherit;
-        }
-    }
-
-    .navbar {
-        background-color: white;
-        padding: 20px;
-        border-bottom: 1px solid #ccc;
-        z-index: 100;
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 0;
-
-            @media screen and (min-width: 768px) {
-                li#toggleSidebar {
-                    display: none;
-                }
-            }
-
-            li {
-                display: inline-block;
-                margin-right: 5px;
-                margin-left: 5px;
-            }
-        }
-    }
-
     .profile {
         background-color: white;
         padding: 25px;
@@ -114,6 +75,8 @@
             border-radius: 100%;
             padding: 25px;
             margin: 10px;
+            width: 150px;
+            height: 150px;
 
             .number, .description {
                 display: block;

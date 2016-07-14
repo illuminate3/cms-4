@@ -11,6 +11,7 @@ import EditPromoComponent from './components/Promo/Edit.vue'
 import CreateCampaignComponent from './components/Campaign/Create.vue'
 import CreateRebuttalComponent from './components/Rebuttal/Create.vue'
 import CreatePromoComponent from './components/Promo/Create.vue'
+import CreateTabComponent from './components/Tab/Create.vue'
 
 Vue.use(VueResource)
 
@@ -32,6 +33,7 @@ new Vue({
         
         CreateCampaignComponent,
         CreateRebuttalComponent,
-        CreatePromoComponent
+        CreatePromoComponent,
+        CreateTabComponent
     }
 })

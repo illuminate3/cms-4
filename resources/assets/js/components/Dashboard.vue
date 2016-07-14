@@ -12,6 +12,7 @@
                 <li><a @click="navigate('campaigns')" :class="{ 'active': section == 'campaigns' }">Campaigns</a></li>
                 <li><a @click="navigate('rebuttals')" :class="{ 'active': section == 'rebuttals' }">Rebuttals</a></li>
                 <li><a @click="navigate('promos')" :class="{ 'active': section == 'promos' }">Promos</a></li>
+                <li><a @click="navigate('tabs')" :class="{ 'active': section == 'tabs' }">Tabs</a></li>
             </ul>
         </div>
     </div>
@@ -29,8 +30,8 @@
             <span class="description">Promotions</span>
         </div>
         <div class="statistic flex-item">
-            <span class="number">{{ features.length }}</span>
-            <span class="description">Features</span>
+            <span class="number">{{ tabs.length }}</span>
+            <span class="description">Tabs</span>
         </div>
     </div>
 
@@ -43,19 +44,19 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Script</th>
                                     <th>Campaign</th>
                                     <th>Rebuttals</th>
                                     <th>Promos</th>
+                                    <th>Tabs</th>
                                     <th>Timestamp</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="campaign in campaigns">
-                                    <td>{{ campaign.script }}</td>
                                     <td><a href="/campaigns/dashboard/{{ campaign.id }}">{{ campaign.name }}</a></td>
                                     <td>{{ campaign.rebuttals.data.length }}</td>
                                     <td>{{ campaign.promos.data.length }}</td>
+                                    <td>{{ campaign.tabs.data.length }}</td>
                                     <td>{{ campaign.timestamp }}</td>
                                 </tr>
                             </tbody>
@@ -116,11 +117,38 @@
                     <div v-else>You currently do not have any promotions.</div>
                 </div>
             </div>
+            <div class="card" v-show="section == 'tabs'">
+                <div class="card-header default">Tabs</div>
+                <div class="card-block">
+                    <div class="table-responsive" v-show="tabs.length > 0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Campaign</th>
+                                    <th>Active</th>
+                                    <th>Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="tab in tabs">
+                                    <td><a>{{ tab.name }}</a></td>
+                                    <td>{{ tab.campaign }}</td>
+                                    <td>{{ tab.active }}</td>
+                                    <td>{{ tab.updated }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div v-else>You haven't built any tabs yet.</div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-3">
             <a href="/campaigns/create" class="btn btn-block btn-default">New Campaign</a>
             <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
             <a href="/promos/create" class="btn btn-block btn-warning">New Promo</a>
+            <a href="/tabs/create" class="btn btn-block btn-info">New Tab</a>
         </div>
     </div>
 </template>
@@ -130,6 +158,7 @@
 import campaigns from '../core/campaign.js'
 import rebuttals from '../core/rebuttal.js'
 import promos from '../core/promo.js'
+import tabs from '../core/tab.js'
     
 export default {
     props: ['user'],
@@ -139,7 +168,7 @@ export default {
             campaigns: [],
             rebuttals: [],
             promos: [],
-            features: [],
+            tabs: [],
             section: 'campaigns'
         }
     },
@@ -148,6 +177,7 @@ export default {
         this.getAllCampaigns()
         this.getAllRebuttals()
         this.getAllPromos()
+        this.getAllTabs()
 
         let hash = window.location.hash.length > 0 ? window.location.hash : 'campaigns'
         this.section = hash.replace('#', '')
@@ -171,6 +201,12 @@ export default {
         getAllPromos() {
             promos.all().then(promos => {
                 this.promos = JSON.parse(promos.data).data
+            })
+        },
+
+        getAllTabs() {
+            tabs.all().then(tabs => {
+                this.tabs = JSON.parse(tabs.data).data
             })
         },
 

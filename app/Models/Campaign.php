@@ -16,6 +16,16 @@ class Campaign extends Model
     ];
 
     /**
+     * HasMany relationship to return tabs for a campaign
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tabs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany('App\Models\Tab', 'campaign', 'id');
+    }
+
+    /**
      * HasMany relationship to return a campaign announcements
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany

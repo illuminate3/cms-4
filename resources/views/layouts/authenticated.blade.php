@@ -7,7 +7,6 @@
                 <div class="sidebar">
                     <div class="header">
                         <img src="http://indonesian-experience.nl/wp-content/uploads/2015/02/puzzle-head.jpg">
-                        <h6>{{ Auth::user()->name }}</h6>
                     </div>
                     <div class="links">
                         <ul>
@@ -19,20 +18,6 @@
                 </div>
             </div>
             <div class="col-md-10 no-padding">
-                <div class="navbar">
-                    <div class="pull-xs-left">
-                        <ul>
-                            <li id="toggleSidebar"><a><i class="fa fa-bars"></i></a></li>
-                            <li>Your Dashboard</li>
-                        </ul>
-                    </div>
-                    <div class="pull-xs-right">
-                        <ul>
-                            <li><a href=""><i class="fa fa-bell"></i></a></li>
-                            <li><a href=""><i class="fa fa-user"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div>
                     @yield('main')
                 </div>
