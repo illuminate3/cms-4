@@ -47,7 +47,6 @@
                                     <th>Campaign</th>
                                     <th>Rebuttals</th>
                                     <th>Promos</th>
-                                    <th>Tabs</th>
                                     <th>Timestamp</th>
                                 </tr>
                             </thead>
@@ -56,7 +55,6 @@
                                     <td><a href="/campaigns/dashboard/{{ campaign.id }}">{{ campaign.name }}</a></td>
                                     <td>{{ campaign.rebuttals.data.length }}</td>
                                     <td>{{ campaign.promos.data.length }}</td>
-                                    <td>{{ campaign.tabs.data.length }}</td>
                                     <td>{{ campaign.timestamp }}</td>
                                 </tr>
                             </tbody>
@@ -117,6 +115,34 @@
                     <div v-else>You currently do not have any promotions.</div>
                 </div>
             </div>
+            <div class="card" v-show="section == 'terms'">
+                <div class="card-header default">Terms</div>
+                <div class="card-block">
+                    <div class="table-responsive" v-show="terms.length > 0">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Active</th>
+                                    <th>Sections</th>
+                                    <th>Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="term in terms">
+                                    <td><a href="/terms/{{ term.id }}/edit">{{ term.name }}</a></td>
+                                    <td>{{ term.type }}</td>
+                                    <td>{{ term.active }}</td>
+                                    <td>{{ term.sections.length }}</td>
+                                    <td>{{ term.updated }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div v-else>You have not built any terms and conditions yet.</div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-3">
             <a href="/campaigns/create" class="btn btn-block btn-default">New Campaign</a>
@@ -131,6 +157,7 @@
 import campaigns from '../core/campaign.js'
 import rebuttals from '../core/rebuttal.js'
 import promos from '../core/promo.js'
+import terms from '../core/term.js'
     
 export default {
     props: ['user'],
@@ -140,6 +167,7 @@ export default {
             campaigns: [],
             rebuttals: [],
             promos: [],
+            terms: [],
             section: 'campaigns'
         }
     },
@@ -148,6 +176,7 @@ export default {
         this.getAllCampaigns()
         this.getAllRebuttals()
         this.getAllPromos()
+        this.getAllTerms()
 
         let hash = window.location.hash.length > 0 ? window.location.hash : 'campaigns'
         this.section = hash.replace('#', '')
@@ -171,6 +200,13 @@ export default {
         getAllPromos() {
             promos.all().then(promos => {
                 this.promos = JSON.parse(promos.data).data
+            })
+        },
+
+        getAllTerms() {
+            terms.all().then(terms => {
+                this.terms = JSON.parse(terms.data).data
+                console.log(this.terms)
             })
         },
 

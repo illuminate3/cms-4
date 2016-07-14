@@ -46,7 +46,23 @@ class TermsController extends Controller
      */
     public function store(Request $request)
     {
-        // ... Save terms and conditions
+        $validator = $this->isValidTerms($request->all());
+
+        if ($validator->fails()) {
+            return response()
+                ->json($validator->errors());
+        }
+
+        Terms::create([
+            'active' => $request->get('active'),
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'type' => $request->get('type'),
+            'pattern' => $request->get('pattern')
+        ]);
+
+        return response()
+            ->json(true);
     }
 
     /**
@@ -57,7 +73,11 @@ class TermsController extends Controller
      */
     public function show($id)
     {
-        // ... Retrieve terms and conditions
+        $terms = Terms::findOrFail($id);
+
+        return (new Manager)->createData(
+            new Item($terms, new TermsTransformer)
+        )->toJson();
     }
 
     /**
@@ -91,6 +111,27 @@ class TermsController extends Controller
      */
     public function destroy($id)
     {
-        // ... Delete
+        $terms = Terms::findOrFail($id)
+            ->destroy($id);
+
+        return response()
+            ->json(true);
+    }
+
+    /**
+     * Validate an incoming request
+     *
+     * @param array $data
+     * @return Illuminate\Validation\Validator
+     */
+    private function isValidTerms(array $data): \Illuminate\Validation\Validator
+    {
+        return Validator::make($data, [
+            'active' => 'integer|required|in:0,1',
+            'name' => 'required|max:75',
+            'description' => 'required|max:200',
+            'type' => 'required',
+            'pattern' => 'required'
+        ]);
     }
 }
