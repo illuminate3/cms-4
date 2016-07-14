@@ -42,4 +42,12 @@ term.delete = (id) => {
     })
 }
 
+term.update = (id, data) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.put('/terms/' + id, data).then(response => {
+            resolve(response)
+        })
+    })
+}
+
 export default term

@@ -27,6 +27,7 @@ class Term extends TransformerAbstract
             'id' => $term->id,
             'active' => $term->active,
             'type' => $term->type()->first()->type,
+            'typeId' => $term->type,
             'pattern' => $term->pattern,
             'description' => $term->description,
             'sections' => $sections,
