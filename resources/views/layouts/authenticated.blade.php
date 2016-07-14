@@ -18,6 +18,9 @@
                 </div>
             </div>
             <div class="col-md-10 no-padding">
+                <a class="toggleSlideout" onclick="toggleSlideout()">
+                    <i class="fa fa-bars"></i>
+                </a>
                 <div>
                     @yield('main')
                 </div>

@@ -1,3 +1,9 @@
+@media screen and (max-width: $breakpoint) {
+    .btn {
+        width: 100%;
+    }
+}
+
 .btn-default {
     background-color: $scheme;
     color: white;
