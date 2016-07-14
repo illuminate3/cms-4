@@ -7,6 +7,7 @@ import CampaignComponent from './components/Campaign.vue'
 
 import EditRebuttalComponent from './components/Rebuttal/Edit.vue'
 import EditPromoComponent from './components/Promo/Edit.vue'
+import EditTermsComponent from './components/Terms/Edit.vue'
 
 import CreateCampaignComponent from './components/Campaign/Create.vue'
 import CreateRebuttalComponent from './components/Rebuttal/Create.vue'
@@ -29,6 +30,7 @@ new Vue({
 
         EditRebuttalComponent,
         EditPromoComponent,
+        EditTermsComponent,
         
         CreateCampaignComponent,
         CreateRebuttalComponent,
@@ -38,6 +40,6 @@ new Vue({
 
 var Sortable = require('sortablejs')
 
-Sortable.create(document.querySelector('sortable'), {
-    aggregate: 'tr'
+Sortable.create(document.querySelector('.terms.sections'), {
+    aggregate: 'div'
 })

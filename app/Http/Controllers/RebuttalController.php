@@ -53,7 +53,7 @@ class RebuttalController extends Controller
      * Display a resource to edit a rebuttal
      *
      * @param integer $id
-     * @return Illuminate\Views\View
+     * @return \Illuminate\Views\View
      */
     public function edit($id): \Illuminate\View\View
     {
@@ -66,15 +66,15 @@ class RebuttalController extends Controller
     /**
      * Update the edited rebuttal
      *
-     * @param Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
+     * @param integer $id
      * @return mixed
      */
-    public function update($id, Request $request)
+    public function update(Request $request, $id)
     {
         $validator = $this->isValidRebuttal($request->all());
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return response()
                 ->json($validator->errors());
         }
@@ -86,9 +86,6 @@ class RebuttalController extends Controller
             'campaign' => $request->get('campaign')
         ]);
 
-        $request->session()
-            ->flash('success', 'Your rebuttal has been successfully updated.');
-
         return response()
             ->json(true);
     }
@@ -96,7 +93,7 @@ class RebuttalController extends Controller
     /**
      * Display a resource to create a new rebuttal
      *
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function create(): \Illuminate\View\View
     {
@@ -109,7 +106,7 @@ class RebuttalController extends Controller
     /**
      * Store the newly created rebuttal
      *
-     * @param Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return mixed
      */
     public function store(Request $request)
@@ -152,7 +149,7 @@ class RebuttalController extends Controller
      * Check to see if a rebuttal is valid
      *
      * @param array $data
-     * @return Illuminate\Validation\Factory
+     * @return \Illuminate\Validation\Factory
      */
     private function isValidRebuttal(array $data): \Illuminate\Validation\Validator
     {

@@ -52,7 +52,7 @@ class PromoController extends Controller
     /**
      * Display a resource to create a new promo
      *
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function create(): \Illuminate\View\View
     {
@@ -65,15 +65,14 @@ class PromoController extends Controller
     /**
      * Validate and store a newly created promo
      *
-     * @param Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return mixed
      */
     public function store(Request $request)
     {
         $validator = $this->isValidPromo($request->all());
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return response()
                 ->json($validator->errors());
         }
@@ -93,7 +92,7 @@ class PromoController extends Controller
      * Display a resource to edit a promo
      *
      * @param integer $id
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function edit($id): \Illuminate\View\View
     {
@@ -106,10 +105,11 @@ class PromoController extends Controller
     /**
      * Update a given promo
      *
+     * @param \Illuminate\Http\Request $request
      * @param integer $id
      * @return mixed
      */
-    public function update($id, Request $request)
+    public function update(Request $request, $id)
     {
         $validator = $this->isValidPromo($request->all());
 
@@ -149,7 +149,7 @@ class PromoController extends Controller
      * Validate a new promotion
      *
      * @param array $data
-     * @return Illuminate\Validation\Validator
+     * @return \Illuminate\Validation\Validator
      */
     private function isValidPromo(array $data): \Illuminate\Validation\Validator
     {

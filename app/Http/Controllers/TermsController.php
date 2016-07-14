@@ -141,7 +141,7 @@ class TermsController extends Controller
      * Validate an incoming request
      *
      * @param array $data
-     * @return Illuminate\Validation\Validator
+     * @return \Illuminate\Validation\Validator
      */
     private function isValidTerms(array $data): \Illuminate\Validation\Validator
     {

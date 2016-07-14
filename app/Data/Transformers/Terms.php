@@ -58,7 +58,12 @@ class Terms extends TransformerAbstract
         $collection = collect($pieces);
 
         $sections = $collection->map(function($piece) {
-            return Section::find($piece)->content;
+            $section = Section::find($piece);
+
+            return [
+                'name' => $section->name,
+                'content' => $section->content
+            ];
         })->toArray();
 
         return $sections;
