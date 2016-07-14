@@ -7,12 +7,10 @@ import CampaignComponent from './components/Campaign.vue'
 
 import EditRebuttalComponent from './components/Rebuttal/Edit.vue'
 import EditPromoComponent from './components/Promo/Edit.vue'
-import EditTermsComponent from './components/Terms/Edit.vue'
 
 import CreateCampaignComponent from './components/Campaign/Create.vue'
 import CreateRebuttalComponent from './components/Rebuttal/Create.vue'
 import CreatePromoComponent from './components/Promo/Create.vue'
-import CreateTermsComponent from './components/Terms/Create.vue'
 
 Vue.use(VueResource)
 
@@ -31,11 +29,9 @@ new Vue({
 
         EditRebuttalComponent,
         EditPromoComponent,
-        EditTermsComponent,
         
         CreateCampaignComponent,
         CreateRebuttalComponent,
-        CreatePromoComponent,
-        CreateTermsComponent
+        CreatePromoComponent
     }
 })
