@@ -20,10 +20,6 @@ class Campaign extends TransformerAbstract
      */
     public function transform(Campaign $campaign): array
     {
-        $tabs = (new Manager)->createData(
-            new Collection($campaign->tabs()->get(), new TabTransformer)
-        )->toArray();
-
         $rebuttals = (new Manager)->createData(
             new Collection($campaign->rebuttals()->get(), new RebuttalTransformer)
         )->toArray();
@@ -38,7 +34,6 @@ class Campaign extends TransformerAbstract
             'name' => $campaign->name,
             'rebuttals' => $rebuttals,
             'promos' => $promos,
-            'tabs' => $tabs,
             'timestamp' => $campaign->created_at->diffForHumans()
         ];
     }

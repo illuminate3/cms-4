@@ -1,35 +1,6 @@
 <template>
     <div class="row padded">
         <div class="col-sm-9">
-            <div class="tabs">
-                <div class="card">
-                    <div class="card-header default">Tabs</div>
-                    <div class="card-block">
-                        <div class="table-responsive" v-show="tabs.length > 0">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Active</th>
-                                        <th>Updated</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="tab in tabs">
-                                        <td><a>{{ tab.name }}</a></td>
-                                        <td>
-                                            <i v-show="tab.active == 1" class="fa fa-check"></i>
-                                            <i v-else class="fa fa-remove"></i>
-                                        </td>
-                                        <td>{{ tab.updated }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div v-else>This campaign doesnt have any tabs yet.</div>
-                    </div>
-                </div>
-            </div>
             <div class="rebuttals">
                 <div class="card">
                     <div class="card-header default">Rebuttals</div>
@@ -119,8 +90,7 @@ export default {
         return {
             campaign: [],
             promos: [],
-            rebuttals: [],
-            tabs: []
+            rebuttals: []
         }
     },
 
@@ -134,7 +104,6 @@ export default {
                 this.campaign = JSON.parse(campaign.data).data
                 this.rebuttals = this.campaign.rebuttals.data
                 this.promos = this.campaign.promos.data
-                this.tabs = this.campaign.tabs.data
             })
         }
     }
