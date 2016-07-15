@@ -113,8 +113,7 @@ class RebuttalController extends Controller
     {
         $validator = $this->isValidRebuttal($request->all());
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return response()
                 ->json($validator->errors());
         }

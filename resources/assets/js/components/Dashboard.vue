@@ -204,7 +204,6 @@ export default {
         getAllTerms() {
             terms.all().then(terms => {
                 this.terms = JSON.parse(terms.data).data
-                console.log(this.terms)
             })
         },
 

@@ -113,8 +113,7 @@ class PromoController extends Controller
     {
         $validator = $this->isValidPromo($request->all());
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return response()
                 ->json($validator->errors());
         }

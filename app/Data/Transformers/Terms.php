@@ -61,6 +61,7 @@ class Terms extends TransformerAbstract
             $section = Section::find($piece);
 
             return [
+                'id' => $section->id,
                 'name' => $section->name,
                 'content' => $section->content
             ];

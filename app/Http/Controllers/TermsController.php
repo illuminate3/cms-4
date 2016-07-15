@@ -7,6 +7,7 @@ use League\Fractal\Resource\{
     Collection
 };
 
+use Validator;
 use App\Models\Terms;
 use League\Fractal\Manager;
 use Illuminate\Http\Request;

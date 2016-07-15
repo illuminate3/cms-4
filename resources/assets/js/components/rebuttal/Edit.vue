@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-7 col-sm-offset-3">
-                            <button class="btn btn-default">Save</button>
+                            <button class="btn btn-default full">Save</button>
                         </div>
                     </div>
                 </form>
@@ -47,7 +47,7 @@
         <div class="card">
             <div class="card-header danger">Danger Zone</div>
             <div class="card-block">
-                <button class="btn btn-danger" @click="destroy">Delete</button>
+                <button class="btn btn-danger full" @click="destroy">Delete</button>
             </div>
         </div>
     </div>
@@ -73,6 +73,7 @@ export default {
                 active: null
             },
             campaigns: [],
+            rebuttals: [],
             rebuttal: [],
             data: {
                 name: null,
@@ -84,11 +85,18 @@ export default {
     },
 
     created() {
+        this.getAllRebuttals()
         this.getRebuttal()
         this.getCampaigns()
     },
 
     methods: {
+        getAllRebuttals() {
+            rebuttals.all().then(rebuttals => {
+                this.rebuttals = JSON.parse(rebuttals.data).data
+            })
+        },
+
         getRebuttal() {
             rebuttals.find(this.id).then(rebuttal => {
                 this.rebuttal = JSON.parse(rebuttal.data).data

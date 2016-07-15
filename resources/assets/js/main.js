@@ -38,8 +38,8 @@ new Vue({
     }
 })
 
-var Sortable = require('sortablejs')
+const sortable = require('sortablejs')
 
-Sortable.create(document.querySelector('.terms.sections'), {
+sortable.create(document.querySelector('.draggable'), {
     aggregate: 'div'
 })

@@ -78,8 +78,7 @@ class CampaignController extends Controller
     {
         $validator = $this->validateCampaign($request->all());
 
-        if ($validator->fails())
-        {
+        if ($validator->fails()) {
             return response()
                 ->json($validator->errors());
         }
