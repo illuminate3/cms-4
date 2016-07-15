@@ -46,11 +46,25 @@
         <div class="card">
             <div class="card-header default">Terms Sections</div>
             <div class="card-block">
-                <div class="draggable" v-show="terms.sections != undefined">
-                    <div v-for="section in terms.sections" class="section" data-pattern-id="{{ section.id }}" @click="setupPattern">
-                        <h5>{{ section.name }}</h5>
-                        <button class="btn btn-danger btn-sm remove" @click="removeSection(section)">Remove</button>
-                    </div>
+                <div class="terms table-responsive" v-show="terms.sections != undefined && terms.sections.length > 0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Content (50)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="draggable">
+                            <tr v-for="section in terms.sections" data-pattern-id="{{ section.id }}">
+                                <td>{{ section.id }}</td>
+                                <td><a>{{ section.name }}</a></td>
+                                <td>{{ section.content.slice(0, 50) }}...</td>
+                                <td><a @click="removeSection(section)"><i class="fa fa-remove"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div v-else>You currently haven't added any sections.</div>
             </div>
@@ -117,7 +131,7 @@ export default {
         },
 
         setupPattern() {
-            const sections = document.querySelectorAll('.draggable .section')
+            const sections = document.querySelectorAll('.draggable tr')
 
             let pattern = ''
 

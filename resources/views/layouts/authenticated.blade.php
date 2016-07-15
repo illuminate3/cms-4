@@ -4,7 +4,7 @@
     <div class="container-fluid dashboard">
         <div class="row">
             <div class="col-md-2">
-                <div class="sidebar">
+                <div class="sidebar" id="sidebar">
                     <div class="header">
                         <img src="http://indonesian-experience.nl/wp-content/uploads/2015/02/puzzle-head.jpg">
                     </div>
@@ -18,9 +18,6 @@
                 </div>
             </div>
             <div class="col-md-10 no-padding">
-                <a class="toggleSlideout" onclick="toggleSlideout()">
-                    <i class="fa fa-bars"></i>
-                </a>
                 <div>
                     @yield('main')
                 </div>

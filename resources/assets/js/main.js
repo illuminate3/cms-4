@@ -41,5 +41,5 @@ new Vue({
 const sortable = require('sortablejs')
 
 sortable.create(document.querySelector('.draggable'), {
-    aggregate: 'div'
+    aggregate: 'tr'
 })
