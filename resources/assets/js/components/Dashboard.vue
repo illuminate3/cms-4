@@ -1,7 +1,7 @@
 <template>
     <div class="profile">
         <div class="user">
-            <img src="http://indonesian-experience.nl/wp-content/uploads/2015/02/puzzle-head.jpg">
+            <img src="/images/flaticons/man.png">
             <div class="name">
                 <h2>{{ user.name }}</h2>
                 <p>{{ user.biography }}</p>
@@ -16,22 +16,30 @@
             </ul>
         </div>
     </div>
-    <div class="statistics padded flex-container">
-        <div class="statistic flex-item">
-            <span class="number">{{ rebuttals.length }}</span>
-            <span class="description">Rebuttals</span>
-        </div>
-        <div class="statistic flex-item">
-            <span class="number">{{ campaigns.length }}</span>
-            <span class="description">Campaigns</span>
-        </div>
-        <div class="statistic flex-item">
-            <span class="number">{{ promos.length }}</span>
-            <span class="description">Promotions</span>
-        </div>
-        <div class="statistic flex-item">
-            <span class="number">{{ terms.length }}</span>
-            <span class="description">Terms</span>
+    
+    <div class="statistics padded">
+        <div class="card">
+            <div class="card-header default">Statistics</div>
+            <div class="card-block">
+                <div class="flex-container">
+                    <div class="statistic flex-item">
+                        <span class="number">{{ rebuttals.length }}</span>
+                        <span class="description">Rebuttals</span>
+                    </div>
+                    <div class="statistic flex-item">
+                        <span class="number">{{ campaigns.length }}</span>
+                        <span class="description">Campaigns</span>
+                    </div>
+                    <div class="statistic flex-item">
+                        <span class="number">{{ promos.length }}</span>
+                        <span class="description">Promotions</span>
+                    </div>
+                    <div class="statistic flex-item">
+                        <span class="number">{{ terms.length }}</span>
+                        <span class="description">Terms</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

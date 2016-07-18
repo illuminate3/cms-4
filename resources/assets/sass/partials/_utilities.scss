@@ -1,0 +1,25 @@
+.blocked {
+    display: block;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.padded {
+    padding: 20px 20px 0 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.form-control-label {
+    padding-left: 0 !important;
+}
+
+.draggable {
+    td, a {
+        cursor: move;
+    }
+}

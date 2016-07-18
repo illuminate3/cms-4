@@ -35,15 +35,14 @@
                 padding-left: 0;
 
                 li {
-                    margin-bottom: 10px;
-
                     a {
                         color: $sidebar-color;
                         display: block;
                         width: 100%;
                         text-decoration: none;
-                        padding: 10px 20px;
+                        padding: 6px 20px;
                         font-size: 0.95em;
+                        font-weight: lighter;
 
                         i {
                             margin-right: 15px;
@@ -51,9 +50,7 @@
                     }
 
                     a.active, a:hover {
-                        i {
-                            color: $flat-green;
-                        }
+                        background-color: #39414e;
                     }
                 }
             }

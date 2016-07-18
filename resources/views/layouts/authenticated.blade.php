@@ -6,13 +6,13 @@
             <div class="col-md-2">
                 <div class="sidebar" id="sidebar">
                     <div class="header">
-                        <img src="http://indonesian-experience.nl/wp-content/uploads/2015/02/puzzle-head.jpg">
+                        <img src="{{ asset('images/flaticons/man.png') }}">
                     </div>
                     <div class="links">
                         <ul>
-                            <li><a href="/dashboard" class="active"><i class="fa fa-home"></i>dashboard</a></li>
-                            <li><a href=""><i class="fa fa-user"></i>account</a></li>
-                            <li><a href="/logout"><i class="fa fa-sign-out"></i>leave</a></li>
+                            <li><a href="/dashboard" class="active">Dashboard</a></li>
+                            <li><a href="">Account</a></li>
+                            <li><a href="/logout">Leave</a></li>
                         </ul>
                     </div>
                 </div>
