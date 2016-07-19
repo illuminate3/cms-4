@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\{
+    Section,
+    Terms
+};
+
 use Validator;
-use App\Models\Section;
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
@@ -72,8 +76,13 @@ class SectionController extends Controller
     {
         $section = Section::findOrFail($id);
 
+        $terms = Terms::where('pattern', 'like', '%' . $section->id . '%')
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
         return view('sections.edit')
-            ->with('id', $id);
+            ->with('id', $id)
+            ->with('terms', $terms);
     }
 
     /**
