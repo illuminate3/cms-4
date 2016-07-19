@@ -1,9 +1,10 @@
 .card {
-    border: 1px solid #e5e6e9 #dfe0e4 #d0d1d5;
+    border: none !important;
 
     .card-header.default {
         background-color: #f6f7f9;
         color: #4b4f56;
+        border: none !important;
     }
 
     .card-header.danger {

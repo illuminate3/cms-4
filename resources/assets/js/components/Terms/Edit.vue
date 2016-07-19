@@ -119,10 +119,10 @@ export default {
                 const content = JSON.parse(result.body)
 
                 if (Object.keys(content).length === 0) {
-                    this.errors = content
+                    window.location.href = '/dashboard#terms'
                 }
-                
-                window.location.href = '/dashboard#terms'
+
+                this.errors = content
             })
         },
 

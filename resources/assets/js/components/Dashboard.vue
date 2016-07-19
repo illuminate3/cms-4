@@ -123,30 +123,32 @@
                     <div v-else>You currently do not have any promotions.</div>
                 </div>
             </div>
-            <div class="card" v-show="section == 'terms'">
-                <div class="card-header default">Terms</div>
-                <div class="card-block">
-                    <div class="table-responsive" v-show="terms.length > 0">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Sections</th>
-                                    <th>Updated</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="term in terms">
-                                    <td><a href="/terms/{{ term.id }}/edit">{{ term.name }}</a></td>
-                                    <td>{{ term.type }}</td>
-                                    <td>{{ term.sections.length }}</td>
-                                    <td>{{ term.updated }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div v-show="section == 'terms'">
+                <div class="card">
+                    <div class="card-header default">Terms</div>
+                    <div class="card-block">
+                        <div class="table-responsive" v-show="terms.length > 0">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Sections</th>
+                                        <th>Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="term in terms">
+                                        <td><a href="/terms/{{ term.id }}/edit">{{ term.name }}</a></td>
+                                        <td>{{ term.type }}</td>
+                                        <td>{{ term.sections.length }}</td>
+                                        <td>{{ term.updated }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div v-else>You haven't built any terms and conditions yet.</div>
                     </div>
-                    <div v-else>You have not built any terms and conditions yet.</div>
                 </div>
             </div>
         </div>

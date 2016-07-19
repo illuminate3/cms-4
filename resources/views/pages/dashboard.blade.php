@@ -1,7 +1,5 @@
 @extends('layouts.authenticated')
 
 @section('main')
-    <dashboard-component
-        user="{{ Auth::user() }}"
-    ></dashboard-component>
+    <dashboard-component user="{{ Auth::user() }}"></dashboard-component>
 @endsection

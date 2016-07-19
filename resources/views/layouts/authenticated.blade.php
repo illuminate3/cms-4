@@ -10,14 +10,32 @@
                     </div>
                     <div class="links">
                         <ul>
-                            <li><a href="/dashboard" class="active">Dashboard</a></li>
+                            <li><a href="{{ route('dashboard') }}" class="active">Dashboard</a></li>
                             <li><a href="">Account</a></li>
-                            <li><a href="/logout">Leave</a></li>
+                            <li><a href="{{ route('logout') }}">Leave</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-10 no-padding">
+                <nav class="navbar">
+                    <button class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#allowToggle">
+                        &#9776;
+                    </button>
+                    <div class="collapse navbar-toggleable-xs" id="allowToggle">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item bordered-right">
+                                <a href="" class="nav-link"><i class="fa fa-user" style="margin-right: 10px"></i>{{ Auth::user()->name }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Leave</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
                 <div>
                     @yield('main')
                 </div>

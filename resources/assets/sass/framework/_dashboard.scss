@@ -74,6 +74,12 @@
     }
 
     .statistics {
+        @media screen and (max-width: $breakpoint) {
+            .statistic {
+                margin: 10px;
+            }
+        }
+
         .statistic {
             border-radius: 100%;
             padding: 25px;

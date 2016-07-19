@@ -20,6 +20,15 @@
 
 .draggable {
     td, a {
-        cursor: move;
+        // cursor: move;
+    }
+}
+
+.bordered-right {
+    padding-right: 10px;
+    border-right: 1px solid lightgray;
+
+    a {
+        font-weight: bolder;
     }
 }
