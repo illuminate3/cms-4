@@ -150,6 +150,30 @@
                         <div v-else>You haven't built any terms and conditions yet.</div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header default">Sections</div>
+                    <div class="card-block">
+                        <div class="table-responsive" v-show="sections.length > 0">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Updated</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="section in sections">
+                                        <td><a href="/sections/{{ section.id }}/edit">{{ section.name }}</a></td>
+                                        <td>{{ section.updated }}</td>
+                                        <td>{{ section.created }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div v-else>You haven't created any sections yet.</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-sm-3">
@@ -164,6 +188,7 @@
 
 import campaigns from '../core/campaign.js'
 import rebuttals from '../core/rebuttal.js'
+import sections from '../core/section.js'
 import promos from '../core/promo.js'
 import terms from '../core/term.js'
     
@@ -176,6 +201,7 @@ export default {
             rebuttals: [],
             promos: [],
             terms: [],
+            sections: [],
             section: 'campaigns'
         }
     },
@@ -185,6 +211,7 @@ export default {
         this.getAllRebuttals()
         this.getAllPromos()
         this.getAllTerms()
+        this.getAllSections()
 
         let hash = window.location.hash.length > 0 ? window.location.hash : 'campaigns'
         this.section = hash.replace('#', '')
@@ -214,6 +241,12 @@ export default {
         getAllTerms() {
             terms.all().then(terms => {
                 this.terms = JSON.parse(terms.data).data
+            })
+        },
+
+        getAllSections() {
+            sections.all().then(sections => {
+                this.sections = JSON.parse(sections.data).data
             })
         },
 

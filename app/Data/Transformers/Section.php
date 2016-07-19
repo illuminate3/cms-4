@@ -19,7 +19,9 @@ class Section extends TransformerAbstract
             'id' => $section->id,
             'name' => $section->name,
             'description' => $section->description,
-            'content' => $section->content
+            'content' => $section->content,
+            'created' => $section->created_at->diffForHumans(),
+            'updated' => $section->updated_at->diffForHumans()
         ];
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
+use League\Fractal\Resource\Collection;
 use App\Data\Transformers\Section as SectionTransformer;
 
 class SectionController extends Controller
@@ -18,7 +19,11 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        $sections = Section::all();
+
+        return (new Manager)->createData(
+            new Collection($sections, new SectionTransformer)
+        )->toJson();
     }
 
     /**
