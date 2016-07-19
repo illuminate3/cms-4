@@ -17,6 +17,7 @@ class Section extends TransformerAbstract
     {
         return [
             'id' => $section->id,
+            'name' => $section->name,
             'description' => $section->description,
             'content' => $section->content
         ];

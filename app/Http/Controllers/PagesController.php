@@ -2,13 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{
-    Campaign,
-    Rebuttal,
-    Promo,
-    Terms
-};
-
 use Illuminate\Http\Request;
 
 class PagesController extends Controller

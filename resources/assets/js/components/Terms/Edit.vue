@@ -80,7 +80,10 @@
                     <div class="header">
                         <img src="/images/flaticons/imac.png" class="image-center">
                     </div>
-                    <div class="content">{{ section.content }}</div>
+                    <div class="content">
+                        <p>{{ section.content }}</p>
+                        <a class="btn btn-danger no-border" href="/sections/{{ section.id }}/edit" target="_BLANK">Edit</a>
+                    </div>
                 </div>
             </div>
         </div>

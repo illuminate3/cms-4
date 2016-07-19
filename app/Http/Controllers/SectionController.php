@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use League\Fractal\Manager;
@@ -64,7 +65,10 @@ class SectionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $section = Section::findOrFail($id);
+
+        return view('sections.edit')
+            ->with('id', $id);
     }
 
     /**
@@ -76,7 +80,21 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->isValidSection($request->all());
+
+        if ($validator->fails()) {
+            return response()
+                ->json($validator->errors());
+        }
+
+        $section = Section::findOrFail($id)->update([
+            'name' => strtolower($request->get('name')),
+            'content' => $request->get('content'),
+            'description' => $request->get('description')
+        ]);
+
+        return response()
+            ->json(true);
     }
 
     /**
@@ -88,5 +106,20 @@ class SectionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Make sure a section has valid data
+     *
+     * @param  array  $data
+     * @return \Illuminate\Validation\Validator
+     */
+    private function isValidSection(array $data): \Illuminate\Validation\Validator
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:75',
+            'description' => 'required|max:200',
+            'content' => 'required'
+        ]);
     }
 }
