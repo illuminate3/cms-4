@@ -17,12 +17,22 @@
         .header {
             margin: 25px 0;
 
+            img, h6 {
+                display: block;
+            }
+
+            h6 {
+                text-align: center;
+                color: $sidebar-color;
+                font-weight: bolder;
+                margin-top: 10px;
+            }
+
             img {
                 height: 50px;
                 width: 50px;
-                display: block;
-                margin: auto;
                 border-radius: 100%;
+                margin: auto;
             }
         }
 

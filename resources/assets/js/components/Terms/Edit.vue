@@ -46,27 +46,42 @@
         <div class="card">
             <div class="card-header default">Terms Sections</div>
             <div class="card-block">
-                <div class="terms table-responsive" v-show="terms.sections != undefined && terms.sections.length > 0">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Content (50)</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody class="draggable">
-                            <tr v-for="section in terms.sections" data-pattern-id="{{ section.id }}">
-                                <td>{{ section.id }}</td>
-                                <td><a>{{ section.name }}</a></td>
-                                <td>{{ section.content.slice(0, 50) }}...</td>
-                                <td><a @click="removeSection(section)"><i class="fa fa-remove"></i></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="terms" v-show="terms.sections != undefined && terms.sections.length > 0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Content (50)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="draggable">
+                                <tr v-for="section in terms.sections" data-pattern-id="{{ section.id }}">
+                                    <td>{{ section.id }}</td>
+                                    <td><a @click="getSectionToView(section.id)" data-toggle="modal" data-target="#edit__section__modal">{{ section.name }}</a></td>
+                                    <td>{{ section.content.slice(0, 50) }}...</td>
+                                    <td><a @click="removeSection(section)"><i class="fa fa-remove"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div v-else>You currently haven't added any sections.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit__section__modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="header">
+                        <img src="/images/flaticons/imac.png" class="image-center">
+                    </div>
+                    <div class="content">{{ section.content }}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -74,6 +89,7 @@
 
 <script>
 
+import section from '../../core/section.js'
 import terms from '../../core/term.js'
 
 export default {
@@ -95,7 +111,8 @@ export default {
                 description: null,
                 type: null,
                 pattern: null
-            }
+            },
+            section: {}
         }
     },
 
@@ -146,6 +163,12 @@ export default {
             })
 
             this.data.pattern = pattern
+        },
+
+        getSectionToView(id) {
+            section.find(id).then(section => {
+                this.section = JSON.parse(section.data).data
+            })
         }
     }
 }

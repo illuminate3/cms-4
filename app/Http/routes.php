@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
     Route::resource('rebuttals', 'RebuttalController');
+    Route::resource('sections', 'SectionController');
     Route::resource('promos', 'PromoController');
     Route::resource('terms', 'TermsController');
 });

@@ -13,6 +13,8 @@
 
         @yield('content')
 
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
         <script src="{{ asset('js/main.js') }}"></script>
 
     </body>

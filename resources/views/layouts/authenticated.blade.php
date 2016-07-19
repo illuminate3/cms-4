@@ -7,11 +7,13 @@
                 <div class="sidebar" id="sidebar">
                     <div class="header">
                         <img src="{{ asset('images/flaticons/man.png') }}">
+                        <h6>{{ Auth::user()->name }}</h6>
                     </div>
                     <div class="links">
                         <ul>
                             <li><a href="{{ route('dashboard') }}" class="active">Dashboard</a></li>
                             <li><a href="">Account</a></li>
+                            <li><a href="">Settings</a></li>
                             <li><a href="{{ route('logout') }}">Leave</a></li>
                         </ul>
                     </div>
@@ -28,10 +30,10 @@
                                 <a href="" class="nav-link"><i class="fa fa-user" style="margin-right: 10px"></i>{{ Auth::user()->name }}</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Dashboard</a>
+                                <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">Leave</a>
+                                <a href="{{ route('logout') }}" class="nav-link">Leave</a>
                             </li>
                         </ul>
                     </div>
