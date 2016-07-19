@@ -5,10 +5,7 @@
         <div class="card">
             <div class="card-header">Edit Section</div>
             <div class="card-block">
-                <edit-section-component
-                    id="{{ $id }}"
-                    terms="{{ json_encode($terms) }}"
-                ></edit-section-component>
+                <edit-section-component id="{{ $id }}"></edit-section-component>
             </div>
         </div>
         <div class="card">

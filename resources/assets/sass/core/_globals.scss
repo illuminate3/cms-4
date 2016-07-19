@@ -6,6 +6,12 @@ body {
     background-color: #e9ebee;
 }
 
+@media screen and (min-width: 992px) {
+    body {
+        padding-top: 53.59px;
+    }
+}
+
 a {
     cursor: pointer;
 }

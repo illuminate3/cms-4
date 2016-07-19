@@ -76,7 +76,7 @@ class SectionController extends Controller
     {
         $section = Section::findOrFail($id);
 
-        $terms = Terms::where('pattern', 'like', '%' . $section->id . '%')
+        $terms = Terms::where('pattern', 'like', "%$id%")
             ->orderBy('updated_at', 'desc')
             ->get();
 
