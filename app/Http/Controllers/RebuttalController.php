@@ -72,7 +72,7 @@ class RebuttalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->isValidRebuttal($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -111,7 +111,7 @@ class RebuttalController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->isValidRebuttal($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -150,7 +150,7 @@ class RebuttalController extends Controller
      * @param array $data
      * @return \Illuminate\Validation\Factory
      */
-    private function isValidRebuttal(array $data): \Illuminate\Validation\Validator
+    private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
             'name' => 'required|max:60',

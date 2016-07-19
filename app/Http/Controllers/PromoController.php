@@ -70,7 +70,7 @@ class PromoController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->isValidPromo($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -111,7 +111,7 @@ class PromoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->isValidPromo($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -150,7 +150,7 @@ class PromoController extends Controller
      * @param array $data
      * @return \Illuminate\Validation\Validator
      */
-    private function isValidPromo(array $data): \Illuminate\Validation\Validator
+    private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
             'campaign' => 'integer|required|exists:campaigns,id',

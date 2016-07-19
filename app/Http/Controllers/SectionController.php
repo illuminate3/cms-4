@@ -80,7 +80,7 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->isValidSection($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -114,7 +114,7 @@ class SectionController extends Controller
      * @param  array  $data
      * @return \Illuminate\Validation\Validator
      */
-    private function isValidSection(array $data): \Illuminate\Validation\Validator
+    private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
             'name' => 'required|max:75',

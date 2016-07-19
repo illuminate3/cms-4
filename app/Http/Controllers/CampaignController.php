@@ -76,7 +76,7 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->validateCampaign($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -99,7 +99,7 @@ class CampaignController extends Controller
      * @param array $data
      * @return Illuminate\Validation\Validator
      */
-    private function validateCampaign(array $data): \Illuminate\Validation\Validator
+    private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
             'active' => 'required|integer|in:0,1',

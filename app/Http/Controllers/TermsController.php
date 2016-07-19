@@ -47,7 +47,7 @@ class TermsController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->isValidTerms($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -104,7 +104,7 @@ class TermsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->isValidTerms($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -144,7 +144,7 @@ class TermsController extends Controller
      * @param array $data
      * @return \Illuminate\Validation\Validator
      */
-    private function isValidTerms(array $data): \Illuminate\Validation\Validator
+    private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
             'active' => 'integer|required|in:0,1',
