@@ -3,7 +3,42 @@
     box-shadow: 0 1px 1px rgba(0,0,0,.14);
     border-radius: 0;
 
+    .navbar-toggler:focus {
+        outline: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        .nav.navbar-nav {
+            text-align: center;
+
+            .nav-item {
+                float: none !important;
+            }
+        }
+    }
+
     .nav.navbar-nav {
+        @media screen and (min-width: 768px) {
+            .navbar-identity {
+                padding-right: 10px;
+                border-right: 1px solid lightgray;
+
+                a {
+                    font-weight: bolder;
+                    
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar-identity {
+                display: none;
+            }
+        }
+
         li {
             a {
                 color: #4b4f56;

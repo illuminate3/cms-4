@@ -26,8 +26,8 @@
                     </button>
                     <div class="collapse navbar-toggleable-xs" id="allowToggle">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item bordered-right">
-                                <a href="" class="nav-link"><i class="fa fa-user" style="margin-right: 10px"></i>{{ Auth::user()->name }}</a>
+                            <li class="nav-item navbar-identity">
+                                <a href="" class="nav-link"><i class="fa fa-user"></i>{{ Auth::user()->name }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
