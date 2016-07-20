@@ -134,7 +134,11 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $section = Section::findOrFail($id)
+            ->destroy($id);
+
+        return response()
+            ->json(true);
     }
 
     /**

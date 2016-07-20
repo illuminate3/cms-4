@@ -3,7 +3,6 @@
 namespace App\Data\Transformers;
 
 use App\Models\Terms;
-use App\Models\Section;
 use League\Fractal\TransformerAbstract;
 
 class Terms extends TransformerAbstract
@@ -58,7 +57,7 @@ class Terms extends TransformerAbstract
         $collection = collect($pieces);
 
         $sections = $collection->map(function($piece) {
-            $section = Section::find($piece);
+            $section = \App\Models\Section::find($piece);
 
             return [
                 'id' => $section->id,
