@@ -37,7 +37,7 @@ class SectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('sections.create');
     }
 
     /**
@@ -48,7 +48,21 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $this->getValidator($request->all());
+
+        if ($validator->fails()) {
+            return response()
+                ->json($validator->errors());
+        }
+
+        Section::create([
+            'name' => strtolower($request->get('name')),
+            'description' => strtolower($request->get('description')),
+            'content' => $request->get('content')
+        ]);
+
+        return response()
+            ->json(true);
     }
 
     /**

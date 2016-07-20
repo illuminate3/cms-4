@@ -26,4 +26,12 @@ section.update = (id, data) => {
     })
 }
 
+section.create = (data) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.post('/sections', data).then(response => {
+            resolve(response)
+        })
+    })
+}
+
 export default section

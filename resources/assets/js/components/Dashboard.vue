@@ -180,6 +180,7 @@
             <a href="/campaigns/create" class="btn btn-block btn-default">New Campaign</a>
             <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
             <a href="/promos/create" class="btn btn-block btn-warning">New Promo</a>
+            <a href="/sections/create" class="btn btn-block btn-danger">New Section</a>
         </div>
     </div>
 </template>
