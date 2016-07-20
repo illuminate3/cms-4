@@ -79,12 +79,13 @@ class RebuttalController extends Controller
                 ->json($validator->errors());
         }
 
-        $rebuttal = Rebuttal::findOrFail($id)->update([
-            'name' => strtolower($request->get('name')),
-            'body' => $request->get('body'),
-            'active' => $request->get('active'),
-            'campaign' => $request->get('campaign')
-        ]);
+        $rebuttal = Rebuttal::findOrFail($id)
+            ->update([
+                'name' => strtolower($request->get('name')),
+                'body' => $request->get('body'),
+                'active' => $request->get('active'),
+                'campaign' => $request->get('campaign')
+            ]);
 
         return response()
             ->json(true);

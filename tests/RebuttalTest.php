@@ -68,10 +68,11 @@ class RebuttalTest extends TestCase
         $rebuttals = Rebuttal::where('name', 'unit test rebuttal')
             ->get();
 
-        collect($rebuttals)->map(function($rebuttal) {
-            $response = $this->call('DELETE', "/rebuttals/{$rebuttal->id}");
-            $content = json_decode($response->content());
-            $this->assertTrue($content);
-        });
+        collect($rebuttals)
+            ->map(function($rebuttal) {
+                $response = $this->call('DELETE', "/rebuttals/{$rebuttal->id}");
+                $content = json_decode($response->content());
+                $this->assertTrue($content);
+            });
     }
 }

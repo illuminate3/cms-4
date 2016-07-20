@@ -118,12 +118,13 @@ class PromoController extends Controller
                 ->json($validator->errors());
         }
 
-        $promo = Promo::findOrFail($id)->update([
-            'name' => strtolower($request->get('name')),
-            'body' => $request->get('body'),
-            'campaign' => $request->get('campaign'),
-            'active' => $request->get('active')
-        ]);
+        $promo = Promo::findOrFail($id)
+            ->update([
+                'name' => strtolower($request->get('name')),
+                'body' => $request->get('body'),
+                'campaign' => $request->get('campaign'),
+                'active' => $request->get('active')
+            ]);
 
         return response()
             ->json(true);

@@ -43,7 +43,10 @@ new Vue({
 })
 
 const sortable = require('sortablejs')
+const element = document.querySelector('.draggable')
 
-sortable.create(document.querySelector('.draggable'), {
-    aggregate: 'tr'
-})
+if (element != null) {
+    sortable.create(element, {
+        aggregate: 'tr'
+    })
+}

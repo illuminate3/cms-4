@@ -111,13 +111,14 @@ class TermsController extends Controller
                 ->json($validator->errors());
         }
 
-        Terms::find($id)->update([
-            'active' => $request->get('active'),
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'type' => $request->get('type'),
-            'pattern' => $request->get('pattern')
-        ]);
+        Terms::find($id)
+            ->update([
+                'active' => $request->get('active'),
+                'name' => $request->get('name'),
+                'description' => $request->get('description'),
+                'type' => $request->get('type'),
+                'pattern' => $request->get('pattern')
+            ]);
 
         return response()
             ->json(true);

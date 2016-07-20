@@ -115,11 +115,12 @@ class SectionController extends Controller
                 ->json($validator->errors());
         }
 
-        $section = Section::findOrFail($id)->update([
-            'name' => strtolower($request->get('name')),
-            'content' => $request->get('content'),
-            'description' => $request->get('description')
-        ]);
+        $section = Section::findOrFail($id)
+            ->update([
+                'name' => strtolower($request->get('name')),
+                'content' => $request->get('content'),
+                'description' => $request->get('description')
+            ]);
 
         return response()
             ->json(true);
