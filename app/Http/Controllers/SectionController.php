@@ -17,6 +17,18 @@ use App\Data\Transformers\Section as SectionTransformer;
 class SectionController extends Controller
 {
     /**
+     * SectionController constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index', 'show']
+        ]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

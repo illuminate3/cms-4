@@ -21,6 +21,18 @@ use App\Data\Transformers\Rebuttal as RebuttalTransformer;
 class RebuttalController extends Controller
 {
     /**
+     * RebuttalController constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index', 'show']
+        ]);
+    }
+
+    /**
      * Return a full response of rebuttals
      *
      * @return mixed

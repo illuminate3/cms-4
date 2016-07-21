@@ -21,6 +21,18 @@ use App\Data\Transformers\Promo as PromoTransformer;
 class PromoController extends Controller
 {
     /**
+     * PromoController constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index', 'show']
+        ]);
+    }
+
+    /**
      * Return a full response of promos
      *
      * @return mixed

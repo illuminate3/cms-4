@@ -16,6 +16,18 @@ use App\Data\Transformers\Campaign as CampaignTransformer;
 class CampaignController extends Controller
 {
     /**
+     * CampaignController constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['all', 'find']
+        ]);
+    }
+
+    /**
      * Return a listing of all campaigns
      *
      * @return mixed

@@ -16,6 +16,18 @@ use App\Data\Transformers\Terms as TermsTransformer;
 class TermsController extends Controller
 {
     /**
+     * TermsController constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index', 'show']
+        ]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
