@@ -10,4 +10,12 @@ auth.login = (data) => {
     })
 }
 
+auth.create = (data) => {
+    return new Promise((resolve, reject) => {
+        Vue.http.post('/users', data).then(response => {
+            resolve(response)
+        })
+    })
+}
+
 export default auth

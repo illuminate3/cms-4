@@ -15,6 +15,7 @@ import CreateRebuttalComponent from './components/Rebuttal/Create.vue'
 import CreatePromoComponent from './components/Promo/Create.vue'
 import CreateSectionComponent from './components/Section/Create.vue'
 import CreateTermsComponent from './components/Terms/Create.vue'
+import CreateUsersComponent from './components/Auth/Create.vue'
 
 Vue.use(VueResource)
 
@@ -40,7 +41,8 @@ new Vue({
         CreateRebuttalComponent,
         CreatePromoComponent,
         CreateSectionComponent,
-        CreateTermsComponent
+        CreateTermsComponent,
+        CreateUsersComponent
     }
 })
 

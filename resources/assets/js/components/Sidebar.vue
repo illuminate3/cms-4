@@ -42,6 +42,14 @@
                     </ul>
                 </li>
 
+                <li v-show="admin">
+                    <a @click="toggle('settings')" :class="{ 'active': active == 'settings' }">Settings</a>
+                    <ul class="settings slidedown">
+                        <li><a href="/users">Users</a></li>
+                        <li><a href="/users/create">New User</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="/logout">Leave</a></li>
             </ul>
         </div>
@@ -51,7 +59,7 @@
 <script>
 
 export default {
-    props: ['name'],
+    props: ['name', 'admin'],
 
     data() {
         return {

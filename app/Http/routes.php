@@ -19,6 +19,20 @@ Route::group(['middleware' => 'guest'], function() {
 |
 */
 Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'admin'], function() {
+        Route::get('/users', [
+            'as' => 'users',
+            'uses' => 'AuthController@index'
+        ]);
+
+        Route::get('/users/create', [
+            'as' => 'users.create',
+            'uses' => 'AuthController@create'
+        ]);
+
+        Route::post('/users', 'AuthController@store');
+    });
+
     Route::get('/dashboard', [
         'as' => 'dashboard',
         'uses' => 'PagesController@dashboard'
@@ -48,7 +62,7 @@ Route::group(['prefix' => 'campaigns'], function() {
         'uses' => 'CampaignController@find'
     ]);
 
-    Route::get('/dashboard/{id}', [
+    Route::get('/{id}/dashboard', [
         'as' => 'campaigns.view',
         'uses' => 'CampaignController@show'
     ]);

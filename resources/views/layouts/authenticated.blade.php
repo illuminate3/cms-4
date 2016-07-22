@@ -4,7 +4,10 @@
     <div class="container-fluid dashboard">
         <div class="row">
             <div class="col-md-2">
-                <sidebar-component name="{{ Auth::user()->name }}"></sidebar-component>
+                <sidebar-component
+                    name="{{ Auth::user()->name }}"
+                    admin="{{ Auth::user()->isAdmin() }}"
+                ></sidebar-component>
             </div>
             <div class="col-md-10 no-padding">
                 <nav class="navbar">

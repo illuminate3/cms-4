@@ -65,9 +65,14 @@
                 text-align: right;
                 font-size: 0.9em;
 
-                i.fa {
-                    font-size: 0.75em;
-                    margin-left: 10px;
+                a {
+                    color: white;
+                    text-decoration: none;
+
+                    i.fa {
+                        font-size: 0.75em;
+                        margin-left: 10px;
+                    }
                 }
             }
         }

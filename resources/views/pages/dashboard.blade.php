@@ -20,7 +20,7 @@
                             <span class="number">{{ $campaigns->count() }}</span>
                         </p>
                         <span class="footer" style="background-color: #16a085">
-                            View all campaigns <i class="fa fa-arrow-circle-right"></i>
+                            <a href="{{ route('campaigns.all') }}">View all campaigns <i class="fa fa-arrow-circle-right"></i></a>
                         </span>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                             <span class="number">{{ $promos->count() }}</span>
                         </p>
                         <span class="footer" style="background-color: #2980b9">
-                            View all promos <i class="fa fa-arrow-circle-right"></i>
+                            <a href="{{ route('promos.index') }}">View all promos <i class="fa fa-arrow-circle-right"></i></a>
                         </span>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <span class="number">{{ $rebuttals->count() }}</span>
                         </p>
                         <span class="footer" style="background-color: #2c3e50">
-                            View all rebuttals <i class="fa fa-arrow-circle-right"></i>
+                            <a href="{{ route('rebuttals.index') }}">View all rebuttals <i class="fa fa-arrow-circle-right"></i></a>
                         </span>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             <span class="number">{{ $terms->count() }}</span>
                         </p>
                         <span class="footer" style="background-color: #d35400">
-                            View all terms <i class="fa fa-arrow-circle-right"></i>
+                            <a href="{{ route('terms.index') }}">View all terms <i class="fa fa-arrow-circle-right"></i></a>
                         </span>
                     </div>
                 </div>

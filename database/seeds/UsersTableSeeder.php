@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
             ->delete();
 
         User::create([
+            'admin' => 1,
             'name' => 'testy mctesterson',
             'email' => 'testy@test.com',
             'biography' => 'a test account',
