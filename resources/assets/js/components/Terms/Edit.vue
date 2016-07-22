@@ -38,6 +38,7 @@
                     <div class="form-group row">
                         <div class="col-sm-7 col-sm-offset-3">
                             <button class="btn btn-default full">Save</button>
+                            <button class="btn btn-danger full" @click.prevent="showAddSectionModal">Add Section</button>
                         </div>
                     </div> 
                 </form>
@@ -88,6 +89,28 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="add__section__modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="header">
+                        <img src="/images/flaticons/browser.png" class="image-center">
+                    </div>
+                    <div class="content">
+                        <form @submit.prevent="addSection">
+                            <div class="form-group">
+                                <select class="form-control c-select" v-model="added">
+                                    <option v-for="section in selectableSections" value="{{ section.id }}">{{ section.name }}</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-default">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -115,20 +138,28 @@ export default {
                 type: null,
                 pattern: null
             },
-            section: {}
+            selectableSections: [],
+            section: {},
+            added: null
         }
     },
 
     created() {
         this.getTermsAndConditions()
+        this.getSelectableSections()
     },
 
     methods: {
         getTermsAndConditions() {
             terms.find(this.id).then(terms => {
                 this.terms = JSON.parse(terms.data).data
-
                 this.data.active = this.terms.active
+            })
+        },
+
+        getSelectableSections() {
+            section.all().then(response => {
+                this.selectableSections = JSON.parse(response.data).data
             })
         },
 
@@ -148,6 +179,10 @@ export default {
 
         removeSection(section) {
             this.terms.sections.$remove(section)
+        },
+
+        showAddSectionModal() {
+            $('#add__section__modal').modal('show')
         },
 
         setupPattern() {
@@ -171,6 +206,16 @@ export default {
         getSectionToView(id) {
             section.find(id).then(section => {
                 this.section = JSON.parse(section.data).data
+            })
+        },
+
+        addSection() {
+            this.selectableSections.forEach((element, index, array) => {
+                const current = this.selectableSections[index]
+
+                if (current.id === this.added) {
+                    this.terms.sections.push(current)
+                }
             })
         }
     }
