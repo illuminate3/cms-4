@@ -36,9 +36,8 @@ class CampaignController extends Controller
     {
         $campaigns = Campaign::all();
 
-        return (new Manager)->createData(
-            new Collection($campaigns, new CampaignTransformer)
-        )->toJson();
+        return view('campaign.all')
+            ->with('campaigns', $campaigns);
     }
 
     /**

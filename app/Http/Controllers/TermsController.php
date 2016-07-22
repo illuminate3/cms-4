@@ -36,9 +36,8 @@ class TermsController extends Controller
     {
         $terms = Terms::all();
 
-        return (new Manager)->createData(
-            new Collection($terms, new TermsTransformer)
-        )->toJson();
+        return view('terms.all')
+            ->with('terms', $terms);
     }
 
     /**

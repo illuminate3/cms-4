@@ -39,11 +39,10 @@ class PromoController extends Controller
      */
     public function index()
     {
-        $promos = Promo::all();
+        $promos = Promo::simplePaginate(20);
 
-        return (new Manager)->createData(
-            new Collection($promos, new PromoTransformer)
-        )->toJson();
+        return view('promos.all')
+            ->with('promos', $promos);
     }
 
     /**

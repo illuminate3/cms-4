@@ -78,7 +78,9 @@
                             <tbody>
                                 @foreach ($campaigns as $campaign)
                                     <tr>
-                                        <td><a href="">{{ $campaign->name }}</a></td>
+                                        <td><a href="{{ route('campaigns.view', [
+                                            'id' => $campaign->id
+                                        ]) }}">{{ $campaign->name }}</a></td>
                                         <td>{{ $campaign->script }}</td>
                                         <td>{{ $campaign->rebuttals()->count() }}</td>
                                         <td>{{ $campaign->promos()->count() }}</td>

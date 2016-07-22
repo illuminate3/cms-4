@@ -39,11 +39,10 @@ class RebuttalController extends Controller
      */
     public function index()
     {
-        $rebuttals = Rebuttal::all();
+        $rebuttals = Rebuttal::simplePaginate(20);
 
-        return (new Manager)->createData(
-            new Collection($rebuttals, new RebuttalTransformer)
-        )->toJson();
+        return view('rebuttals.all')
+            ->with('rebuttals', $rebuttals);
     }
 
     /**

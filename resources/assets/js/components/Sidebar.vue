@@ -19,8 +19,8 @@
                 <li>
                     <a @click="toggle('rebuttals')" :class="{ 'active': active == 'rebuttals' }">Rebuttals</a>
                     <ul class="rebuttals slidedown">
-                        <li><a href="/promos">All Rebuttals</a></li>
-                        <li><a href="/promos/create">New Rebuttal</a></li>
+                        <li><a href="/rebuttals">All Rebuttals</a></li>
+                        <li><a href="/rebuttals/create">New Rebuttal</a></li>
                     </ul>
                 </li>
 
