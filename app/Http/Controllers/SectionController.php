@@ -35,11 +35,10 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $sections = Section::all();
+        $sections = Section::simplePaginate(20);
 
-        return (new Manager)->createData(
-            new Collection($sections, new SectionTransformer)
-        )->toJson();
+        return view('sections.all')
+            ->with('sections', $sections);
     }
 
     /**
