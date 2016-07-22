@@ -35,7 +35,7 @@
                         </table>
                     </div>
                 @else
-                    You haven't created any campaigns yet, create one <a href="{{ route('campaigns.create') }}">here</a>.
+                    You haven't created any campaigns yet, create one <a href="{{ route('campaign.create') }}">here</a>.
                 @endif
             </div>
         </div>
