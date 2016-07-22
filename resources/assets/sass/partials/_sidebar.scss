@@ -13,6 +13,7 @@
         left: 0;
         width: inherit;
         border-right: 1px solid #ccc;
+        z-index: 100;
 
         .header {
             margin: 25px 0;
@@ -40,27 +41,45 @@
             margin-top: 15px;
             margin-bottom: 15px;
 
-            ul {
+            > ul {
                 list-style: none;
                 padding-left: 0;
 
-                li {
+                > li {
                     a {
-                        color: $sidebar-color;
-                        display: block;
-                        width: 100%;
                         text-decoration: none;
-                        padding: 6px 20px;
                         font-size: 0.95em;
                         font-weight: lighter;
+                        color: $sidebar-color;
+                    }
+
+                    > a {
+                        display: block;
+                        width: 100%;
+                        padding: 6px 20px;
 
                         i {
                             margin-right: 15px;
                         }
                     }
 
-                    a.active, a:hover {
+                    > a.active, > a:hover {
                         background-color: #39414e;
+                    }
+
+                    ul {
+                        list-style: none;
+                        display: none;
+                        background-color: #313844;
+                        padding: 10px 20px;
+
+                        li {
+                            a {
+                                display: block;
+                                width: 100%;
+                                padding: 5px 0;
+                            }
+                        }
                     }
                 }
             }

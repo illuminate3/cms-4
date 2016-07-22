@@ -4,8 +4,6 @@
         padding: 25px;
 
         .user {
-            margin-bottom: 25px;
-
             @media screen and (max-width: $breakpoint) {
                 img {
                     display: block;
@@ -33,83 +31,44 @@
                 border-radius: 100%;
             }
         }
-
-        @media screen and (max-width: $breakpoint) {
-            .links {
-                display: none;
-            }
-        }
-
-        .links {
-            margin-bottom: -30px;
-            padding-left: 25px;
-
-            ul {
-                list-style: none;
-                padding-left: 0;
-
-                li {
-                    display: inline-block;
-                    margin-right: 4%;
-
-                    a {
-                        color: $scheme;
-                        font-weight: bolder;
-                        border-bottom: 4px solid white;
-                        padding: 10px 0;
-                        text-decoration: none;
-
-                        -webkit-transition: 200ms border-bottom ease-in-out;
-                        -moz-transition: 200ms border-bottom ease-in-out;
-                        -ms-transition: 200ms border-bottom ease-in-out;
-                        transition: 200ms border-bottom ease-in-out;
-                    }
-
-                    a.active, a:hover {
-                        border-bottom: 4px solid #4e5665;
-                    }
-                }
-            }
-        }
     }
 
     .statistics {
-        @media screen and (max-width: $breakpoint) {
-            .statistic {
-                margin: 10px;
-            }
-        }
-
         .statistic {
-            border-radius: 100%;
-            padding: 25px;
-            width: 150px;
-            height: 150px;
+            padding: 15px;
+            color: white;
+            position: relative;
 
-            .number, .description {
-                display: block;
-                text-align: center;
+            .s__m {
+                padding-bottom: 10px;
+
+                .description {
+                    font-size: 0.65;
+                    font-weight: lighter;
+                    display: block;
+                }
+
+                .number {
+                    font-size: 2em;
+                    display: block;
+                }
             }
 
-            .number {
-                font-size: 2em;
+            .footer {
+                cursor: pointer;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 5px 10px;
+                text-align: right;
+                font-size: 0.9em;
+
+                i.fa {
+                    font-size: 0.75em;
+                    margin-left: 10px;
+                }
             }
-        }
-
-        .statistic:nth-child(1) {
-            border: 6px solid #3498db;
-        }
-
-        .statistic:nth-child(2) {
-            border: 6px solid #e74c3c;
-        }
-
-        .statistic:nth-child(3) {
-            border: 6px solid #34495e;
-        }
-
-        .statistic:nth-child(4) {
-            border: 6px solid #9b59b6;
         }
     }
 }

@@ -2,8 +2,8 @@ let Vue = require('vue')
 let VueResource = require('vue-resource')
 
 import LoginComponent from './components/Login.vue'
-import DashboardComponent from './components/Dashboard.vue'
 import CampaignComponent from './components/Campaign.vue'
+import SidebarComponent from './components/Sidebar.vue'
 
 import EditRebuttalComponent from './components/Rebuttal/Edit.vue'
 import EditPromoComponent from './components/Promo/Edit.vue'
@@ -28,8 +28,8 @@ new Vue({
 
     components: {
         LoginComponent,
-        DashboardComponent,
         CampaignComponent,
+        SidebarComponent,
 
         EditRebuttalComponent,
         EditPromoComponent,

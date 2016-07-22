@@ -4,20 +4,7 @@
     <div class="container-fluid dashboard">
         <div class="row">
             <div class="col-md-2">
-                <div class="sidebar" id="sidebar">
-                    <div class="header">
-                        <img src="{{ asset('images/flaticons/man.png') }}">
-                        <h6>{{ Auth::user()->name }}</h6>
-                    </div>
-                    <div class="links">
-                        <ul>
-                            <li><a href="{{ route('dashboard') }}" class="active">Dashboard</a></li>
-                            <li><a href="">Account</a></li>
-                            <li><a href="">Settings</a></li>
-                            <li><a href="{{ route('logout') }}">Leave</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <sidebar-component name="{{ Auth::user()->name }}"></sidebar-component>
             </div>
             <div class="col-md-10 no-padding">
                 <nav class="navbar">
