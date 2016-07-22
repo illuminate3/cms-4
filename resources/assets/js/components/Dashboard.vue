@@ -17,170 +17,172 @@
         </div>
     </div>
     
-    <div class="statistics padded">
-        <div class="card">
-            <div class="card-header default">Statistics</div>
-            <div class="card-block">
-                <div class="flex-container">
-                    <div class="statistic flex-item">
-                        <span class="number">{{ rebuttals.length }}</span>
-                        <span class="description">Rebuttals</span>
-                    </div>
-                    <div class="statistic flex-item">
-                        <span class="number">{{ campaigns.length }}</span>
-                        <span class="description">Campaigns</span>
-                    </div>
-                    <div class="statistic flex-item">
-                        <span class="number">{{ promos.length }}</span>
-                        <span class="description">Promotions</span>
-                    </div>
-                    <div class="statistic flex-item">
-                        <span class="number">{{ terms.length }}</span>
-                        <span class="description">Terms</span>
+    <div class="padded">
+        <div class="statistics">
+            <div class="card">
+                <div class="card-header default">Statistics</div>
+                <div class="card-block">
+                    <div class="flex-container">
+                        <div class="statistic flex-item">
+                            <span class="number">{{ rebuttals.length }}</span>
+                            <span class="description">Rebuttals</span>
+                        </div>
+                        <div class="statistic flex-item">
+                            <span class="number">{{ campaigns.length }}</span>
+                            <span class="description">Campaigns</span>
+                        </div>
+                        <div class="statistic flex-item">
+                            <span class="number">{{ promos.length }}</span>
+                            <span class="description">Promotions</span>
+                        </div>
+                        <div class="statistic flex-item">
+                            <span class="number">{{ terms.length }}</span>
+                            <span class="description">Terms</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row padded">
-        <div class="col-sm-9">
-            <div class="card" v-show="section == 'campaigns'">
-                <div class="card-header default">Campaigns</div>
-                <div class="card-block">
-                    <div class="table-responsive" v-show="campaigns.length > 0">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Campaign</th>
-                                    <th>Rebuttals</th>
-                                    <th>Promos</th>
-                                    <th>Timestamp</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="campaign in campaigns">
-                                    <td><a href="/campaigns/dashboard/{{ campaign.id }}">{{ campaign.name }}</a></td>
-                                    <td>{{ campaign.rebuttals.data.length }}</td>
-                                    <td>{{ campaign.promos.data.length }}</td>
-                                    <td>{{ campaign.timestamp }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div v-else>You currently do not have any campaigns.</div>
-                </div>
-            </div>
-            <div class="card" v-show="section == 'rebuttals'">
-                <div class="card-header default">Rebuttals</div>
-                <div class="card-block">
-                    <div class="table-responsive" v-show="rebuttals.length > 0">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Campaign</th>
-                                    <th>Active</th>
-                                    <th>Rebuttal</th>
-                                    <th>Updated</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="rebuttal in rebuttals">
-                                    <td>{{ rebuttal.campaignName }}</td>
-                                    <td>{{ rebuttal.active }}</td>
-                                    <td><a href="/rebuttals/{{ rebuttal.id }}/edit">{{ rebuttal.name }}</a></td>
-                                    <td>{{ rebuttal.updated }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div v-else>You currenly do not have any rebuttals.</div>
-                </div>
-            </div>
-            <div class="card" v-show="section == 'promos'">
-                <div class="card-header default">Promos</div>
-                <div class="card-block">
-                    <div class="table-responsive" v-show="promos.length > 0">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Campaign</th>
-                                    <th>Active</th>
-                                    <th>Promo</th>
-                                    <th>Updated</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="promo in promos">
-                                    <td>{{ promo.campaignName }}</td>
-                                    <td>{{ promo.active }}</td>
-                                    <td><a href="/promos/{{ promo.id }}/edit">{{ promo.name }}</a></td>
-                                    <td>{{ promo.updated }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div v-else>You currently do not have any promotions.</div>
-                </div>
-            </div>
-            <div v-show="section == 'terms'">
-                <div class="card">
-                    <div class="card-header default">Terms</div>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="card" v-show="section == 'campaigns'">
+                    <div class="card-header default">Campaigns</div>
                     <div class="card-block">
-                        <div class="table-responsive" v-show="terms.length > 0">
+                        <div class="table-responsive" v-show="campaigns.length > 0">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Sections</th>
-                                        <th>Updated</th>
+                                        <th>Campaign</th>
+                                        <th>Rebuttals</th>
+                                        <th>Promos</th>
+                                        <th>Timestamp</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="term in terms">
-                                        <td><a href="/terms/{{ term.id }}/edit">{{ term.name }}</a></td>
-                                        <td>{{ term.type }}</td>
-                                        <td>{{ term.sections.length }}</td>
-                                        <td>{{ term.updated }}</td>
+                                    <tr v-for="campaign in campaigns">
+                                        <td><a href="/campaigns/dashboard/{{ campaign.id }}">{{ campaign.name }}</a></td>
+                                        <td>{{ campaign.rebuttals.data.length }}</td>
+                                        <td>{{ campaign.promos.data.length }}</td>
+                                        <td>{{ campaign.timestamp }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div v-else>You haven't built any terms and conditions yet.</div>
+                        <div v-else>You currently do not have any campaigns.</div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header default">Sections</div>
+                <div class="card" v-show="section == 'rebuttals'">
+                    <div class="card-header default">Rebuttals</div>
                     <div class="card-block">
-                        <div class="table-responsive" v-show="sections.length > 0">
+                        <div class="table-responsive" v-show="rebuttals.length > 0">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Campaign</th>
+                                        <th>Active</th>
+                                        <th>Rebuttal</th>
                                         <th>Updated</th>
-                                        <th>Created</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="section in sections">
-                                        <td><a href="/sections/{{ section.id }}/edit">{{ section.name }}</a></td>
-                                        <td>{{ section.updated }}</td>
-                                        <td>{{ section.created }}</td>
+                                    <tr v-for="rebuttal in rebuttals">
+                                        <td>{{ rebuttal.campaignName }}</td>
+                                        <td>{{ rebuttal.active }}</td>
+                                        <td><a href="/rebuttals/{{ rebuttal.id }}/edit">{{ rebuttal.name }}</a></td>
+                                        <td>{{ rebuttal.updated }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div v-else>You haven't created any sections yet.</div>
+                        <div v-else>You currenly do not have any rebuttals.</div>
+                    </div>
+                </div>
+                <div class="card" v-show="section == 'promos'">
+                    <div class="card-header default">Promos</div>
+                    <div class="card-block">
+                        <div class="table-responsive" v-show="promos.length > 0">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Campaign</th>
+                                        <th>Active</th>
+                                        <th>Promo</th>
+                                        <th>Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="promo in promos">
+                                        <td>{{ promo.campaignName }}</td>
+                                        <td>{{ promo.active }}</td>
+                                        <td><a href="/promos/{{ promo.id }}/edit">{{ promo.name }}</a></td>
+                                        <td>{{ promo.updated }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div v-else>You currently do not have any promotions.</div>
+                    </div>
+                </div>
+                <div v-show="section == 'terms'">
+                    <div class="card">
+                        <div class="card-header default">Terms</div>
+                        <div class="card-block">
+                            <div class="table-responsive" v-show="terms.length > 0">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Sections</th>
+                                            <th>Updated</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="term in terms">
+                                            <td><a href="/terms/{{ term.id }}/edit">{{ term.name }}</a></td>
+                                            <td>{{ term.type }}</td>
+                                            <td>{{ term.sections.length }}</td>
+                                            <td>{{ term.updated }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div v-else>You haven't built any terms and conditions yet.</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header default">Sections</div>
+                        <div class="card-block">
+                            <div class="table-responsive" v-show="sections.length > 0">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Updated</th>
+                                            <th>Created</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="section in sections">
+                                            <td><a href="/sections/{{ section.id }}/edit">{{ section.name }}</a></td>
+                                            <td>{{ section.updated }}</td>
+                                            <td>{{ section.created }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div v-else>You haven't created any sections yet.</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-3">
-            <a href="/campaigns/create" class="btn btn-block btn-default">New Campaign</a>
-            <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
-            <a href="/promos/create" class="btn btn-block btn-warning">New Promo</a>
-            <a href="/sections/create" class="btn btn-block btn-danger">New Section</a>
+            <div class="col-sm-3">
+                <a href="/campaigns/create" class="btn btn-block btn-default">New Campaign</a>
+                <a href="/rebuttals/create" class="btn btn-block btn-primary">New Rebuttal</a>
+                <a href="/promos/create" class="btn btn-block btn-warning">New Promo</a>
+                <a href="/sections/create" class="btn btn-block btn-danger">New Section</a>
+            </div>
         </div>
     </div>
 </template>

@@ -37,7 +37,7 @@ class Terms extends TransformerAbstract
      */
     private function getSectionsByPattern($pattern): array
     {
-        if (is_null($pattern)) {
+        if (empty($pattern)) {
             return [];
         }
 

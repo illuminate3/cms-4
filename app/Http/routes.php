@@ -9,10 +9,15 @@ Route::group(['middleware' => 'guest'], function() {
     Route::post('/', 'AuthController@check');
 });
 
-/**
- * Routes that require authentication via the
- * web application
- */
+/*
+|--------------------------------------------------------------------------
+| Web Authenticated Routes
+|--------------------------------------------------------------------------
+|
+| Below are some of the routes that required authenticated from the web
+| application, there are others but those will have controller middleware.
+|
+*/
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', [
         'as' => 'dashboard',
@@ -49,6 +54,16 @@ Route::group(['prefix' => 'campaigns'], function() {
     ]);
 });
 
+/*
+|--------------------------------------------------------------------------
+| Application resource routes
+|--------------------------------------------------------------------------
+|
+| These are the applications resource routes, the middleware is defined
+| in the controller on specific methods. To view the routes below run
+| php artisan route:list in your root directory.
+|
+*/
 Route::resource('rebuttals', 'RebuttalController');
 Route::resource('sections', 'SectionController');
 Route::resource('promos', 'PromoController');

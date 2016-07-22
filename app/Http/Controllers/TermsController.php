@@ -67,11 +67,9 @@ class TermsController extends Controller
         }
 
         Terms::create([
-            'active' => $request->get('active'),
             'name' => $request->get('name'),
             'description' => $request->get('description'),
-            'type' => $request->get('type'),
-            'pattern' => $request->get('pattern')
+            'type' => $request->get('type')
         ]);
 
         return response()
@@ -160,11 +158,10 @@ class TermsController extends Controller
     private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
-            'active' => 'integer|required|in:0,1',
+            'active' => 'integer|in:0,1',
             'name' => 'required|max:75',
             'description' => 'required|max:200',
-            'type' => 'required',
-            'pattern' => 'required'
+            'type' => 'required'
         ]);
     }
 }
