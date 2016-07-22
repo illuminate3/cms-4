@@ -10,51 +10,88 @@
             </div>
         </div>
     </div>
-    <div class="statistics padded">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="statistic" style="background-color: #1abc9c">
-                    <p class="s__m">
-                        <span class="description">Total campaigns created</span>
-                        <span class="number">{{ $campaigns->count() }}</span>
-                    </p>
-                    <span class="footer" style="background-color: #16a085">
-                        View all campaigns <i class="fa fa-arrow-circle-right"></i>
-                    </span>
+    <div class="padded">
+        <div class="statistics">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="statistic" style="background-color: #1abc9c">
+                        <p class="s__m">
+                            <span class="description">Total campaigns created</span>
+                            <span class="number">{{ $campaigns->count() }}</span>
+                        </p>
+                        <span class="footer" style="background-color: #16a085">
+                            View all campaigns <i class="fa fa-arrow-circle-right"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="statistic" style="background-color: #3498db">
+                        <p class="s__m">
+                            <span class="description">Total promos added</span>
+                            <span class="number">{{ $promos->count() }}</span>
+                        </p>
+                        <span class="footer" style="background-color: #2980b9">
+                            View all promos <i class="fa fa-arrow-circle-right"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="statistic" style="background-color: #34495e">
+                        <p class="s__m">
+                            <span class="description">Total rebuttals added</span>
+                            <span class="number">{{ $rebuttals->count() }}</span>
+                        </p>
+                        <span class="footer" style="background-color: #2c3e50">
+                            View all rebuttals <i class="fa fa-arrow-circle-right"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="statistic" style="background-color: #e67e22">
+                        <p class="s__m">
+                            <span class="description">Total terms created</span>
+                            <span class="number">{{ $terms->count() }}</span>
+                        </p>
+                        <span class="footer" style="background-color: #d35400">
+                            View all terms <i class="fa fa-arrow-circle-right"></i>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="statistic" style="background-color: #3498db">
-                    <p class="s__m">
-                        <span class="description">Total promos added</span>
-                        <span class="number">{{ $promos->count() }}</span>
-                    </p>
-                    <span class="footer" style="background-color: #2980b9">
-                        View all promos <i class="fa fa-arrow-circle-right"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="statistic" style="background-color: #34495e">
-                    <p class="s__m">
-                        <span class="description">Total rebuttals added</span>
-                        <span class="number">{{ $rebuttals->count() }}</span>
-                    </p>
-                    <span class="footer" style="background-color: #2c3e50">
-                        View all rebuttals <i class="fa fa-arrow-circle-right"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="statistic" style="background-color: #e67e22">
-                    <p class="s__m">
-                        <span class="description">Total terms created</span>
-                        <span class="number">{{ $terms->count() }}</span>
-                    </p>
-                    <span class="footer" style="background-color: #d35400">
-                        View all terms <i class="fa fa-arrow-circle-right"></i>
-                    </span>
-                </div>
+        </div>
+        <div class="campaigns card">
+            <div class="card-header">Your campaigns</div>
+            <div class="card-block">
+                @if ($campaigns->count() > 0)
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Script</th>
+                                    <th>Rebuttals</th>
+                                    <th>Promos</th>
+                                    <th>Created</th>
+                                    <th>Last Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($campaigns as $campaign)
+                                    <tr>
+                                        <td><a href="">{{ $campaign->name }}</a></td>
+                                        <td>{{ $campaign->script }}</td>
+                                        <td>{{ $campaign->rebuttals()->count() }}</td>
+                                        <td>{{ $campaign->promos()->count() }}</td>
+                                        <td>{{ $campaign->created_at->diffForHumans() }}</td>
+                                        <td>{{ $campaign->updated_at->diffForHumans() }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    You dont have any campaigns yet, create one <a href="{{ route('campaign.create') }}">here</a>.
+                @endif
             </div>
         </div>
     </div>

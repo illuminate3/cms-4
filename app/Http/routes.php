@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Route::group(['prefix' => 'campaigns'], function() {
-    Route::get('/all', [
+    Route::get('/', [
         'as' => 'campaigns.all',
         'uses' => 'CampaignController@all'
     ]);
