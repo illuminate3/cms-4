@@ -28,7 +28,7 @@ class RebuttalController extends Controller
     public function __construct()
     {
         $this->middleware('auth', [
-            'except' => ['index', 'show']
+            'except' => ['show']
         ]);
     }
 
@@ -69,9 +69,11 @@ class RebuttalController extends Controller
     public function edit($id): \Illuminate\View\View
     {
         $rebuttal = Rebuttal::findOrFail($id);
+        $campaigns = Campaign::all();
 
         return view('rebuttals.edit')
-            ->with('id', $id);
+            ->with('id', $id)
+            ->with('campaigns', $campaigns);
     }
 
     /**

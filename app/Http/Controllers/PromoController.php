@@ -108,9 +108,11 @@ class PromoController extends Controller
     public function edit($id): \Illuminate\View\View
     {
         $promo = Promo::findOrFail($id);
+        $campaigns = Campaign::all();
 
         return view('promos.edit')
-            ->with('id', $id);
+            ->with('id', $id)
+            ->with('campaigns', $campaigns);
     }
 
     /**

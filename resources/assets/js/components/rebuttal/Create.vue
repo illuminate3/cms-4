@@ -54,6 +54,11 @@ import rebuttals from '../../core/rebuttal.js'
 import campaigns from '../../core/campaign.js'
 
 export default {
+    props: ['campaigns'],
+
+    created() {
+        this.campaigns = JSON.parse(this.campaigns)
+    },
 
     data() {
         return {
@@ -63,7 +68,6 @@ export default {
                 body: null,
                 active: null
             },
-            campaigns: [],
             errors: {
                 name: null,
                 active: null,
@@ -73,17 +77,7 @@ export default {
         }
     },
 
-    created() {
-        this.getAllCampaigns()
-    },
-
     methods: {
-        getAllCampaigns() {
-            campaigns.all().then(campaigns => {
-                this.campaigns = JSON.parse(campaigns.data).data
-            })
-        },
-
         save() {
             rebuttals.create(this.data).then(result => {
                 const content = JSON.parse(result.body)

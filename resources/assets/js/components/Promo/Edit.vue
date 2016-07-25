@@ -23,6 +23,11 @@
                         <div class="col-sm-7">
                             <select v-model="data.campaign" class="form-control c-select">
                                 <option value="{{ promo.campaign }}">{{ promo.campaignName }}</option>
+                                <option
+                                    v-for="campaign in campaigns"
+                                    v-show="campaign.script != promo.campaign"
+                                    value="{{ campaign.script }}"
+                                >{{ campaign.name }}</option>
                             </select>
                             <label class="form-control-label" v-show="errors.campaign != null">{{ errors.campaign }}</label>
                         </div>
@@ -62,7 +67,7 @@ import promos from '../../core/promo.js'
 
 export default {
 
-    props: ['id'],
+    props: ['id', 'campaigns'],
 
     data() {
         return {
@@ -73,7 +78,6 @@ export default {
                 active: null
             },
             promo: [],
-            campaigns: [],
             data: {
                 name: null,
                 body: null,
@@ -85,6 +89,8 @@ export default {
 
     created() {
         this.getPromo()
+
+        this.campaigns = JSON.parse(this.campaigns)
     },
 
     methods: {
@@ -94,12 +100,6 @@ export default {
 
                 this.data.campaign = this.promo.campaign
                 this.data.active = this.promo.active
-            })
-        },
-
-        getCampaigns() {
-            campaigns.all().then(campaigns => {
-                this.campaigns = JSON.parse(campaigns.data).data
             })
         },
 
