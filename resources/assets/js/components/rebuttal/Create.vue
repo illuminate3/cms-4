@@ -22,7 +22,7 @@
                         <label class="col-sm-3 text-xs-right">Campaign</label>
                         <div class="col-sm-7">
                             <select v-model="data.campaign" class="c-select form-control">
-                                <option v-for="campaign in campaigns" value="{{ campaign.id }}">{{ campaign.name }}</option>
+                                <option v-for="campaign in campaigns" value="{{ campaign.script }}">{{ campaign.name }}</option>
                             </select>
                             <label class="form-control-label" v-show="errors.campaign != null">{{ errors.campaign }}</label>
                         </div>

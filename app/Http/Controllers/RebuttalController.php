@@ -39,7 +39,8 @@ class RebuttalController extends Controller
      */
     public function index()
     {
-        $rebuttals = Rebuttal::simplePaginate(20);
+        $rebuttals = Rebuttal::orderBy('updated_at', 'desc')
+            ->simplePaginate(20);
 
         return view('rebuttals.all')
             ->with('rebuttals', $rebuttals);
@@ -169,7 +170,7 @@ class RebuttalController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:60',
             'body' => 'required',
-            'campaign' => 'required|integer|exists:campaigns,id',
+            'campaign' => 'required|integer|exists:campaigns,script',
             'active' => 'required|integer|in:0,1'
         ]);
     }

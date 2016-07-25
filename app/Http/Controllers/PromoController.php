@@ -39,7 +39,8 @@ class PromoController extends Controller
      */
     public function index()
     {
-        $promos = Promo::simplePaginate(20);
+        $promos = Promo::orderBy('updated_at', 'desc')
+            ->simplePaginate(20);
 
         return view('promos.all')
             ->with('promos', $promos);
@@ -167,7 +168,7 @@ class PromoController extends Controller
     private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
-            'campaign' => 'integer|required|exists:campaigns,id',
+            'campaign' => 'integer|required|exists:campaigns,script',
             'name' => 'required|max:60',
             'body' => 'required',
             'active' => 'integer|required|in:0,1'
