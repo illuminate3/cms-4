@@ -22,6 +22,6 @@ class Promo extends Model
      */
     public function campaign(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo('App\Models\Campaign', 'campaign', 'id');
+        return $this->belongsTo('App\Models\Campaign', 'campaign', 'script');
     }
 }

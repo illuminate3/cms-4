@@ -22,7 +22,7 @@ class Campaign extends Model
      */
     public function tabs(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Models\Tab', 'campaign', 'id');
+        return $this->hasMany('App\Models\Tab', 'campaign', 'script');
     }
 
     /**
@@ -32,7 +32,7 @@ class Campaign extends Model
      */
     public function promos(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Models\Promo', 'campaign', 'id');
+        return $this->hasMany('App\Models\Promo', 'campaign', 'script');
     }
 
     /**
@@ -42,7 +42,7 @@ class Campaign extends Model
      */
     public function rebuttals(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Models\Rebuttal', 'campaign', 'id');
+        return $this->hasMany('App\Models\Rebuttal', 'campaign', 'script');
     }
 
     /**
@@ -52,6 +52,6 @@ class Campaign extends Model
      */
     public function announcements(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Models\Announcement', 'campaign', 'id');
+        return $this->hasMany('App\Models\Announcement', 'campaign', 'script');
     }
 }

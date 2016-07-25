@@ -75,7 +75,7 @@ import campaigns from '../core/campaign.js'
 
 export default {
 
-    props: ['id'],
+    props: ['script'],
 
     data() {
         return {
@@ -91,7 +91,7 @@ export default {
 
     methods: {
         getCampaign() {
-            campaigns.find(this.id).then(campaign => {
+            campaigns.find(this.script).then(campaign => {
                 this.campaign = JSON.parse(campaign.data).data
                 this.rebuttals = this.campaign.rebuttals.data
                 this.promos = this.campaign.promos.data

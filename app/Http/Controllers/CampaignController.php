@@ -23,7 +23,7 @@ class CampaignController extends Controller
     public function __construct()
     {
         $this->middleware('auth', [
-            'except' => ['all', 'find']
+            'except' => ['find']
         ]);
     }
 
@@ -43,26 +43,28 @@ class CampaignController extends Controller
     /**
      * Display a campaigns dashboard
      *
-     * @param integer $id
+     * @param integer $script
      * @return Illuminate\View\View
      */
-    public function show($id)
+    public function show($script)
     {
-        $campaign = Campaign::findOrFail($id);
+        $campaign = Campaign::where('script', $script)
+            ->firstOrFail();
 
         return view('campaign.view')
-            ->with('id', $id);
+            ->with('script', $script);
     }
 
     /**
      * Find a specific campaign
      *
-     * @param integer $id
+     * @param integer $script
      * @return mixed
      */
-    public function find($id)
+    public function find($script)
     {
-        $campaign = Campaign::findOrFail($id);
+        $campaign = Campaign::where('script', $script)
+            ->firstOrFail();
 
         return (new Manager)->createData(
             new Item($campaign, new CampaignTransformer)

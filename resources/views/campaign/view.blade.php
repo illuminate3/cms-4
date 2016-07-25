@@ -2,6 +2,6 @@
 
 @section('main')
     <campaign-component
-        id="{{ $id }}"
+        script="{{ $script }}"
     ></campaign-component>
 @endsection
