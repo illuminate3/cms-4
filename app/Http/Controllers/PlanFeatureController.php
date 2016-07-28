@@ -16,6 +16,18 @@ use App\Data\Transformers\PlanFeature as PlanFeatureTransformer;
 class PlanFeatureController extends Controller
 {
     /**
+     * PlanFeatureController constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index']
+        ]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -73,7 +85,11 @@ class PlanFeatureController extends Controller
      */
     public function show($id)
     {
-        // ... show a feature
+       $feature = PlanFeature::findOrFail($id);
+
+        return (new Manager)->createData(
+            new Item($feature, new PlanFeatureTransformer)
+        )->toJson();
     }
 
     /**
@@ -87,7 +103,7 @@ class PlanFeatureController extends Controller
         $feature = PlanFeature::findOrFail($id);
 
         return view('features.edit')
-            ->with('feature', $feature);
+            ->with('id', $id);
     }
 
     /**

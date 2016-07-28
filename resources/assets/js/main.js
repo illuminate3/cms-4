@@ -9,6 +9,7 @@ import EditRebuttalComponent from './components/Rebuttal/Edit.vue'
 import EditPromoComponent from './components/Promo/Edit.vue'
 import EditTermsComponent from './components/Terms/Edit.vue'
 import EditSectionComponent from './components/Section/Edit.vue'
+import EditFeatureComponent from './components/Feature/Edit.vue'
 
 import CreateCampaignComponent from './components/Campaign/Create.vue'
 import CreateRebuttalComponent from './components/Rebuttal/Create.vue'
@@ -37,6 +38,7 @@ new Vue({
         EditPromoComponent,
         EditTermsComponent,
         EditSectionComponent,
+        EditFeatureComponent,
         
         CreateCampaignComponent,
         CreateRebuttalComponent,
