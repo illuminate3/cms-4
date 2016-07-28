@@ -4,7 +4,7 @@ const campaign = {}
 
 campaign.all = () => {
     return new Promise((resolve, reject) => {
-        Vue.http.get('/campaigns/all').then(response => {
+        Vue.http.get('/campaigns').then(response => {
             resolve(response)
         })
     })

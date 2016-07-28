@@ -78,6 +78,7 @@ Route::group(['prefix' => 'campaigns'], function() {
 | php artisan route:list in your root directory.
 |
 */
+Route::resource('features', 'PlanFeatureController');
 Route::resource('rebuttals', 'RebuttalController');
 Route::resource('sections', 'SectionController');
 Route::resource('promos', 'PromoController');
