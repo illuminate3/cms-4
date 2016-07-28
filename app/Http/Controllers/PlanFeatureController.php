@@ -28,6 +28,19 @@ class PlanFeatureController extends Controller
     }
 
     /**
+     * Display a listing of every feature
+     *
+     * @return \Illuminate\View\View
+     */
+    public function all(): \Illuminate\View\View
+    {
+        $features = PlanFeature::all();
+
+        return view('features.all')
+            ->with('features', $features);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

@@ -42,6 +42,13 @@ Route::group(['middleware' => 'auth'], function() {
         'as' => 'logout',
         'uses' => 'AuthController@destroy'
     ]);
+
+    Route::group(['prefix' => 'features'], function() {
+        Route::get('/all', [
+            'as' => 'features.all',
+            'uses' => 'PlanFeatureController@all'
+        ]);
+    });
 });
 
 Route::group(['prefix' => 'campaigns'], function() {
