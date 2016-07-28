@@ -33,6 +33,14 @@
                 </li>
 
                 <li>
+                    <a @click="toggle('features')" :class="{ 'active': active == 'features' }">Plan Features</a>
+                    <ul class="features slidedown">
+                        <li><a href="/features/create">New Feature</a></li>
+                        <li><a href="/features/all">All Features</a></li>
+                    </ul>
+                </li>
+
+                <li>
                     <a @click="toggle('terms')" :class="{ 'active': active == 'terms' }">Terms</a>
                     <ul class="terms slidedown">
                         <li><a href="/terms/create">New Terms</a></li>

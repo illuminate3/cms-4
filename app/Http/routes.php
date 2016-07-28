@@ -42,6 +42,13 @@ Route::group(['middleware' => 'auth'], function() {
         'as' => 'logout',
         'uses' => 'AuthController@destroy'
     ]);
+
+    Route::group(['prefix' => 'features'], function() {
+        Route::get('/all', [
+            'as' => 'features.all',
+            'uses' => 'PlanFeatureController@all'
+        ]);
+    });
 });
 
 Route::group(['prefix' => 'campaigns'], function() {
@@ -78,6 +85,7 @@ Route::group(['prefix' => 'campaigns'], function() {
 | php artisan route:list in your root directory.
 |
 */
+Route::resource('features', 'PlanFeatureController');
 Route::resource('rebuttals', 'RebuttalController');
 Route::resource('sections', 'SectionController');
 Route::resource('promos', 'PromoController');

@@ -1,29 +1,29 @@
 import Vue from '../main.js'
 
-const campaign = {}
+const feature = {}
 
-campaign.all = () => {
+feature.create = (data) => {
     return new Promise((resolve, reject) => {
-        Vue.http.get('/campaigns').then(response => {
+        Vue.http.post('/features', data).then(response => {
             resolve(response)
         })
     })
 }
 
-campaign.find = (id) => {
+feature.find = (id) => {
     return new Promise((resolve, reject) => {
-        Vue.http.get('/campaigns/' + id).then(response => {
+        Vue.http.get('/features/' + id).then(response => {
             resolve(response)
         })
     })
 }
 
-campaign.create = (data) => {
+feature.edit = (id, data) => {
     return new Promise((resolve, reject) => {
-        Vue.http.post('/campaigns/create', data).then(response => {
+        Vue.http.put('/features/' + id, data).then(response => {
             resolve(response)
         })
     })
 }
 
-export default campaign
+export default feature
