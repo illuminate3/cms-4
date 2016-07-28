@@ -16,6 +16,7 @@ import CreatePromoComponent from './components/Promo/Create.vue'
 import CreateSectionComponent from './components/Section/Create.vue'
 import CreateTermsComponent from './components/Terms/Create.vue'
 import CreateUsersComponent from './components/Auth/Create.vue'
+import CreateFeatureComponent from './components/Feature/Create.vue'
 
 Vue.use(VueResource)
 
@@ -42,7 +43,8 @@ new Vue({
         CreatePromoComponent,
         CreateSectionComponent,
         CreateTermsComponent,
-        CreateUsersComponent
+        CreateUsersComponent,
+        CreateFeatureComponent
     }
 })
 

@@ -7,6 +7,7 @@ use League\Fractal\Resource\{
     Collection
 };
 
+use Validator;
 use League\Fractal\Manager;
 use App\Models\PlanFeature;
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ class PlanFeatureController extends Controller
      */
     public function store(Request $request)
     {
-        $validor = $this->getValidator($request->all());
+        $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
             return response()
@@ -102,7 +103,7 @@ class PlanFeatureController extends Controller
 
         if ($validator->fails()) {
             return response()
-                ->json($validator->errors())
+                ->json($validator->errors());
         }
 
         $feature = PlanFeature::findOrFail($id)->update([
