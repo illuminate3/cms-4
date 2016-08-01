@@ -3,7 +3,7 @@
 @section('main')
     <div class="campaigns all padded">
         <div class="card">
-            <div class="card-header">Your terms and conditions</div>
+            <div class="card-header default">Your terms and conditions</div>
             <div class="card-block">
                 @if ($terms->count() > 0)
                     <div class="table-responsive">

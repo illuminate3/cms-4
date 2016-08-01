@@ -1,13 +1,11 @@
 <?php
 
-Route::group(['middleware' => 'guest'], function() {
-    Route::get('/', [
-        'as' => 'login',
-        'uses' => 'AuthController@login'
-    ]);
+Route::get('/', [
+    'as' => 'login',
+    'uses' => 'AuthController@login'
+]);
 
-    Route::post('/', 'AuthController@check');
-});
+Route::post('/', 'AuthController@check');
 
 /*
 |--------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 @section('main')
     <div class="features all padded">
         <div class="card">
-            <div class="card-header">Plan Features</div>
+            <div class="card-header default">Plan Features</div>
             <div class="card-block">
                 <table class="table">
                     <thead>

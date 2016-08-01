@@ -3,7 +3,7 @@
 @section('main')
     <div class="users padded all">
         <div class="card">
-            <div class="card-header">Registered users</div>
+            <div class="card-header default">Registered users</div>
             <div class="card-block">
                 @if ($users->count() > 0)
                     <div class="table-responsive">

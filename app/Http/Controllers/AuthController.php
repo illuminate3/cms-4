@@ -10,6 +10,18 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     /**
+     * AuthController constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['login', 'check']
+        ]);
+    }
+
+    /**
      * Display a listing of all users
      *
      * @return \Illuminate\View\Vieww
