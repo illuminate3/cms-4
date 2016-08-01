@@ -2,8 +2,8 @@
 
 @section('main')
     <div class="campaigns all padded">
-        <div class="card">
-            <div class="card-header default">Your rebuttals</div>
+        <div class="card primary">
+            <div class="card-header">Your rebuttals</div>
             <div class="card-block">
                 @if ($rebuttals->count() > 0)
                     <div class="table-responsive">

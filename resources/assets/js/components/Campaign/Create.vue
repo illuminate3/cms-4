@@ -1,7 +1,7 @@
 <template>
     <div class="campaign create padded">
-        <div class="card">
-            <div class="card-header default">New Campaign</div>
+        <div class="card primary">
+            <div class="card-header">New Campaign</div>
             <div class="card-block">
                 <form @submit.prevent="create">
                     <div class="form-group row" :class="{ 'has-danger': errors.name != null }">

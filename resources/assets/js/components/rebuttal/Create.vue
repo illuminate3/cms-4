@@ -1,7 +1,7 @@
 <template>
     <div class="rebuttal create padded">
         <div class="card">
-            <div class="card-header default">Create Rebuttal</div>
+            <div class="card-header">Create Rebuttal</div>
             <div class="card-block">
                 <form @submit.prevent="save">
                     <div class="form-group row" :class="{ 'has-danger': errors.name != null }">

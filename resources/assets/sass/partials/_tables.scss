@@ -1,5 +1,13 @@
 .table {
     width: 100%;
+
+    thead {
+        tr {
+            td, th {
+                border: none;
+            }
+        }
+    }
     
     tr {
         th, td {

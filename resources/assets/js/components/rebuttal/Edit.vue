@@ -1,7 +1,7 @@
 <template>
     <div class="rebuttal padded">
-        <div class="card">
-            <div class="card-header default">Edit Rebuttal</div>
+        <div class="card primary">
+            <div class="card-header">Edit Rebuttal</div>
             <div class="card-block">
                 <form @submit.prevent="update">
                     <div class="form-group row" :class="{ 'has-danger': errors.name != null }">
@@ -49,8 +49,8 @@
                 </form>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header danger">Danger Zone</div>
+        <div class="card danger">
+            <div class="card-header">Danger Zone</div>
             <div class="card-block">
                 <button class="btn btn-danger full" @click="destroy">Delete</button>
             </div>
