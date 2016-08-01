@@ -3,7 +3,7 @@
 @section('main')
     <div class="campaigns all padded">
         <div class="card">
-            <div class="card-header">Your promotions</div>
+            <div class="card-header default">Your promotions</div>
             <div class="card-block">
                 @if ($promos->count() > 0)
                     <div class="table-responsive">
