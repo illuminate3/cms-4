@@ -2,13 +2,13 @@
 
 @section('main')
     <div class="section edit padded">
-        <div class="card">
+        <div class="card primary">
             <div class="card-header">Edit Section</div>
             <div class="card-block">
                 <edit-section-component id="{{ $id }}"></edit-section-component>
             </div>
         </div>
-        <div class="card">
+        <div class="card primary">
             <div class="card-header">Terms using this section</div>
             <div class="card-block">
                 @if ($terms->count() > 0)

@@ -1,14 +1,25 @@
 .card {
-    border: none !important;
-
     .card-header.default {
         background-color: #f6f7f9;
         color: #4b4f56;
         border: none !important;
     }
+}
 
-    .card-header.danger {
+.card.danger {
+    border-color: #e74c3c;
+
+    .card-header {
         background-color: #e74c3c;
         color: white;
+    }
+}
+
+.card.primary {
+    border-color: #3498db;
+
+    .card-header {
+        color: white;
+        background-color: #3498db;
     }
 }

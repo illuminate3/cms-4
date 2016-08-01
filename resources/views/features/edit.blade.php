@@ -2,7 +2,7 @@
 
 @section('main')
     <div class="feature edit padded">
-        <div class="card">
+        <div class="card primary">
             <div class="card-header">Edit Plan Feature</div>
             <div class="card-block">
                 <edit-feature-component

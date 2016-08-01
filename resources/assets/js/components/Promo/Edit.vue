@@ -1,7 +1,7 @@
 <template>
     <div class="promo create padded">
-        <div class="card">
-            <div class="card-header default">Edit Promo</div>
+        <div class="card primary">
+            <div class="card-header">Edit Promo</div>
             <div class="card-block">
                 <form @submit.prevent="update">
                     <div class="form-group row" :class="{ 'has-danger': errors.name != null }">
@@ -49,8 +49,8 @@
                 </form>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header danger">Danger Zone</div>
+        <div class="card danger">
+            <div class="card-header">Danger Zone</div>
             <div class="card-block">
                 <button class="btn btn-danger" @click="destroy">Delete</button>
             </div>

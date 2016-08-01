@@ -1,7 +1,7 @@
 <template>
     <div class="promo create padded">
-        <div class="card">
-            <div class="card-header default">Create Promo</div>
+        <div class="card primary">
+            <div class="card-header">Create Promo</div>
             <div class="card-block">
                 <form @submit.prevent="save">
                     <div class="form-group row" :class="{ 'has-danger': errors.name != null }">

@@ -5,21 +5,21 @@
 }
 
 .btn-default {
-    background-color: $scheme;
+    background-color: #3498db;
     color: white;
 }
 
 .btn-default:hover {
-    background-color: $scheme-lighter;
+    background-color: #3498db;
     color: white;
 }
 
 .btn-danger {
-    background-color: #ff5c2d;
+    background-color: #e74c3c;
     color: white;
     border: none;
 }
 
 .btn-danger:hover {
-    background-color: #e74c3c;
+    background-color: #ff5c2d;
 }

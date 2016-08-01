@@ -2,8 +2,8 @@
     <div class="row padded">
         <div class="col-sm-9">
             <div class="rebuttals">
-                <div class="card">
-                    <div class="card-header default">Rebuttals</div>
+                <div class="card primary">
+                    <div class="card-header">Rebuttals</div>
                     <div class="card-block">
                         <div class="table-responsive" v-show="rebuttals.length > 0">
                             <table class="table">
@@ -32,8 +32,8 @@
             </div>
 
             <div class="promos">
-                <div class="card">
-                    <div class="card-header default">Promotions</div>
+                <div class="card primary">
+                    <div class="card-header">Promotions</div>
                     <div class="card-block">
                         <div class="table-responsive" v-show="promos.length > 0">
                             <table class="table">
