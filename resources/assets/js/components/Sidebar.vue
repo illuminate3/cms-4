@@ -80,11 +80,8 @@ export default {
             $('.slidedown').slideUp(200);
             
             if (active != this.active) {
-                const sliders = document.querySelectorAll('.slidedown')
-
-                sliders.forEach((array, index, element) => {
-                    const current = sliders[index]
-                    current.style.display = 'none'
+                $('.slidedown').each(function() {
+                    $(this).hide()
                 })
 
                 $('.' + active + '.slidedown').slideDown(200)
