@@ -89,12 +89,14 @@ class PromoController extends Controller
                 ->json($validator->errors());
         }
 
-        Promo::create([
-            'campaign' => $request->get('campaign'),
-            'active' => $request->get('active'),
-            'name' => strtolower($request->get('name')),
-            'body' => strtolower($request->get('body'))
-        ]);
+        foreach ($request->get('campaign') as $campaign) {
+            Promo::create([
+                'campaign' => $campaign,
+                'active' => $request->get('active'),
+                'name' => strtolower($request->get('name')),
+                'body' => strtolower($request->get('body'))
+            ]);
+        }
 
         return response()
             ->json(true);
@@ -168,7 +170,7 @@ class PromoController extends Controller
     private function getValidator(array $data): \Illuminate\Validation\Validator
     {
         return Validator::make($data, [
-            'campaign' => 'integer|required|exists:campaigns,script',
+            'campaign.*' => 'integer|required|exists:campaigns,script',
             'name' => 'required|max:60',
             'body' => 'required',
             'active' => 'integer|required|in:0,1'

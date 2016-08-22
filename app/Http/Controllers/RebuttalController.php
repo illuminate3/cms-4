@@ -133,12 +133,14 @@ class RebuttalController extends Controller
                 ->json($validator->errors());
         }
 
-        Rebuttal::create([
-            'name' => strtolower($request->get('name')),
-            'body' => strtolower($request->get('body')),
-            'active' => $request->get('active'),
-            'campaign' => $request->get('campaign')
-        ]);
+        foreach ($request->get('campaign') as $campaign) {
+            Rebuttal::create([
+                'name' => strtolower($request->get('name')),
+                'body' => strtolower($request->get('body')),
+                'active' => $request->get('active'),
+                'campaign' => $campaign
+            ]);
+        }
 
         return response()
             ->json(true);
@@ -170,7 +172,7 @@ class RebuttalController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:60',
             'body' => 'required',
-            'campaign' => 'required|integer|exists:campaigns,script',
+            'campaign.*' => 'required|integer|exists:campaigns,script',
             'active' => 'required|integer|in:0,1'
         ]);
     }
