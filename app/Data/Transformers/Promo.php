@@ -2,7 +2,6 @@
 
 namespace App\Data\Transformers;
 
-use App\Models\Promo;
 use League\Fractal\TransformerAbstract;
 
 class Promo extends TransformerAbstract
@@ -13,7 +12,7 @@ class Promo extends TransformerAbstract
      * @param App\Models\Promo $promo
      * @return array
      */
-    public function transform(Promo $promo): array
+    public function transform(\App\Models\Promo $promo): array
     {
         return [
             'id' => $promo->id,

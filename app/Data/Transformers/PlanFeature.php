@@ -2,7 +2,6 @@
 
 namespace App\Data\Transformers;
 
-use App\Models\PlanFeature;
 use League\Fractal\TransformerAbstract;
 
 class PlanFeature extends TransformerAbstract
@@ -13,7 +12,7 @@ class PlanFeature extends TransformerAbstract
      * @param \App\Models\PlanFeature
      * @return array
      */
-    public function transform(PlanFeature $feature): array
+    public function transform(\App\Models\PlanFeature $feature): array
     {
         return [
             'id' => $feature->id,
