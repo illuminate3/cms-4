@@ -2,7 +2,6 @@
 
 namespace App\Data\Transformers;
 
-use App\Models\Section;
 use League\Fractal\TransformerAbstract;
 
 class Section extends TransformerAbstract
@@ -13,7 +12,7 @@ class Section extends TransformerAbstract
      * @param App\Models\Section $section
      * @return array
      */
-    public function transform(Section $section): array
+    public function transform(\App\Models\Section $section): array
     {
         return [
             'id' => $section->id,

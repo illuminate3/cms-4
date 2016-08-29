@@ -2,7 +2,6 @@
 
 namespace App\Data\Transformers;
 
-use App\Models\Terms;
 use League\Fractal\TransformerAbstract;
 
 class Terms extends TransformerAbstract
@@ -13,7 +12,7 @@ class Terms extends TransformerAbstract
      * @param App\Models\Terms $terms
      * @return array
      */
-    public function transform(Terms $terms): array
+    public function transform(\App\Models\Terms $terms): array
     {
         $sections = $this->getSectionsByPattern($terms->pattern);
 

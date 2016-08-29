@@ -2,7 +2,6 @@
 
 namespace App\Data\Transformers;
 
-use App\Models\Campaign;
 use League\Fractal\Manager;
 use League\Fractal\TransformerAbstract;
 use League\Fractal\Resource\Collection;
@@ -18,7 +17,7 @@ class Campaign extends TransformerAbstract
      * @param App\Models\Campaign $campaign
      * @return array
      */
-    public function transform(Campaign $campaign): array
+    public function transform(\App\Models\Campaign $campaign): array
     {
         $rebuttals = (new Manager)->createData(
             new Collection($campaign->rebuttals()->get(), new RebuttalTransformer)

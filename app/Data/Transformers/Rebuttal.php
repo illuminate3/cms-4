@@ -2,7 +2,6 @@
 
 namespace App\Data\Transformers;
 
-use App\Models\Rebuttal;
 use League\Fractal\TransformerAbstract;
 
 class Rebuttal extends TransformerAbstract
@@ -13,7 +12,7 @@ class Rebuttal extends TransformerAbstract
      * @param App\Models\Rebuttal $rebuttal
      * @return array
      */
-    public function transform(Rebuttal $rebuttal): array
+    public function transform(\App\Models\Rebuttal $rebuttal): array
     {
         return [
             'id' => $rebuttal->id,
