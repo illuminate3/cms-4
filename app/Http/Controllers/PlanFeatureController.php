@@ -76,8 +76,7 @@ class PlanFeatureController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         PlanFeature::create([
@@ -131,8 +130,7 @@ class PlanFeatureController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         $feature = PlanFeature::findOrFail($id)->update([
@@ -155,8 +153,7 @@ class PlanFeatureController extends Controller
     public function destroy(Request $request, $id)
     {
         if (!$request->ajax()) {
-            return response()
-                ->json(false);
+            return response()->json(false);
         }
 
         $feature = PlanFeature::findOrFail($id)
