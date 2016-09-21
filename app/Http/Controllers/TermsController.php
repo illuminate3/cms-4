@@ -61,8 +61,7 @@ class TermsController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         Terms::create([
@@ -85,9 +84,10 @@ class TermsController extends Controller
     {
         $terms = Terms::findOrFail($id);
 
-        return (new Manager)->createData(
-            new Item($terms, new TermsTransformer)
-        )->toJson();
+        return fractal()
+            ->item($terms)
+            ->transformWith(new TermsTransformer)
+            ->toJson();
     }
 
     /**
@@ -116,8 +116,7 @@ class TermsController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         Terms::find($id)
@@ -129,8 +128,7 @@ class TermsController extends Controller
                 'pattern' => $request->get('pattern')
             ]);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
@@ -144,8 +142,7 @@ class TermsController extends Controller
         $terms = Terms::findOrFail($id)
             ->destroy($id);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**

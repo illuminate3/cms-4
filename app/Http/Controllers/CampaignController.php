@@ -66,9 +66,10 @@ class CampaignController extends Controller
         $campaign = Campaign::where('script', $script)
             ->firstOrFail();
 
-        return (new Manager)->createData(
-            new Item($campaign, new CampaignTransformer)
-        )->toJson();
+        return fractal()
+            ->item($campaign)
+            ->transformwith(new CampaignTransformer)
+            ->toJson();
     }
 
     /**

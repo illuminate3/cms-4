@@ -42,8 +42,7 @@ class PromoController extends Controller
         $promos = Promo::orderBy('updated_at', 'desc')
             ->simplePaginate(20);
 
-        return view('promos.all')
-            ->with('promos', $promos);
+        return view('promos.all')->with('promos', $promos);
     }
 
     /**
@@ -56,9 +55,10 @@ class PromoController extends Controller
     {
         $promo = Promo::findOrFail($id);
 
-        return (new Manager)->createData(
-            new Item($promo, new PromoTransformer)
-        )->toJson();
+        return fractal()
+            ->item($promo)
+            ->transformWith(new PromoTransformer)
+            ->toJson();
     }
 
     /**
@@ -85,8 +85,7 @@ class PromoController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         foreach ($request->get('campaign') as $campaign) {
@@ -98,8 +97,7 @@ class PromoController extends Controller
             ]);
         }
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
@@ -130,8 +128,7 @@ class PromoController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         $promo = Promo::findOrFail($id)
@@ -142,8 +139,7 @@ class PromoController extends Controller
                 'active' => $request->get('active')
             ]);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
@@ -157,8 +153,7 @@ class PromoController extends Controller
         $promo = Promo::findOrFail($id)
             ->destroy($id);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**

@@ -56,9 +56,10 @@ class RebuttalController extends Controller
     {
         $rebuttal = Rebuttal::findOrFail($id);
 
-        return (new Manager)->createData(
-            new Item($rebuttal, new RebuttalTransformer)
-        )->toJson();
+        return fractal()
+            ->item($rebuttal)
+            ->transformWith(new RebuttalTransformer)
+            ->toJson();
     }
 
     /**
@@ -89,8 +90,7 @@ class RebuttalController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         $rebuttal = Rebuttal::findOrFail($id)
@@ -101,8 +101,7 @@ class RebuttalController extends Controller
                 'campaign' => $request->get('campaign')
             ]);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
@@ -129,8 +128,7 @@ class RebuttalController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         foreach ($request->get('campaign') as $campaign) {
@@ -142,8 +140,7 @@ class RebuttalController extends Controller
             ]);
         }
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
@@ -157,8 +154,7 @@ class RebuttalController extends Controller
         $rebuttal = Rebuttal::findOrFail($id)
             ->destroy($id);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
