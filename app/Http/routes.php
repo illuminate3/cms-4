@@ -16,8 +16,8 @@ Route::post('/', 'AuthController@check');
 | application, there are others but those will have controller middleware.
 |
 */
-Route::group(['middleware' => 'auth'], function() {
-    Route::group(['middleware' => 'admin'], function() {
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'admin'], function () {
         Route::get('/users', [
             'as' => 'users',
             'uses' => 'AuthController@index'
@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function() {
         'uses' => 'AuthController@destroy'
     ]);
 
-    Route::group(['prefix' => 'features'], function() {
+    Route::group(['prefix' => 'features'], function () {
         Route::get('/all', [
             'as' => 'features.all',
             'uses' => 'PlanFeatureController@all'
@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
-Route::group(['prefix' => 'campaigns'], function() {
+Route::group(['prefix' => 'campaigns'], function () {
     Route::get('/', [
         'as' => 'campaigns.all',
         'uses' => 'CampaignController@all'
