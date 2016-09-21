@@ -62,8 +62,7 @@ class SectionController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         Section::create([
@@ -72,8 +71,7 @@ class SectionController extends Controller
             'content' => $request->get('content')
         ]);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
@@ -86,9 +84,10 @@ class SectionController extends Controller
     {
         $section = Section::findOrFail($id);
 
-        return (new Manager)->createData(
-            new Item($section, new SectionTransformer)
-        )->toJson();
+        return fractal()
+            ->item($section)
+            ->transformWith(new SectionTransformer)
+            ->toJson();
     }
 
     /**
@@ -122,8 +121,7 @@ class SectionController extends Controller
         $validator = $this->getValidator($request->all());
 
         if ($validator->fails()) {
-            return response()
-                ->json($validator->errors());
+            return response()->json($validator->errors());
         }
 
         $section = Section::findOrFail($id)
@@ -133,8 +131,7 @@ class SectionController extends Controller
                 'description' => $request->get('description')
             ]);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
@@ -148,8 +145,7 @@ class SectionController extends Controller
         $section = Section::findOrFail($id)
             ->destroy($id);
 
-        return response()
-            ->json(true);
+        return response()->json(true);
     }
 
     /**
